@@ -61,9 +61,18 @@ class UserOrder
     /**
      * @var string
      *
-     * @ORM\Column(name="adress", type="string", length=255)
+     * @ORM\Column(name="billingAdress", type="string", length=255)
      */
-    private $adress;
+    private $billingAdress;
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="deliveryAdress", type="string", length=255)
+     */
+    private $deliveryAdress;
+
 
     /**
      * @var string
@@ -219,27 +228,27 @@ class UserOrder
     }
 
     /**
-     * Set adress.
+     * Set billingAdress.
      *
-     * @param string $adress
+     * @param string $billingAdress
      *
      * @return UserOrder
      */
-    public function setAdress($adress)
+    public function setBillingAdress($billingAdress)
     {
-        $this->adress = $adress;
+        $this->billingAdress = $billingAdress;
 
         return $this;
     }
 
     /**
-     * Get adress.
+     * Get billingAdress.
      *
      * @return string
      */
-    public function getAdress()
+    public function getBillingAdress()
     {
-        return $this->adress;
+        return $this->billingAdress;
     }
 
     /**
@@ -312,5 +321,29 @@ class UserOrder
     public function getGift()
     {
         return $this->gift;
+    }
+
+    /**
+     * Set deliveryAdress.
+     *
+     * @param string $deliveryAdress
+     *
+     * @return UserOrder
+     */
+    public function setDeliveryAdress($deliveryAdress)
+    {
+        $this->deliveryAdress = $deliveryAdress;
+
+        return $this;
+    }
+
+    /**
+     * Get deliveryAdress.
+     *
+     * @return string
+     */
+    public function getDeliveryAdress()
+    {
+        return $this->deliveryAdress;
     }
 }
