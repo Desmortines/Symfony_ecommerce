@@ -1,0 +1,80 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>User</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ user.id }}</td>
+            </tr>
+            <tr>
+                <th>Firstname</th>
+                <td>{{ user.firstName }}</td>
+            </tr>
+            <tr>
+                <th>Lastname</th>
+                <td>{{ user.lastName }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ user.email }}</td>
+            </tr>
+            <tr>
+                <th>Adress</th>
+                <td>{{ user.adress }}</td>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <td>{{ user.password }}</td>
+            </tr>
+            <tr>
+                <th>Order</th>
+                <td>{% if user.order %}{{ user.order|join(', ') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Paymethod</th>
+                <td>{% if user.payMethod %}{{ user.payMethod|join(', ') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Type</th>
+                <td>{% if user.type %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Marks</th>
+                <td>{% if user.marks %}{{ user.marks|join(', ') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Comments</th>
+                <td>{% if user.comments %}{{ user.comments|join(', ') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Theme</th>
+                <td>{{ user.theme }}</td>
+            </tr>
+            <tr>
+                <th>Isactive</th>
+                <td>{% if user.isActive %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Favorites</th>
+                <td>{% if user.favorites %}{{ user.favorites|join(', ') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('user_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('user_edit', { 'id': user.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
