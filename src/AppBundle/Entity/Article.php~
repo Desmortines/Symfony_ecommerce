@@ -495,28 +495,4 @@ class Article
         $this->supplier = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
-
-    /**
-     * Set supplierOrder.
-     *
-     * @param \AppBundle\Entity\SupplierOrder|null $supplierOrder
-     *
-     * @return Article
-     */
-    public function setSupplierOrder(\AppBundle\Entity\SupplierOrder $supplierOrder = null)
-    {
-        $this->supplierOrder = $supplierOrder;
-
-        return $this;
-    }
-
-    /**
-     * Get supplierOrder.
-     *
-     * @return \AppBundle\Entity\SupplierOrder|null
-     */
-    public function getSupplierOrder()
-    {
-        return $this->supplierOrder;
-    }
 }

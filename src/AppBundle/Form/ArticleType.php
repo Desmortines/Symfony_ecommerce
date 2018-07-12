@@ -13,7 +13,19 @@ class ArticleType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('name')->add('price')->add('isbnReference')->add('category')->add('stock')->add('genre');
+        $builder
+            ->add('name')
+            ->add('price')
+            ->add('genre', 'entity', array(
+                'class' => 'AppBundle:Genre',
+                'empty_value' => 'name',
+                'property' => ''))
+            ->add('category', 'entity', array(
+                'class' => 'AppBundle:Category',
+                'empty_value' => '',
+                'property' => 'name'))
+            ->add('isbnReference')
+            ->add('stock');
     }/**
      * {@inheritdoc}
      */
