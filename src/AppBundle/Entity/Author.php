@@ -36,12 +36,11 @@ class Author
     private $lastName;
 
     /**
-     * @var array
+     * @var article
      *
-     * @ORM\Column(name="books", type="array")
-     * @ORM\OneToMany(targetEntity="Article", mappedBy="id")
+     * @ORM\OneToMany(targetEntity="Characteristics", mappedBy="author")
      */
-    private $books;
+    private $article;
 
 
     /**
@@ -124,5 +123,48 @@ class Author
     public function getBooks()
     {
         return $this->books;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->article = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add article.
+     *
+     * @param \AppBundle\Entity\Characteristics $article
+     *
+     * @return Author
+     */
+    public function addArticle(\AppBundle\Entity\Characteristics $article)
+    {
+        $this->article[] = $article;
+
+        return $this;
+    }
+
+    /**
+     * Remove article.
+     *
+     * @param \AppBundle\Entity\Characteristics $article
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeArticle(\AppBundle\Entity\Characteristics $article)
+    {
+        return $this->article->removeElement($article);
+    }
+
+    /**
+     * Get article.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getArticle()
+    {
+        return $this->article;
     }
 }

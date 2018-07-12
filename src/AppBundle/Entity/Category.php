@@ -25,9 +25,15 @@ class Category
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255, unique=true)
-     * @ORM\OneToOne(targetEntity="Article", inversedBy="category")
      */
     private $name;
+
+    /**
+     * @var Article
+     *
+     * @ORM\OneToOne(targetEntity="Article", inversedBy="category")
+     */
+    private $article;
 
 
     /**
@@ -62,5 +68,29 @@ class Category
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * Set article.
+     *
+     * @param \AppBundle\Entity\Article|null $article
+     *
+     * @return Category
+     */
+    public function setArticle(\AppBundle\Entity\Article $article = null)
+    {
+        $this->article = $article;
+
+        return $this;
+    }
+
+    /**
+     * Get article.
+     *
+     * @return \AppBundle\Entity\Article|null
+     */
+    public function getArticle()
+    {
+        return $this->article;
     }
 }

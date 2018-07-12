@@ -29,10 +29,9 @@ class Article
     private $name;
 
     /**
-     * @var array
+     * @var Characteristics
      *
-     * @ORM\Column(name="characteristics", type="array")
-     * @ORM\OneToMany(targetEntity="Characteristics",  mappedBy="id")
+     * @ORM\OneToOne(targetEntity="Characteristics",  mappedBy="article")
      */
     private $characteristics;
 
@@ -58,10 +57,9 @@ class Article
     private $isbnReference;
 
     /**
-     * @var string
+     * @var Category
      *
-     * @ORM\Column(name="category", type="string")
-     * @ORM\OneToOne(targetEntity="Category", mappedBy="name")
+     * @ORM\OneToOne(targetEntity="Category", mappedBy="article")
      */
     private $category;
 
@@ -73,10 +71,9 @@ class Article
     private $stock;
 
     /**
-     * @var string
+     * @var Genre
      *
-     * @ORM\Column(name="genre", type="string")
-     * @ORM\OneToMany(targetEntity="Genre", mappedBy="name")
+     * @ORM\OneToMany(targetEntity="Genre", mappedBy="article")
      */
     private $genre;
 
@@ -93,6 +90,34 @@ class Article
      * @ORM\Column(name="nbrClicked", type="integer", nullable=true)
      */
     private $nbrClicked;
+
+    /**
+     * @var Supplier
+     *
+     * @ORM\ManyToMany(targetEntity="Supplier", inversedBy="article")
+     */
+    private $supplier;
+
+    /**
+     * @var Rating
+     *
+     * @ORM\OneToOne(targetEntity="Rating", mappedBy="article")
+     */
+    private $rating;
+
+    /**
+     * @var UserOrder
+     *
+     * @ORM\ManyToOne(targetEntity="UserOrder", inversedBy="article")
+     */
+    private $userOrder;
+
+    /**
+     * @var Cart
+     *
+     * @ORM\ManyToOne(targetEntity="Cart", inversedBy="article")
+     */
+    private $cart;
 
 
     /**
@@ -343,5 +368,123 @@ class Article
     public function getNbrClicked()
     {
         return $this->nbrClicked;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->genre = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->supplier = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add genre.
+     *
+     * @param \AppBundle\Entity\Genre $genre
+     *
+     * @return Article
+     */
+    public function addGenre(\AppBundle\Entity\Genre $genre)
+    {
+        $this->genre[] = $genre;
+
+        return $this;
+    }
+
+    /**
+     * Remove genre.
+     *
+     * @param \AppBundle\Entity\Genre $genre
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeGenre(\AppBundle\Entity\Genre $genre)
+    {
+        return $this->genre->removeElement($genre);
+    }
+
+    /**
+     * Add supplier.
+     *
+     * @param \AppBundle\Entity\Supplier $supplier
+     *
+     * @return Article
+     */
+    public function addSupplier(\AppBundle\Entity\Supplier $supplier)
+    {
+        $this->supplier[] = $supplier;
+
+        return $this;
+    }
+
+    /**
+     * Remove supplier.
+     *
+     * @param \AppBundle\Entity\Supplier $supplier
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeSupplier(\AppBundle\Entity\Supplier $supplier)
+    {
+        return $this->supplier->removeElement($supplier);
+    }
+
+    /**
+     * Get supplier.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getSupplier()
+    {
+        return $this->supplier;
+    }
+
+    /**
+     * Set userOrder.
+     *
+     * @param \AppBundle\Entity\UserOrder|null $userOrder
+     *
+     * @return Article
+     */
+    public function setUserOrder(\AppBundle\Entity\UserOrder $userOrder = null)
+    {
+        $this->userOrder = $userOrder;
+
+        return $this;
+    }
+
+    /**
+     * Get userOrder.
+     *
+     * @return \AppBundle\Entity\UserOrder|null
+     */
+    public function getUserOrder()
+    {
+        return $this->userOrder;
+    }
+
+    /**
+     * Set cart.
+     *
+     * @param \AppBundle\Entity\Cart|null $cart
+     *
+     * @return Article
+     */
+    public function setCart(\AppBundle\Entity\Cart $cart = null)
+    {
+        $this->cart = $cart;
+
+        return $this;
+    }
+
+    /**
+     * Get cart.
+     *
+     * @return \AppBundle\Entity\Cart|null
+     */
+    public function getCart()
+    {
+        return $this->cart;
     }
 }

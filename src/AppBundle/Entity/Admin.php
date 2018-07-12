@@ -29,10 +29,9 @@ class Admin
     private $payMethod;
 
     /**
-     * @var array
+     * @var Supplier
      *
-     * @ORM\Column(name="supplier", type="array")
-     * @ORM\OneToMany(targetEntity="Supplier", mappedBy="id")
+     * @ORM\OneToMany(targetEntity="Supplier", mappedBy="admin")
      */
     private $supplier;
 
@@ -44,34 +43,30 @@ class Admin
     private $stockWarning;
 
     /**
-     * @var array
+     * @var UserOrder
      *
-     * @ORM\Column(name="userOrderPending", type="array")
-     * @ORM\OneToMany(targetEntity="UserOrder", mappedBy="id")
+     * @ORM\OneToMany(targetEntity="UserOrder", mappedBy="pending")
      */
     private $userOrderPending;
 
     /**
-     * @var array
+     * @var UserOrder
      *
-     * @ORM\Column(name="userOrderComplete", type="array")
-     * @ORM\OneToMany(targetEntity="UserOrder", mappedBy="id")
+     * @ORM\OneToMany(targetEntity="UserOrder", mappedBy="complete")
      */
     private $userOrderComplete;
 
     /**
-     * @var array
+     * @var SupplierOrder
      *
-     * @ORM\Column(name="supplierOrderPending", type="array")
-     * @ORM\OneToMany(targetEntity="SupplieOrder", mappedBy="id")
+     * @ORM\OneToMany(targetEntity="SupplierOrder", mappedBy="pending")
      */
     private $supplierOrderPending;
 
     /**
-     * @var array
+     * @var SupplierOrder
      *
-     * @ORM\Column(name="supplierOrderComplete", type="array")
-     * @ORM\OneToMany(targetEntity="SupplierOrder", mappedBy="id")
+     * @ORM\OneToMany(targetEntity="SupplierOrder", mappedBy="complete")
      */
     private $supplierOrderComplete;
 
@@ -297,5 +292,146 @@ class Admin
         $this->supplierOrderPending = $supplierOrderPending;
 
         return $this;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->supplier = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->userOrderPending = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->userOrderComplete = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->supplierOrderPending = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->supplierOrderComplete = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add supplier.
+     *
+     * @param \AppBundle\Entity\Supplier $supplier
+     *
+     * @return Admin
+     */
+    public function addSupplier(\AppBundle\Entity\Supplier $supplier)
+    {
+        $this->supplier[] = $supplier;
+
+        return $this;
+    }
+
+    /**
+     * Remove supplier.
+     *
+     * @param \AppBundle\Entity\Supplier $supplier
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeSupplier(\AppBundle\Entity\Supplier $supplier)
+    {
+        return $this->supplier->removeElement($supplier);
+    }
+
+    /**
+     * Add userOrderPending.
+     *
+     * @param \AppBundle\Entity\UserOrder $userOrderPending
+     *
+     * @return Admin
+     */
+    public function addUserOrderPending(\AppBundle\Entity\UserOrder $userOrderPending)
+    {
+        $this->userOrderPending[] = $userOrderPending;
+
+        return $this;
+    }
+
+    /**
+     * Remove userOrderPending.
+     *
+     * @param \AppBundle\Entity\UserOrder $userOrderPending
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeUserOrderPending(\AppBundle\Entity\UserOrder $userOrderPending)
+    {
+        return $this->userOrderPending->removeElement($userOrderPending);
+    }
+
+    /**
+     * Add userOrderComplete.
+     *
+     * @param \AppBundle\Entity\UserOrder $userOrderComplete
+     *
+     * @return Admin
+     */
+    public function addUserOrderComplete(\AppBundle\Entity\UserOrder $userOrderComplete)
+    {
+        $this->userOrderComplete[] = $userOrderComplete;
+
+        return $this;
+    }
+
+    /**
+     * Remove userOrderComplete.
+     *
+     * @param \AppBundle\Entity\UserOrder $userOrderComplete
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeUserOrderComplete(\AppBundle\Entity\UserOrder $userOrderComplete)
+    {
+        return $this->userOrderComplete->removeElement($userOrderComplete);
+    }
+
+    /**
+     * Add supplierOrderPending.
+     *
+     * @param \AppBundle\Entity\SupplierOrder $supplierOrderPending
+     *
+     * @return Admin
+     */
+    public function addSupplierOrderPending(\AppBundle\Entity\SupplierOrder $supplierOrderPending)
+    {
+        $this->supplierOrderPending[] = $supplierOrderPending;
+
+        return $this;
+    }
+
+    /**
+     * Remove supplierOrderPending.
+     *
+     * @param \AppBundle\Entity\SupplierOrder $supplierOrderPending
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeSupplierOrderPending(\AppBundle\Entity\SupplierOrder $supplierOrderPending)
+    {
+        return $this->supplierOrderPending->removeElement($supplierOrderPending);
+    }
+
+    /**
+     * Add supplierOrderComplete.
+     *
+     * @param \AppBundle\Entity\SupplierOrder $supplierOrderComplete
+     *
+     * @return Admin
+     */
+    public function addSupplierOrderComplete(\AppBundle\Entity\SupplierOrder $supplierOrderComplete)
+    {
+        $this->supplierOrderComplete[] = $supplierOrderComplete;
+
+        return $this;
+    }
+
+    /**
+     * Remove supplierOrderComplete.
+     *
+     * @param \AppBundle\Entity\SupplierOrder $supplierOrderComplete
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeSupplierOrderComplete(\AppBundle\Entity\SupplierOrder $supplierOrderComplete)
+    {
+        return $this->supplierOrderComplete->removeElement($supplierOrderComplete);
     }
 }

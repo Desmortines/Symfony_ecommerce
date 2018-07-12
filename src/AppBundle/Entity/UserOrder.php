@@ -22,17 +22,16 @@ class UserOrder
     private $id;
 
     /**
-     * @var int
+     * @var User
      *
-     * @ORM\Column(name="user", type="integer")
-     * @ORM\ManyToOne(targetEntity="User", inversedBy="id")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="order")
      */
     private $user;
 
     /**
-     * @var array
+     * @var Article
      *
-     * @ORM\OneToMany(targetEntity="Article", mappedBy="id")
+     * @ORM\OneToMany(targetEntity="Article", mappedBy="userOrder")
      */
     private $article;
 
@@ -84,7 +83,7 @@ class UserOrder
      * @var \stdClass
      *
      * @ORM\Column(name="payMethod", type="object")
-     * @ORM\OneToOne(targetEntity="PayMethod", mappedBy="id")
+     * @ORM\OneToOne(targetEntity="PayMethod", mappedBy="id") //a voir plus tard
      */
     private $payMethod;
 

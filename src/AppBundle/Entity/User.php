@@ -57,20 +57,18 @@ class User
     private $password;
 
     /**
-     * @var array|null
+     * @var UserOrder
      *
-     * @ORM\Column(name="order", type="array", nullable=true)
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\UserOrder", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="UserOrder", mappedBy="user")
      */
     private $order;
 
     /**
      * @var array
      *
-     * @ORM\Column(name="payMethod", type="array")
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Payment", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Payment", inversedBy="user") //en attente
      */
-    private $payMethod;
+    //private $payMethod;
 
     /**
      * @var bool
@@ -87,9 +85,9 @@ class User
     private $marks;
 
     /**
-     * @var array|null
+     * @var Comments
      *
-     * @ORM\Column(name="comments", type="array", nullable=true)
+     * @ORM\OneToMany(targetEntity="Comments", mappedBy="user")
      */
     private $comments;
 
@@ -108,12 +106,18 @@ class User
     private $isActive;
 
     /**
-     * @var array|null
+     * @var Favs
      *
-     * @ORM\Column(name="favorites", type="array", nullable=true)
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Favs", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="Favs", mappedBy="user")
      */
     private $favorites;
+
+    /**
+     * @var Cart
+     *
+     * @ORM\OneToOne(targetEntity="Cart", mappedBy="user")
+     */
+    private $cart;
 
 
     /**
@@ -436,5 +440,116 @@ class User
     public function getFavorites()
     {
         return $this->favorites;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->order = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->comments = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->favorites = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add order.
+     *
+     * @param \AppBundle\Entity\UserOrder $order
+     *
+     * @return User
+     */
+    public function addOrder(\AppBundle\Entity\UserOrder $order)
+    {
+        $this->order[] = $order;
+
+        return $this;
+    }
+
+    /**
+     * Remove order.
+     *
+     * @param \AppBundle\Entity\UserOrder $order
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeOrder(\AppBundle\Entity\UserOrder $order)
+    {
+        return $this->order->removeElement($order);
+    }
+
+    /**
+     * Add comment.
+     *
+     * @param \AppBundle\Entity\Comments $comment
+     *
+     * @return User
+     */
+    public function addComment(\AppBundle\Entity\Comments $comment)
+    {
+        $this->comments[] = $comment;
+
+        return $this;
+    }
+
+    /**
+     * Remove comment.
+     *
+     * @param \AppBundle\Entity\Comments $comment
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeComment(\AppBundle\Entity\Comments $comment)
+    {
+        return $this->comments->removeElement($comment);
+    }
+
+    /**
+     * Add favorite.
+     *
+     * @param \AppBundle\Entity\Favs $favorite
+     *
+     * @return User
+     */
+    public function addFavorite(\AppBundle\Entity\Favs $favorite)
+    {
+        $this->favorites[] = $favorite;
+
+        return $this;
+    }
+
+    /**
+     * Remove favorite.
+     *
+     * @param \AppBundle\Entity\Favs $favorite
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeFavorite(\AppBundle\Entity\Favs $favorite)
+    {
+        return $this->favorites->removeElement($favorite);
+    }
+
+    /**
+     * Set cart.
+     *
+     * @param \AppBundle\Entity\Cart|null $cart
+     *
+     * @return User
+     */
+    public function setCart(\AppBundle\Entity\Cart $cart = null)
+    {
+        $this->cart = $cart;
+
+        return $this;
+    }
+
+    /**
+     * Get cart.
+     *
+     * @return \AppBundle\Entity\Cart|null
+     */
+    public function getCart()
+    {
+        return $this->cart;
     }
 }

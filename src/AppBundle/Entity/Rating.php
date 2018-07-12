@@ -22,33 +22,30 @@ class Rating
     private $id;
 
     /**
-     * @var int
+     * @var User
      *
-     * @ORM\Column(name="user", type="integer")
-     * @ORM\OneToMany(targetEntity="User", mappedBy="id")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="ratings")
      */
     private $user;
 
     /**
-     * @var int
+     * @var Article
      *
-     * @ORM\Column(name="article", type="integer")
-     * @ORM\OneToMany(targetEntity="Article", mappedBy="id")
+     * @ORM\OneToOne(targetEntity="Article", mappedBy="rating")
      */
     private $article;
 
     /**
-     * @var int
+     * @var int|null
      *
-     * @ORM\Column(name="rating", type="integer")
+     * @ORM\Column(name="rating", type="integer", nullable=true)
      */
     private $rating;
 
     /**
-     * @var int|null
+     * @var Comments
      *
-     * @ORM\Column(name="linkedComment", type="integer", nullable=true)
-     * @ORM\OneToMany(targetEntity="Comments", mappedBy="id")
+     * @ORM\OneToMany(targetEntity="Comments", mappedBy="rating")
      */
     private $linkedComment;
 
@@ -157,5 +154,38 @@ class Rating
     public function getLinkedComment()
     {
         return $this->linkedComment;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->linkedComment = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add linkedComment.
+     *
+     * @param \AppBundle\Entity\Comments $linkedComment
+     *
+     * @return Rating
+     */
+    public function addLinkedComment(\AppBundle\Entity\Comments $linkedComment)
+    {
+        $this->linkedComment[] = $linkedComment;
+
+        return $this;
+    }
+
+    /**
+     * Remove linkedComment.
+     *
+     * @param \AppBundle\Entity\Comments $linkedComment
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeLinkedComment(\AppBundle\Entity\Comments $linkedComment)
+    {
+        return $this->linkedComment->removeElement($linkedComment);
     }
 }
