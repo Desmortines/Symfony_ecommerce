@@ -83,14 +83,14 @@ class Article
     /**
      * @var int
      *
-     * @ORM\Column(name="totalBought", type="integer")
+     * @ORM\Column(name="totalBought", type="integer", nullable=true)
      */
     private $totalBought;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="nbrClicked", type="integer")
+     * @ORM\Column(name="nbrClicked", type="integer", nullable=true)
      */
     private $nbrClicked;
 
