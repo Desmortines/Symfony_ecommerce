@@ -58,10 +58,10 @@ class Article
     private $isbnReference;
 
     /**
-     * @var int
+     * @var string
      *
-     * @ORM\Column(name="category", type="integer")
-     * @ORM\OneToOne(targetEntity="Category",  mappedBy="id")
+     * @ORM\Column(name="category", type="string")
+     * @ORM\OneToOne(targetEntity="Category", mappedBy="name")
      */
     private $category;
 
@@ -73,10 +73,10 @@ class Article
     private $stock;
 
     /**
-     * @var int
+     * @var string
      *
-     * @ORM\Column(name="genre", type="integer")
-     * @ORM\OneToMany(targetEntity="Genre",  mappedBy="id")
+     * @ORM\Column(name="genre", type="string")
+     * @ORM\OneToMany(targetEntity="Genre", mappedBy="name")
      */
     private $genre;
 

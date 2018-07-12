@@ -22,12 +22,18 @@ class Genre
     private $id;
 
     /**
+     * @var Article
+     *
+     * @ORM\ManyToOne(targetEntity="Article", inversedBy="genre")
+     */
+    private $article;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
-
 
     /**
      * Get id.
@@ -61,5 +67,29 @@ class Genre
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * Set article.
+     *
+     * @param \AppBundle\Entity\Article|null $article
+     *
+     * @return Genre
+     */
+    public function setArticle(\AppBundle\Entity\Article $article = null)
+    {
+        $this->article = $article;
+
+        return $this;
+    }
+
+    /**
+     * Get article.
+     *
+     * @return \AppBundle\Entity\Article|null
+     */
+    public function getArticle()
+    {
+        return $this->article;
     }
 }
