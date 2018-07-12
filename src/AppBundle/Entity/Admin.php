@@ -284,4 +284,18 @@ class Admin
     {
         return $this->netMargin;
     }
+
+    /**
+     * Set supplierOrderPending.
+     *
+     * @param array $supplierOrderPending
+     *
+     * @return Admin
+     */
+    public function setSupplierOrderPending($supplierOrderPending)
+    {
+        $this->supplierOrderPending = $supplierOrderPending;
+
+        return $this;
+    }
 }

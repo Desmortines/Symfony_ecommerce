@@ -32,7 +32,6 @@ class UserOrder
     /**
      * @var array
      *
-     * @ORM\Column(name="article", type="array")
      * @ORM\OneToMany(targetEntity="Article", mappedBy="id")
      */
     private $article;
@@ -95,6 +94,13 @@ class UserOrder
      * @ORM\Column(name="gift", type="boolean")
      */
     private $gift;
+
+    /**
+     * @var date
+     *
+     * @ORM\Column(name="validatedAt", type="date")
+     */
+    private $validatedAt;
 
 
     /**
@@ -345,5 +351,62 @@ class UserOrder
     public function getDeliveryAdress()
     {
         return $this->deliveryAdress;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->article = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Set validatedAt.
+     *
+     * @param \DateTime $validatedAt
+     *
+     * @return UserOrder
+     */
+    public function setValidatedAt($validatedAt)
+    {
+        $this->validatedAt = $validatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get validatedAt.
+     *
+     * @return \DateTime
+     */
+    public function getValidatedAt()
+    {
+        return $this->validatedAt;
+    }
+
+    /**
+     * Add article.
+     *
+     * @param \AppBundle\Entity\Article $article
+     *
+     * @return UserOrder
+     */
+    public function addArticle(\AppBundle\Entity\Article $article)
+    {
+        $this->article[] = $article;
+
+        return $this;
+    }
+
+    /**
+     * Remove article.
+     *
+     * @param \AppBundle\Entity\Article $article
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeArticle(\AppBundle\Entity\Article $article)
+    {
+        return $this->article->removeElement($article);
     }
 }
