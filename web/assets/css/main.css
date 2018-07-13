@@ -42,6 +42,9 @@
     width: 100%;
     padding: 0.5rem;
     background-color: #8C7448;
+body {
+    font-family: 'Raleway', sans-serif;
+}
 
 }
 .bottomfooter img{
@@ -51,3 +54,103 @@
     padding-right: 0.2rem;
 }
 /*-------END FOOTER ------*/
+
+/******************************* HEADER *******************************/
+
+/**************************** PRINCIPAL NAV ****************************/
+
+.headerNav {
+    box-shadow: 0 4px 2px -2px gray;
+}
+
+/****** Search Zone ******/
+#AdvanceSearch {
+    color: #B3FF5C;
+}
+/****** End of Search Zone ******/
+
+/****** Buttons ******/
+
+.buttonHeader {
+    border-color: #B3FF5C;
+    color: #B3FF5C;
+}
+
+.buttonHeader:hover {
+    background-color: #B3FF5C;
+    color: #43CBFF;
+}
+
+.buttonHeaderOk {
+    background-color: #B3FF5C;
+    border-color: #B3FF5C;
+    color: #8C7448;
+    margin-left: 5px;
+}
+
+.buttonHeaderOk:hover {
+    background-color: #B3FF5C;
+    color: #43CBFF;
+}
+
+.pipeHeader {
+    color: #8C7448;
+    margin: 0px 10px 0px 10px;
+    font-size: 3em;
+    font-weight: 100;
+}
+/****** End of Buttons ******/
+/**************************** END OF PRINCIPAL NAV ****************************/
+
+/**************************** MINI NAV ****************************/
+.headerNavMin {
+    display: none;
+    box-shadow: 0 4px 2px -2px gray;
+    padding: inherit;
+    padding: 0px 10px 0px 10px;
+}
+
+#AdvanceSearchNavMin {
+    color: #B3FF5C;
+    padding-left: 5px;
+}
+
+/****** Buttons ******/
+
+.buttonHeaderNavMin {
+    border-color: #B3FF5C;
+    color: #B3FF5C;
+}
+
+.buttonHeaderNavMin:hover {
+    background-color: #B3FF5C;
+    color: #43CBFF;
+}
+
+.buttonHeaderOkNavMin {
+    background-color: #B3FF5C;
+    border-color: #B3FF5C;
+    color: #8C7448;
+    margin-left: 5px;
+}
+
+.buttonHeaderOkNavMin:hover {
+    background-color: #B3FF5C;
+    color: #43CBFF;
+}
+
+.pipeHeaderNavMin {
+    color: #8C7448;
+    margin: 0px 10px 0px 10px;
+    font-size: 3em;
+    font-weight: 100;
+}
+/****** End of Buttons ******/
+/**************************** END OF MINI NAV ****************************/
+/******************************* END OF HEADER *******************************/
+
+@media (max-width: 768px) {
+    #buttonNav {
+        visibility: hidden;
+    }
+}

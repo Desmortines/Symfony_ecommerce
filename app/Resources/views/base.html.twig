@@ -6,12 +6,68 @@
             {% block stylesheets %}
                 <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}" type="text/css" />
                 <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}" type="text/css" />
+                <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+            {% endblock %}
+            {% block googleFont %}
+                <link href="https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500" rel="stylesheet">
             {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
         {% block header %}
+            <nav class="navbar navbar-expand-lg navbar-light headerNav" style="background-color: #43CBFF;">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#"><img src="{{ asset('assets/img/arbrelogo.jpg') }}" width="150px;"></a>
+
+                    <form class="form-inline my-2 my-lg-0 d-flex flex-column bd-highlight">
+                        <div class="p-2 bd-highlight mt-4">
+                            <input class="form-control" type="search" placeholder="Rechercher" aria-label="Search">
+                            <button class="btn btn-outline-success my-2 my-sm-0 buttonHeaderOk" type="submit">OK</button>
+                            <div class="p-2 bd-highlight mr-auto" style="margin-top: -8px;">
+                                <a href="#" id="AdvanceSearch">Recherches avancées</a>
+                            </div>
+                        </div>
+
+                    </form>
+
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse mb-2" id="navbarSupportedContent">
+                        <div id="buttonNav" class="form-inline navbar-nav ml-auto">
+                            <button class="btn btn-outline-success my-2 my-sm-0 buttonHeader" type="submit">S'identifier</button>
+                            <span class="pipeHeader">|</span>
+                            <button class="btn btn-outline-success my-2 my-sm-0 buttonHeader" type="submit">Mon panier</button>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <nav id="FixNav" class="navbar navbar-expand-lg navbar-light sticky-top navbar-light headerNavMin" style="background-color: #43CBFF;">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                    <form class="form-inline">
+                            <input class="form-control" type="search" placeholder="Rechercher" aria-label="Search">
+                            <button class="btn btn-outline-success buttonHeaderOkNavMin" type="submit">OK</button>
+                            <a href="#" id="AdvanceSearchNavMin">Recherches avancées</a>
+                    </form>
+
+                    <div class="form-inline navbar-nav ml-auto">
+                        <button class="btn btn-outline-success my-2 my-sm-0 buttonHeaderNavMin" type="submit">S'identifier</button>
+                        <span class="pipeHeaderNavMin">|</span>
+                        <button class="btn btn-outline-success my-2 my-sm-0 buttonHeaderNavMin" type="submit">Mon panier</button>
+                    </div>
+                </div>
+            </nav>
         {% endblock %}
+
+        <p>Lorem Elsass ipsum condimentum aliquam sed kuglopf messti de Bischheim Wurschtsalad non commodo Oberschaeffolsheim libero, eleifend sed merci vielmols Pfourtz ! gal turpis, sagittis s'guelt kougelhopf bissame Pellentesque quam. bredele blottkopf, tellus Strasbourg mamsell schnaps kartoffelsalad Chulia Roberstau Yo dû. amet, ornare adipiscing nüdle sit morbi elit Salut bisamme purus elementum ante senectus schneck baeckeoffe varius Kabinetpapier ch'ai Racing. Heineken rossbolla pellentesque dui leverwurscht Hans mänele rucksack et suspendisse lacus réchime knack jetz gehts los mollis geïz salu Mauris hoplageiss sit tristique quam, porta und rhoncus sit ac flammekueche dignissim Miss Dahlias hopla Salu bissame Verdammi DNA, ornare placerat nullam libero. tchao bissame non hopla Oberschaeffolsheim leo picon bière ac amet ftomi! in, chambon hopla vielmols, Huguette libero, Chulien Richard Schirmeck risus,  knepfle dolor Gal. Carola Christkindelsmärik id Spätzle amet so consectetur wie munster gravida tellus lotto-owe ullamcorper météor schpeck geht's semper id, barapli leo yeuh. turpis Gal ! wurscht hop gewurztraminer vulputate habitant Morbi eget Coopé de Truchtersheim auctor, hopla</p>
+        <p>Lorem Elsass ipsum condimentum aliquam sed kuglopf messti de Bischheim Wurschtsalad non commodo Oberschaeffolsheim libero, eleifend sed merci vielmols Pfourtz ! gal turpis, sagittis s'guelt kougelhopf bissame Pellentesque quam. bredele blottkopf, tellus Strasbourg mamsell schnaps kartoffelsalad Chulia Roberstau Yo dû. amet, ornare adipiscing nüdle sit morbi elit Salut bisamme purus elementum ante senectus schneck baeckeoffe varius Kabinetpapier ch'ai Racing. Heineken rossbolla pellentesque dui leverwurscht Hans mänele rucksack et suspendisse lacus réchime knack jetz gehts los mollis geïz salu Mauris hoplageiss sit tristique quam, porta und rhoncus sit ac flammekueche dignissim Miss Dahlias hopla Salu bissame Verdammi DNA, ornare placerat nullam libero. tchao bissame non hopla Oberschaeffolsheim leo picon bière ac amet ftomi! in, chambon hopla vielmols, Huguette libero, Chulien Richard Schirmeck risus,  knepfle dolor Gal. Carola Christkindelsmärik id Spätzle amet so consectetur wie munster gravida tellus lotto-owe ullamcorper météor schpeck geht's semper id, barapli leo yeuh. turpis Gal ! wurscht hop gewurztraminer vulputate habitant Morbi eget Coopé de Truchtersheim auctor, hopla</p>
+        <p>Lorem Elsass ipsum condimentum aliquam sed kuglopf messti de Bischheim Wurschtsalad non commodo Oberschaeffolsheim libero, eleifend sed merci vielmols Pfourtz ! gal turpis, sagittis s'guelt kougelhopf bissame Pellentesque quam. bredele blottkopf, tellus Strasbourg mamsell schnaps kartoffelsalad Chulia Roberstau Yo dû. amet, ornare adipiscing nüdle sit morbi elit Salut bisamme purus elementum ante senectus schneck baeckeoffe varius Kabinetpapier ch'ai Racing. Heineken rossbolla pellentesque dui leverwurscht Hans mänele rucksack et suspendisse lacus réchime knack jetz gehts los mollis geïz salu Mauris hoplageiss sit tristique quam, porta und rhoncus sit ac flammekueche dignissim Miss Dahlias hopla Salu bissame Verdammi DNA, ornare placerat nullam libero. tchao bissame non hopla Oberschaeffolsheim leo picon bière ac amet ftomi! in, chambon hopla vielmols, Huguette libero, Chulien Richard Schirmeck risus,  knepfle dolor Gal. Carola Christkindelsmärik id Spätzle amet so consectetur wie munster gravida tellus lotto-owe ullamcorper météor schpeck geht's semper id, barapli leo yeuh. turpis Gal ! wurscht hop gewurztraminer vulputate habitant Morbi eget Coopé de Truchtersheim auctor, hopla</p>
+        <p>Lorem Elsass ipsum condimentum aliquam sed kuglopf messti de Bischheim Wurschtsalad non commodo Oberschaeffolsheim libero, eleifend sed merci vielmols Pfourtz ! gal turpis, sagittis s'guelt kougelhopf bissame Pellentesque quam. bredele blottkopf, tellus Strasbourg mamsell schnaps kartoffelsalad Chulia Roberstau Yo dû. amet, ornare adipiscing nüdle sit morbi elit Salut bisamme purus elementum ante senectus schneck baeckeoffe varius Kabinetpapier ch'ai Racing. Heineken rossbolla pellentesque dui leverwurscht Hans mänele rucksack et suspendisse lacus réchime knack jetz gehts los mollis geïz salu Mauris hoplageiss sit tristique quam, porta und rhoncus sit ac flammekueche dignissim Miss Dahlias hopla Salu bissame Verdammi DNA, ornare placerat nullam libero. tchao bissame non hopla Oberschaeffolsheim leo picon bière ac amet ftomi! in, chambon hopla vielmols, Huguette libero, Chulien Richard Schirmeck risus,  knepfle dolor Gal. Carola Christkindelsmärik id Spätzle amet so consectetur wie munster gravida tellus lotto-owe ullamcorper météor schpeck geht's semper id, barapli leo yeuh. turpis Gal ! wurscht hop gewurztraminer vulputate habitant Morbi eget Coopé de Truchtersheim auctor, hopla</p>
+        <p>Lorem Elsass ipsum condimentum aliquam sed kuglopf messti de Bischheim Wurschtsalad non commodo Oberschaeffolsheim libero, eleifend sed merci vielmols Pfourtz ! gal turpis, sagittis s'guelt kougelhopf bissame Pellentesque quam. bredele blottkopf, tellus Strasbourg mamsell schnaps kartoffelsalad Chulia Roberstau Yo dû. amet, ornare adipiscing nüdle sit morbi elit Salut bisamme purus elementum ante senectus schneck baeckeoffe varius Kabinetpapier ch'ai Racing. Heineken rossbolla pellentesque dui leverwurscht Hans mänele rucksack et suspendisse lacus réchime knack jetz gehts los mollis geïz salu Mauris hoplageiss sit tristique quam, porta und rhoncus sit ac flammekueche dignissim Miss Dahlias hopla Salu bissame Verdammi DNA, ornare placerat nullam libero. tchao bissame non hopla Oberschaeffolsheim leo picon bière ac amet ftomi! in, chambon hopla vielmols, Huguette libero, Chulien Richard Schirmeck risus,  knepfle dolor Gal. Carola Christkindelsmärik id Spätzle amet so consectetur wie munster gravida tellus lotto-owe ullamcorper météor schpeck geht's semper id, barapli leo yeuh. turpis Gal ! wurscht hop gewurztraminer vulputate habitant Morbi eget Coopé de Truchtersheim auctor, hopla</p>
+
 
         {% block body %}
         {% endblock %}
@@ -73,6 +129,7 @@
         {% block javascripts %}
             <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
             <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+            <script src="{{ asset('assets/js/main.js') }}"></script>
         {% endblock %}
-    </body>
+
 </html>
