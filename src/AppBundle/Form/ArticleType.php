@@ -6,6 +6,9 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+
+
 class ArticleType extends AbstractType
 {
     /**
@@ -16,17 +19,19 @@ class ArticleType extends AbstractType
         $builder
             ->add('name')
             ->add('price')
-            ->add('genre', 'entity', array(
+            ->add('genre', EntityType::class, [
                 'class' => 'AppBundle:Genre',
-                'empty_value' => 'name',
-                'property' => ''))
-            ->add('category', 'entity', array(
+                'choice_label' => 'name'
+            ])
+            ->add('category', EntityType::class, [
                 'class' => 'AppBundle:Category',
-                'empty_value' => '',
-                'property' => 'name'))
+                'choice_label' => 'name'
+            ])
             ->add('isbnReference')
             ->add('stock');
-    }/**
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)

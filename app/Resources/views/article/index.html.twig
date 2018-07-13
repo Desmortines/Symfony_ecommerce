@@ -31,7 +31,10 @@
                 <td>{{ article.isbnReference }}</td>
                 <td>{{ article.category }}</td>
                 <td>{{ article.stock }}</td>
-                <td>{{ article.genre }}</td>
+                <td>{%for genre in article.genre %}
+                        <li>{{ genre.name }} </li>
+                    {% endfor %}
+                </td>
                 <td>{{ article.totalBought }}</td>
                 <td>{{ article.nbrClicked }}</td>
                 <td>
