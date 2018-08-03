@@ -22,10 +22,9 @@ class Cart
     private $id;
 
     /**
-     * @var array
+     * @var Article
      *
-     * @ORM\Column(name="article", type="array")
-     * @ORM\OneToMany(targetEntity="Article", mappedBy="id")
+     * @ORM\OneToMany(targetEntity="Article", mappedBy="cart")
      */
     private $article;
 
@@ -37,10 +36,9 @@ class Cart
     private $quantity;
 
     /**
-     * @var int
+     * @var User
      *
-     * @ORM\Column(name="user", type="integer")
-     * @ORM\OneToOne(targetEntity="User", mappedBy="id")
+     * @ORM\OneToOne(targetEntity="User", mappedBy="cart")
      */
     private $user;
 
@@ -218,5 +216,38 @@ class Cart
     public function getArticleAmount()
     {
         return $this->articleAmount;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->article = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add article.
+     *
+     * @param \AppBundle\Entity\Article $article
+     *
+     * @return Cart
+     */
+    public function addArticle(\AppBundle\Entity\Article $article)
+    {
+        $this->article[] = $article;
+
+        return $this;
+    }
+
+    /**
+     * Remove article.
+     *
+     * @param \AppBundle\Entity\Article $article
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeArticle(\AppBundle\Entity\Article $article)
+    {
+        return $this->article->removeElement($article);
     }
 }

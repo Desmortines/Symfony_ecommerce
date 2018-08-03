@@ -36,10 +36,9 @@ class Supplier
     private $adress;
 
     /**
-     * @var array
+     * @var Article
      *
-     * @ORM\Column(name="article", type="array")
-     * @ORM\OneToMany(targetEntity="Article", mappedBy="id")
+     * @ORM\ManyToMany(targetEntity="Article", mappedBy="supplier")
      */
     private $article;
 
@@ -56,6 +55,20 @@ class Supplier
      * @ORM\Column(name="mail", type="string", length=255)
      */
     private $mail;
+
+    /**
+     * @var Admin
+     *
+     * @ORM\ManyToOne(targetEntity="Admin", inversedBy="supplier")
+     */
+    private $admin;
+
+    /**
+     * @var SupplierOrder
+     *
+     * @ORM\ManyToOne(targetEntity="SupplierOrder", inversedBy="supplier")
+     */
+    private $order;
 
 
     /**
@@ -186,5 +199,86 @@ class Supplier
     public function getMail()
     {
         return $this->mail;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->article = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add article.
+     *
+     * @param \AppBundle\Entity\Article $article
+     *
+     * @return Supplier
+     */
+    public function addArticle(\AppBundle\Entity\Article $article)
+    {
+        $this->article[] = $article;
+
+        return $this;
+    }
+
+    /**
+     * Remove article.
+     *
+     * @param \AppBundle\Entity\Article $article
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeArticle(\AppBundle\Entity\Article $article)
+    {
+        return $this->article->removeElement($article);
+    }
+
+    /**
+     * Set admin.
+     *
+     * @param \AppBundle\Entity\Admin|null $admin
+     *
+     * @return Supplier
+     */
+    public function setAdmin(\AppBundle\Entity\Admin $admin = null)
+    {
+        $this->admin = $admin;
+
+        return $this;
+    }
+
+    /**
+     * Get admin.
+     *
+     * @return \AppBundle\Entity\Admin|null
+     */
+    public function getAdmin()
+    {
+        return $this->admin;
+    }
+
+    /**
+     * Set order.
+     *
+     * @param \AppBundle\Entity\SupplierOrder|null $order
+     *
+     * @return Supplier
+     */
+    public function setOrder(\AppBundle\Entity\SupplierOrder $order = null)
+    {
+        $this->order = $order;
+
+        return $this;
+    }
+
+    /**
+     * Get order.
+     *
+     * @return \AppBundle\Entity\SupplierOrder|null
+     */
+    public function getOrder()
+    {
+        return $this->order;
     }
 }

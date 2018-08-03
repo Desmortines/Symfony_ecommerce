@@ -28,6 +28,13 @@ class Category
      */
     private $name;
 
+    /**
+     * @var Article
+     *
+     * @ORM\OneToOne(targetEntity="Article", inversedBy="category")
+     */
+    private $article;
+
 
     /**
      * Get id.
@@ -61,5 +68,29 @@ class Category
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * Set article.
+     *
+     * @param \AppBundle\Entity\Article|null $article
+     *
+     * @return Category
+     */
+    public function setArticle(\AppBundle\Entity\Article $article = null)
+    {
+        $this->article = $article;
+
+        return $this;
+    }
+
+    /**
+     * Get article.
+     *
+     * @return \AppBundle\Entity\Article|null
+     */
+    public function getArticle()
+    {
+        return $this->article;
     }
 }
