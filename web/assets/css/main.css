@@ -1,11 +1,23 @@
+body {
+    font-family: 'Raleway', sans-serif;
+    height: 100%;
+   /* background-repeat: no-repeat;*/
+    background-attachment: fixed;
+}
 
-
+h1 {
+    font-family: 'Raleway', sans-serif;
+    color: #604310;
+}
 /******************************* HEADER *******************************/
 
 /**************************** PRINCIPAL NAV ****************************/
 
 .headerNav {
-    box-shadow: 0 4px 2px -2px gray;
+     background-color: #43CBFF;
+     position: relative;
+     z-index: 2;
+     box-shadow: 0 4px 2px -2px gray;
 }
 
 /****** Search Zone ******/
@@ -19,6 +31,7 @@
 .buttonHeader {
     border-color: #B3FF5C;
     color: #B3FF5C;
+    margin-left: 10px;
 }
 
 .buttonHeader:hover {
@@ -40,7 +53,7 @@
 
 .pipeHeader {
     color: #8C7448;
-    margin: 0px 10px 0px 10px;
+    margin: 0px 0px 0px 10px;
     font-size: 3em;
     font-weight: 100;
 }
@@ -100,6 +113,19 @@
     }
 }
 
+/******************************* BODY *******************************/
+
+/****************** HOME PAGE ******************/
+
+.space {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.fondcontainer {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
 /*------- FOOTER ---------*/
 .footer{
     position: relative;
@@ -139,16 +165,13 @@
 .newsletter input{
     margin: 0px 10px;
 }
-.bottomfooter{
+.bottomfooter {
     align-items: center;
     width: 100%;
     padding: 0.5rem;
     background-color: #8C7448;
-body {
-    font-family: 'Raleway', sans-serif;
 }
 
-}
 .bottomfooter img{
     float: left;
     width: 35px;
