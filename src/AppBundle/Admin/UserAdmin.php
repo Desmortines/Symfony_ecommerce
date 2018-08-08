@@ -67,7 +67,15 @@ class UserAdmin extends AbstractAdmin
             ->add('confirmationToken')
             ->add('passwordRequestedAt')
             ->add('roles')
-        ;
+            ->add('roles', 'choice', array(
+                'choices' => array(
+                    'ROLE_ADMIN' => 'ROLE_ADMIN',
+                    'ROLE_USER'  => 'ROLE_USER',
+                ),
+                'expanded' => false,
+                'multiple' => true,
+                'required' => false
+            ));
     }
 
     protected function configureShowFields(ShowMapper $showMapper)
