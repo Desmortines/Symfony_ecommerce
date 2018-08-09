@@ -24,7 +24,7 @@ class Genre
     /**
      * @var Article
      *
-     * @ORM\ManyToOne(targetEntity="Article", inversedBy="genre")
+     * @ORM\OneToMany(targetEntity="Article", mappedBy="genre")
      */
     private $article;
 
@@ -34,6 +34,14 @@ class Genre
      * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->article = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id.
@@ -70,23 +78,35 @@ class Genre
     }
 
     /**
-     * Set article.
+     * Add article.
      *
-     * @param \AppBundle\Entity\Article|null $article
+     * @param \AppBundle\Entity\Article $article
      *
      * @return Genre
      */
-    public function setArticle(\AppBundle\Entity\Article $article = null)
+    public function addArticle(\AppBundle\Entity\Article $article)
     {
-        $this->article = $article;
+        $this->article[] = $article;
 
         return $this;
     }
 
     /**
+     * Remove article.
+     *
+     * @param \AppBundle\Entity\Article $article
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeArticle(\AppBundle\Entity\Article $article)
+    {
+        return $this->article->removeElement($article);
+    }
+
+    /**
      * Get article.
      *
-     * @return \AppBundle\Entity\Article|null
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getArticle()
     {
