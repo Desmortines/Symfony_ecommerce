@@ -22,10 +22,9 @@ class Comments
     private $id;
 
     /**
-     * @var int
+     * @var User
      *
-     * @ORM\Column(name="user", type="integer")
-     * @ORM\OneToMany(targetEntity="User", mappedBy="id")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="comments")
      */
     private $user;
 
@@ -42,6 +41,13 @@ class Comments
      * @ORM\Column(name="isAnswerTo", type="integer", nullable=true)
      */
     private $isAnswerTo;
+
+    /**
+     * @var Rating
+     *
+     * @ORM\ManyToOne(targetEntity="Rating", inversedBy="linkedComment")
+     */
+    private $rating;
 
 
     /**
@@ -124,5 +130,29 @@ class Comments
     public function getIsAnswerTo()
     {
         return $this->isAnswerTo;
+    }
+
+    /**
+     * Set rating.
+     *
+     * @param \AppBundle\Entity\Rating|null $rating
+     *
+     * @return Comments
+     */
+    public function setRating(\AppBundle\Entity\Rating $rating = null)
+    {
+        $this->rating = $rating;
+
+        return $this;
+    }
+
+    /**
+     * Get rating.
+     *
+     * @return \AppBundle\Entity\Rating|null
+     */
+    public function getRating()
+    {
+        return $this->rating;
     }
 }

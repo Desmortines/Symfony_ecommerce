@@ -22,18 +22,16 @@ class UserOrder
     private $id;
 
     /**
-     * @var int
+     * @var User
      *
-     * @ORM\Column(name="user", type="integer")
-     * @ORM\ManyToOne(targetEntity="User", inversedBy="id")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="order")
      */
     private $user;
 
     /**
-     * @var array
+     * @var Article
      *
-     * @ORM\Column(name="article", type="array")
-     * @ORM\OneToMany(targetEntity="Article", mappedBy="id")
+     * @ORM\OneToMany(targetEntity="Article", mappedBy="userOrder")
      */
     private $article;
 
@@ -85,7 +83,7 @@ class UserOrder
      * @var \stdClass
      *
      * @ORM\Column(name="payMethod", type="object")
-     * @ORM\OneToOne(targetEntity="PayMethod", mappedBy="id")
+     * @ORM\OneToOne(targetEntity="PayMethod", mappedBy="id") //a voir plus tard
      */
     private $payMethod;
 
@@ -95,6 +93,28 @@ class UserOrder
      * @ORM\Column(name="gift", type="boolean")
      */
     private $gift;
+
+    /**
+     * @var date
+     *
+     * @ORM\Column(name="validatedAt", type="date")
+     */
+    private $validatedAt;
+
+    /**
+     * @var Admin
+     *
+     * @ORM\ManyToOne(targetEntity="Admin", inversedBy="userOrderPending")
+     */
+    private $userOrderPending;
+
+    /**
+     * @var Admin
+     *
+     * @ORM\ManyToOne(targetEntity="Admin", inversedBy="userOrderComplete")
+     */
+    private $userOrderComplete;
+
 
 
     /**
@@ -345,5 +365,110 @@ class UserOrder
     public function getDeliveryAdress()
     {
         return $this->deliveryAdress;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->article = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Set validatedAt.
+     *
+     * @param \DateTime $validatedAt
+     *
+     * @return UserOrder
+     */
+    public function setValidatedAt($validatedAt)
+    {
+        $this->validatedAt = $validatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get validatedAt.
+     *
+     * @return \DateTime
+     */
+    public function getValidatedAt()
+    {
+        return $this->validatedAt;
+    }
+
+    /**
+     * Add article.
+     *
+     * @param \AppBundle\Entity\Article $article
+     *
+     * @return UserOrder
+     */
+    public function addArticle(\AppBundle\Entity\Article $article)
+    {
+        $this->article[] = $article;
+
+        return $this;
+    }
+
+    /**
+     * Remove article.
+     *
+     * @param \AppBundle\Entity\Article $article
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeArticle(\AppBundle\Entity\Article $article)
+    {
+        return $this->article->removeElement($article);
+    }
+
+    /**
+     * Set userOrderPending.
+     *
+     * @param \AppBundle\Entity\Admin|null $userOrderPending
+     *
+     * @return UserOrder
+     */
+    public function setUserOrderPending(\AppBundle\Entity\Admin $userOrderPending = null)
+    {
+        $this->userOrderPending = $userOrderPending;
+
+        return $this;
+    }
+
+    /**
+     * Get userOrderPending.
+     *
+     * @return \AppBundle\Entity\Admin|null
+     */
+    public function getUserOrderPending()
+    {
+        return $this->userOrderPending;
+    }
+
+    /**
+     * Set userOrderComplete.
+     *
+     * @param \AppBundle\Entity\Admin|null $userOrderComplete
+     *
+     * @return UserOrder
+     */
+    public function setUserOrderComplete(\AppBundle\Entity\Admin $userOrderComplete = null)
+    {
+        $this->userOrderComplete = $userOrderComplete;
+
+        return $this;
+    }
+
+    /**
+     * Get userOrderComplete.
+     *
+     * @return \AppBundle\Entity\Admin|null
+     */
+    public function getUserOrderComplete()
+    {
+        return $this->userOrderComplete;
     }
 }

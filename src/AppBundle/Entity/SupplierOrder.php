@@ -22,10 +22,9 @@ class SupplierOrder
     private $id;
 
     /**
-     * @var array
+     * @var Article
      *
-     * @ORM\Column(name="article", type="array")
-     * @ORM\OneToMany(targetEntity="Article", mappedBy="id")
+     * @ORM\OneToMany(targetEntity="Article", mappedBy="supplierOrder")
      */
     private $article;
 
@@ -37,10 +36,9 @@ class SupplierOrder
     private $quantity;
 
     /**
-     * @var int
+     * @var Supplier
      *
-     * @ORM\Column(name="supplier", type="integer")
-     * @ORM\OneToMany(targetEntity="Supplier", mappedBy="id")
+     * @ORM\OneToMany(targetEntity="Supplier", mappedBy="order")
      */
     private $supplier;
 
@@ -57,6 +55,20 @@ class SupplierOrder
      * @ORM\Column(name="price", type="float")
      */
     private $price;
+
+    /**
+     * @var Admin
+     *
+     * @ORM\ManyToOne(targetEntity="Admin", inversedBy="supplierOrderPending")
+     */
+    private $supplierOrderPending;
+
+    /**
+     * @var Admin
+     *
+     * @ORM\ManyToOne(targetEntity="Admin", inversedBy="supplierOrderComplete")
+     */
+    private $supplierOrderComplete;
 
 
     /**
@@ -187,5 +199,113 @@ class SupplierOrder
     public function getPrice()
     {
         return $this->price;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->article = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->supplier = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add article.
+     *
+     * @param \AppBundle\Entity\Article $article
+     *
+     * @return SupplierOrder
+     */
+    public function addArticle(\AppBundle\Entity\Article $article)
+    {
+        $this->article[] = $article;
+
+        return $this;
+    }
+
+    /**
+     * Remove article.
+     *
+     * @param \AppBundle\Entity\Article $article
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeArticle(\AppBundle\Entity\Article $article)
+    {
+        return $this->article->removeElement($article);
+    }
+
+    /**
+     * Add supplier.
+     *
+     * @param \AppBundle\Entity\Supplier $supplier
+     *
+     * @return SupplierOrder
+     */
+    public function addSupplier(\AppBundle\Entity\Supplier $supplier)
+    {
+        $this->supplier[] = $supplier;
+
+        return $this;
+    }
+
+    /**
+     * Remove supplier.
+     *
+     * @param \AppBundle\Entity\Supplier $supplier
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeSupplier(\AppBundle\Entity\Supplier $supplier)
+    {
+        return $this->supplier->removeElement($supplier);
+    }
+
+    /**
+     * Set supplierOrderPending.
+     *
+     * @param \AppBundle\Entity\Admin|null $supplierOrderPending
+     *
+     * @return SupplierOrder
+     */
+    public function setSupplierOrderPending(\AppBundle\Entity\Admin $supplierOrderPending = null)
+    {
+        $this->supplierOrderPending = $supplierOrderPending;
+
+        return $this;
+    }
+
+    /**
+     * Get supplierOrderPending.
+     *
+     * @return \AppBundle\Entity\Admin|null
+     */
+    public function getSupplierOrderPending()
+    {
+        return $this->supplierOrderPending;
+    }
+
+    /**
+     * Set supplierOrderComplete.
+     *
+     * @param \AppBundle\Entity\Admin|null $supplierOrderComplete
+     *
+     * @return SupplierOrder
+     */
+    public function setSupplierOrderComplete(\AppBundle\Entity\Admin $supplierOrderComplete = null)
+    {
+        $this->supplierOrderComplete = $supplierOrderComplete;
+
+        return $this;
+    }
+
+    /**
+     * Get supplierOrderComplete.
+     *
+     * @return \AppBundle\Entity\Admin|null
+     */
+    public function getSupplierOrderComplete()
+    {
+        return $this->supplierOrderComplete;
     }
 }
