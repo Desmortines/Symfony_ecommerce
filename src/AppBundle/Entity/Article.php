@@ -43,9 +43,9 @@ class Article
     private $price;
 
     /**
-     * @var array
+     * @var Image
      *
-     * @ORM\Column(name="image", type="array")
+     * @ORM\OneToMany(targetEntity="Image", mappedBy="id")
      */
     private $image;
 
@@ -125,11 +125,13 @@ class Article
      * @ORM\ManyToOne(targetEntity="SupplierOrder", inversedBy="article")
      */
     private $supplierOrder;
+
     /**
      * Constructor
      */
     public function __construct()
     {
+        $this->image = new \Doctrine\Common\Collections\ArrayCollection();
         $this->genre = new \Doctrine\Common\Collections\ArrayCollection();
         $this->supplier = new \Doctrine\Common\Collections\ArrayCollection();
     }
@@ -190,30 +192,6 @@ class Article
     public function getPrice()
     {
         return $this->price;
-    }
-
-    /**
-     * Set image.
-     *
-     * @param array $image
-     *
-     * @return Article
-     */
-    public function setImage($image)
-    {
-        $this->image = $image;
-
-        return $this;
-    }
-
-    /**
-     * Get image.
-     *
-     * @return array
-     */
-    public function getImage()
-    {
-        return $this->image;
     }
 
     /**
@@ -334,6 +312,42 @@ class Article
     public function getCharacteristics()
     {
         return $this->characteristics;
+    }
+
+    /**
+     * Add image.
+     *
+     * @param \AppBundle\Entity\Image $image
+     *
+     * @return Article
+     */
+    public function addImage(\AppBundle\Entity\Image $image)
+    {
+        $this->image[] = $image;
+
+        return $this;
+    }
+
+    /**
+     * Remove image.
+     *
+     * @param \AppBundle\Entity\Image $image
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeImage(\AppBundle\Entity\Image $image)
+    {
+        return $this->image->removeElement($image);
+    }
+
+    /**
+     * Get image.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getImage()
+    {
+        return $this->image;
     }
 
     /**
