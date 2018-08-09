@@ -22,12 +22,26 @@ class Image
     private $id;
 
     /**
+     * Many Image have One Article.
+     * @ORM\ManyToOne(targetEntity="Article", inversedBy="image")
+     * @ORM\JoinColumn(name="article_id", referencedColumnName="id")
+     */
+
+    private $article;
+
+    /**
      * @var string|null
      *
      * @ORM\Column(name="link", type="text", nullable=true)
      */
 
     private $link;
+
+    /**
+     * Get id.
+     *
+     * @return int
+     */
 
     /**
      * Get id.
@@ -61,5 +75,29 @@ class Image
     public function getLink()
     {
         return $this->link;
+    }
+
+    /**
+     * Set article.
+     *
+     * @param \AppBundle\Entity\Article|null $article
+     *
+     * @return Image
+     */
+    public function setArticle(\AppBundle\Entity\Article $article = null)
+    {
+        $this->article = $article;
+
+        return $this;
+    }
+
+    /**
+     * Get article.
+     *
+     * @return \AppBundle\Entity\Article|null
+     */
+    public function getArticle()
+    {
+        return $this->article;
     }
 }
