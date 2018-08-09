@@ -26,4 +26,12 @@ class DefaultController extends Controller
     {
         return $this->render('catalogue.html.twig');
     }
+
+    /**
+     * @Route("/basket", name="basket")
+     */
+    public function basketAction()
+    {
+        return $this->render('basket.html.twig');
+    }
 }
