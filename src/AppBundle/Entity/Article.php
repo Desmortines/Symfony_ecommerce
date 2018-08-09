@@ -59,7 +59,7 @@ class Article
     /**
      * @var Category
      *
-     * @ORM\OneToOne(targetEntity="Category", mappedBy="article")
+     * @ORM\OneToOne(targetEntity="Category")
      */
     private $category;
 
@@ -73,7 +73,7 @@ class Article
     /**
      * @var Genre
      *
-     * @ORM\OneToMany(targetEntity="Genre", mappedBy="article")
+     * @ORM\ManyToMany(targetEntity="Genre", inversedBy="article")
      */
     private $genre;
 
@@ -125,7 +125,14 @@ class Article
      * @ORM\ManyToOne(targetEntity="SupplierOrder", inversedBy="article")
      */
     private $supplierOrder;
-
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->genre = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->supplier = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id.
@@ -159,30 +166,6 @@ class Article
     public function getName()
     {
         return $this->name;
-    }
-
-    /**
-     * Set characteristics.
-     *
-     * @param array $characteristics
-     *
-     * @return Article
-     */
-    public function setCharacteristics($characteristics)
-    {
-        $this->characteristics = $characteristics;
-
-        return $this;
-    }
-
-    /**
-     * Get characteristics.
-     *
-     * @return array
-     */
-    public function getCharacteristics()
-    {
-        return $this->characteristics;
     }
 
     /**
@@ -258,30 +241,6 @@ class Article
     }
 
     /**
-     * Set category.
-     *
-     * @param int $category
-     *
-     * @return Article
-     */
-    public function setCategory($category)
-    {
-        $this->category = $category;
-
-        return $this;
-    }
-
-    /**
-     * Get category.
-     *
-     * @return int
-     */
-    public function getCategory()
-    {
-        return $this->category;
-    }
-
-    /**
      * Set stock.
      *
      * @param int $stock
@@ -306,37 +265,13 @@ class Article
     }
 
     /**
-     * Set genre.
-     *
-     * @param int $genre
-     *
-     * @return Article
-     */
-    public function setGenre($genre)
-    {
-        $this->genre = $genre;
-
-        return $this;
-    }
-
-    /**
-     * Get genre.
-     *
-     * @return int
-     */
-    public function getGenre()
-    {
-        return $this->genre;
-    }
-
-    /**
      * Set totalBought.
      *
-     * @param int $totalBought
+     * @param int|null $totalBought
      *
      * @return Article
      */
-    public function setTotalBought($totalBought)
+    public function setTotalBought($totalBought = null)
     {
         $this->totalBought = $totalBought;
 
@@ -346,7 +281,7 @@ class Article
     /**
      * Get totalBought.
      *
-     * @return int
+     * @return int|null
      */
     public function getTotalBought()
     {
@@ -356,11 +291,11 @@ class Article
     /**
      * Set nbrClicked.
      *
-     * @param int $nbrClicked
+     * @param int|null $nbrClicked
      *
      * @return Article
      */
-    public function setNbrClicked($nbrClicked)
+    public function setNbrClicked($nbrClicked = null)
     {
         $this->nbrClicked = $nbrClicked;
 
@@ -370,11 +305,59 @@ class Article
     /**
      * Get nbrClicked.
      *
-     * @return int
+     * @return int|null
      */
     public function getNbrClicked()
     {
         return $this->nbrClicked;
+    }
+
+    /**
+     * Set characteristics.
+     *
+     * @param \AppBundle\Entity\Characteristics|null $characteristics
+     *
+     * @return Article
+     */
+    public function setCharacteristics(\AppBundle\Entity\Characteristics $characteristics = null)
+    {
+        $this->characteristics = $characteristics;
+
+        return $this;
+    }
+
+    /**
+     * Get characteristics.
+     *
+     * @return \AppBundle\Entity\Characteristics|null
+     */
+    public function getCharacteristics()
+    {
+        return $this->characteristics;
+    }
+
+    /**
+     * Set category.
+     *
+     * @param \AppBundle\Entity\Category|null $category
+     *
+     * @return Article
+     */
+    public function setCategory(\AppBundle\Entity\Category $category = null)
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * Get category.
+     *
+     * @return \AppBundle\Entity\Category|null
+     */
+    public function getCategory()
+    {
+        return $this->category;
     }
 
     /**
@@ -401,6 +384,16 @@ class Article
     public function removeGenre(\AppBundle\Entity\Genre $genre)
     {
         return $this->genre->removeElement($genre);
+    }
+
+    /**
+     * Get genre.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getGenre()
+    {
+        return $this->genre;
     }
 
     /**
@@ -486,15 +479,6 @@ class Article
     {
         return $this->cart;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->genre = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->supplier = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
 
     /**
      * Set supplierOrder.
