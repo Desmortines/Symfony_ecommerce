@@ -9,6 +9,20 @@ h1 {
     font-family: 'Raleway', sans-serif;
     color: #604310;
 }
+
+label{
+    margin-right: 10px;
+    margin-bottom: 1em;
+}
+
+.profil {
+    padding: 1rem;
+    border: 5px solid #B3FF5C;
+    border-radius: 5px;
+    margin: 2rem 10rem 2rem 10rem;
+    text-align: center;
+}
+
 /******************************* HEADER *******************************/
 
 /**************************** PRINCIPAL NAV ****************************/
@@ -114,8 +128,11 @@ h1 {
 }
 
 /******************************* BODY *******************************/
-
-/****************** HOME PAGE ******************/
+.centerButton {
+    display: block;
+    margin : auto;
+}
+/****************** START HOME PAGE ******************/
 
 .space {
     margin-top: 1em;
@@ -125,6 +142,92 @@ h1 {
 .fondcontainer {
     background-color: rgba(255, 255, 255, 0.5);
 }
+/****************** END OF HOME PAGE ******************/
+
+/****************** START CATALOGUE PAGE ******************/
+.MonthProd {
+    margin-top: 2rem;
+}
+
+.MonthParag {
+    margin-top: 15px;
+}
+
+.MonthBook {
+    margin-left: 5rem;
+    margin-top: 3rem;
+}
+
+.MonthHr {
+    background-color: #B3FF5C;
+}
+
+.MonthButton {
+    display: block;
+    margin-left: -2rem;
+    margin-bottom: 10px !important;
+}
+
+.h1Categorie {
+    padding-top: 2rem!important;
+    padding-bottom: 1rem!important;
+}
+
+.carouCata {
+    margin: 3rem 0 3rem 0;
+}
+/****************** END OF CATALOGUE PAGE ******************/
+
+/****************** START PROFIL PAGE ******************/
+.h1Hello {
+    text-align: center;
+    padding: 1rem 0 1rem 0;
+}
+
+.editProfilButton {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.profilInfo {
+    border: 5px solid #B3FF5C;
+    border-radius: 5px;
+}
+
+.profilH2 {
+    padding: 1rem!important;
+    text-align: center;
+}
+
+
+
+#owl-demo .item{
+    display: block;
+    cursor: pointer;
+    background: #ffd800;
+    padding: 30px 0px;
+    margin: 5px;
+    color: #FFF;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    text-align: center;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+}
+#owl-demo .item:hover{
+    background: #F2CD00;
+}
+
+
+/****************** END PROFIL PAGE ******************/
+
+/****************** START EDITPROFIL PAGE ******************/
+.h1edit {
+    text-align: center;
+    padding: 1rem 0 1rem 0;
+}
+/****************** END EDITPROFIL PAGE ******************/
 
 /*------- FOOTER ---------*/
 .footer{
@@ -179,3 +282,18 @@ h1 {
     padding-right: 0.2rem;
 }
 /*-------END FOOTER ------*/
+
+/******************************* BODY *******************************/
+
+
+@media (max-width: 900px) {
+    .MonthBook {
+        margin-left: 5rem;
+        margin-top: 0;
+    }
+
+    .MonthButton {
+        margin-left: 0;
+        margin-bottom: 0;
+    }
+}
