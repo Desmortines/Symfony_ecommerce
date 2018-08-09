@@ -18,4 +18,12 @@ class DefaultController extends Controller
             'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
         ]);
     }
+
+    /**
+     * @Route("/catalogue", name="catalogue")
+     */
+    public function catalogueAction()
+    {
+        return $this->render('catalogue.html.twig');
+    }
 }
