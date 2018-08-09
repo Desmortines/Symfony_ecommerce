@@ -24,7 +24,7 @@ class Genre
     /**
      * @var Article
      *
-     * @ORM\OneToMany(targetEntity="Article", mappedBy="genre")
+     * @ORM\ManyToMany(targetEntity="Article", mappedBy="genre")
      */
     private $article;
 
