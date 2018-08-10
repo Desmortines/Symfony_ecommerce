@@ -38,7 +38,7 @@ class Cart
     /**
      * @var User
      *
-     * @ORM\OneToOne(targetEntity="User", mappedBy="cart")
+     * @ORM\OneToOne(targetEntity="User")
      */
     private $user;
 

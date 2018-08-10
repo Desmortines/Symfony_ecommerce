@@ -22,7 +22,7 @@ class Genre
     private $id;
 
     /**
-     * @var Article
+     * @var Article[]
      *
      * @ORM\ManyToMany(targetEntity="Article", mappedBy="genre")
      */
