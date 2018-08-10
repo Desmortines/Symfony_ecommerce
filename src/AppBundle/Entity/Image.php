@@ -23,10 +23,8 @@ class Image
 
     /**
      * Many Image have One Article.
-     * @ORM\ManyToOne(targetEntity="Article", inversedBy="image")
-     * @ORM\JoinColumn(name="article_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Article", inversedBy="images")
      */
-
     private $article;
 
     /**
@@ -98,5 +96,10 @@ class Image
     public function getArticle()
     {
         return $this->article;
+    }
+
+    public function __toString()
+    {
+        return $this->getLink();
     }
 }

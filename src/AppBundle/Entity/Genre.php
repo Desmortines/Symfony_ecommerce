@@ -24,7 +24,7 @@ class Genre
     /**
      * @var Article[]
      *
-     * @ORM\ManyToMany(targetEntity="Article", mappedBy="genre")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Article", inversedBy="genres")
      */
     private $article;
 
@@ -34,6 +34,13 @@ class Genre
      * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
+
+    /**
+     * @var Category
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Category", mappedBy="genre")
+     */
+    private $categories;
 
     /**
      * Constructor
@@ -111,5 +118,41 @@ class Genre
     public function getArticle()
     {
         return $this->article;
+    }
+
+    /**
+     * Add category.
+     *
+     * @param \AppBundle\Entity\Category $category
+     *
+     * @return Genre
+     */
+    public function addCategory(\AppBundle\Entity\Category $category)
+    {
+        $this->categories[] = $category;
+
+        return $this;
+    }
+
+    /**
+     * Remove category.
+     *
+     * @param \AppBundle\Entity\Category $category
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeCategory(\AppBundle\Entity\Category $category)
+    {
+        return $this->categories->removeElement($category);
+    }
+
+    /**
+     * Get categories.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCategories()
+    {
+        return $this->categories;
     }
 }

@@ -31,14 +31,17 @@ class Category
     /**
      * @var Genre
      *
-     * Many Category have Many Gender.
-     * @ORM\ManyToMany(targetEntity="Genre")
-     * @ORM\JoinTable(name="category_to_genre",
-     *      joinColumns={@ORM\JoinColumn(name="category_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="genre_id", referencedColumnName="id", unique=true)}
-     *      )
+     * Many Category have Many Genre.
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Genre", inversedBy="categories")
      */
     private $genre;
+
+    /**
+     * @var Article
+     *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Article", mappedBy="category")
+     */
+    private $article;
 
     /**
      * Constructor
@@ -116,5 +119,41 @@ class Category
     public function getGenre()
     {
         return $this->genre;
+    }
+
+    /**
+     * Add article.
+     *
+     * @param \AppBundle\Entity\Article $article
+     *
+     * @return Category
+     */
+    public function addArticle(\AppBundle\Entity\Article $article)
+    {
+        $this->article[] = $article;
+
+        return $this;
+    }
+
+    /**
+     * Remove article.
+     *
+     * @param \AppBundle\Entity\Article $article
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeArticle(\AppBundle\Entity\Article $article)
+    {
+        return $this->article->removeElement($article);
+    }
+
+    /**
+     * Get article.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getArticle()
+    {
+        return $this->article;
     }
 }

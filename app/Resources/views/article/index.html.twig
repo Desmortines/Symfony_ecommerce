@@ -36,9 +36,9 @@
                     {% endfor %}
                 </td>
                 <td>{{ article.isbnReference }}</td>
-                <td>{{ article.category }}</td>
+                <td>{{ article.category.name }}</td>
                 <td>{{ article.stock }}</td>
-                <td>{%for genre in article.genre %}
+                <td>{%for genre in article.genres %}
                         <li>{{ genre.name }} </li>
                     {% endfor %}
                 </td>

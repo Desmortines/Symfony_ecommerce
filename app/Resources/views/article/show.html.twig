@@ -35,7 +35,7 @@
             </tr>
             <tr>
                 <th>Category</th>
-                <td>{{ article.category }}</td>
+                <td>{{ article.category.name }}</td>
             </tr>
             <tr>
                 <th>Stock</th>
@@ -43,7 +43,7 @@
             </tr>
             <tr>
                 <th>Genre</th>
-                <td>{%for genre in article.genre %}
+                <td>{%for genre in article.genres %}
                         <li>{{ genre.name }} </li>
                     {% endfor %}
                 </td>
