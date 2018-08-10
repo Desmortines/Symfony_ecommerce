@@ -10,10 +10,8 @@ security:
         ROLE_SUPER_ADMIN: ROLE_ADMIN
 
     providers:
-        in_memory:
-            memory: ~
         fos_userbundle:
-            id: fos_user.user_provider.username
+            id: fos_user.user_provider.username_email
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
@@ -26,7 +24,9 @@ security:
             form_login:
                 provider: fos_userbundle
                 csrf_token_generator: security.csrf.token_manager
-
+            remember_me:
+                secret: '%secret%'
+                
             logout:       true
             anonymous:    true
     access_control:
@@ -36,7 +36,7 @@ security:
         - { path: ^/admin/, role: ROLE_ADMIN }
             # activate different ways to authenticate
 
-            # https://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
+            # https://symfony.com/doc/current/s<curity.html#a-configuring-how-your-users-will-authenticate
             #http_basic: ~
 
             # https://symfony.com/doc/current/security/form_login_setup.html

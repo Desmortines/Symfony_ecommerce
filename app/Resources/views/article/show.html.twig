@@ -22,8 +22,12 @@
                 <td>{{ article.price }}</td>
             </tr>
             <tr>
-                <th>Image</th>
-                <td>{% if article.image %}{{ article.image|join(', ') }}{% endif %}</td>
+                {% for key,image in article.images %}
+                    <th>Image {{ key }}</th>
+                    <td>{% if image %}
+                            <img src="{{ image.link }}" alt="image {{ key }}">
+                        {% endif %}</td>
+                {% endfor %}
             </tr>
             <tr>
                 <th>Isbnreference</th>
