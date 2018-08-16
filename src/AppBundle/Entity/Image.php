@@ -97,9 +97,4 @@ class Image
     {
         return $this->article;
     }
-
-    public function __toString()
-    {
-        return $this->getLink();
-    }
 }

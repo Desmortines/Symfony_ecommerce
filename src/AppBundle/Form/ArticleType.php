@@ -36,8 +36,6 @@ class ArticleType extends AbstractType
             ->add('genres', EntityType::class, [
                 'class' => 'AppBundle:Genre',
                 'choice_label' => 'name',
-                'expanded' => true,
-                'multiple' => true
             ])
             ->add('category', EntityType::class, [
                 'class' => 'AppBundle:Category',

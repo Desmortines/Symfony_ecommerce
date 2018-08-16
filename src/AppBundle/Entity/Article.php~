@@ -1,0 +1,128 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Article
+ *
+ * @ORM\Table(name="article")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\ArticleRepository")
+ */
+class Article
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=255)
+     */
+    protected $name;
+
+    /**
+     * @var Characteristics
+     *
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Characteristics",  mappedBy="article")
+     */
+    protected $characteristics;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="price", type="float")
+     */
+    protected $price;
+
+    /**
+     * @var Image[]
+     *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Image", mappedBy="article", cascade={"ALL"})
+     */
+    protected $images;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="isbnReference", type="string", length=255)
+     */
+    protected $isbnReference;
+
+    /**
+     * @var Category
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Category", inversedBy="article")
+     */
+    protected $category;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="stock", type="integer")
+     */
+    protected $stock;
+
+    /**
+     * @var Genre[]
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Genre", mappedBy="article")
+     */
+    protected $genres;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="totalBought", type="integer", nullable=true)
+     */
+    protected $totalBought;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="nbrClicked", type="integer", nullable=true)
+     */
+    protected $nbrClicked;
+
+    /**
+     * @var Supplier
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Supplier", inversedBy="article")
+     */
+    protected $supplier;
+
+    /**
+     * @var Rating
+     *
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Rating", mappedBy="article")
+     */
+    protected $rating;
+
+    /**
+     * @var UserOrder
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\UserOrder", inversedBy="article")
+     */
+    protected $userOrder;
+
+    /**
+     * @var Cart
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Cart", inversedBy="article")
+     */
+    protected $cart;
+
+    /**
+     * @var SupplierOrder
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\SupplierOrder", inversedBy="article")
+     */
+    protected $supplierOrder;
+}
