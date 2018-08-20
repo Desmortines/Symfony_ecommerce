@@ -45,7 +45,7 @@ class Article
     /**
      * @var Image[]
      *
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Image", mappedBy="article", cascade={"ALL"})
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Image", inversedBy="article", cascade={"ALL"})
      */
     protected $images;
 
@@ -73,7 +73,7 @@ class Article
     /**
      * @var Genre[]
      *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Genre", mappedBy="article")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Genre", inversedBy="article", cascade={"ALL"})
      */
     protected $genres;
 
@@ -323,7 +323,6 @@ class Article
     public function addImage(\AppBundle\Entity\Image $image)
     {
         $this->images[] = $image;
-        $image->setArticle($this);
 
         return $this;
     }
@@ -384,7 +383,6 @@ class Article
     public function addGenre(\AppBundle\Entity\Genre $genre)
     {
         $this->genres[] = $genre;
-        $genre->addArticle($this);
 
         return $this;
     }

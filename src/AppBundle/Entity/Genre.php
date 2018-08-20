@@ -24,7 +24,7 @@ class Genre
     /**
      * @var Article[]
      *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Article", inversedBy="genres")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Article", mappedBy="genres",cascade={"persist"})
      */
     private $article;
 
@@ -41,13 +41,13 @@ class Genre
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Category", mappedBy="genre")
      */
     private $categories;
-
     /**
      * Constructor
      */
     public function __construct()
     {
         $this->article = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->categories = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**

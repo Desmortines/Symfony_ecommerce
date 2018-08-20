@@ -53,23 +53,15 @@ class ArticleAdmin extends AbstractAdmin
         $formMapper
             ->add('name')
             ->add('price')
-            ->add('images', 'collection', [
-                'entry_type' => \AppBundle\Form\ImageType::class,
-                'allow_add' => true,
-                'allow_delete' => true,
-                'prototype' => true,
-                'attr' => array(
-                    'class' => 'js_form_image',
-                ),
-            ])
             ->add('images',ModelType::class,[
                 'class' => Image::class,
                 'property' => 'link',
-                'multiple' => true
+                'multiple' => true,
             ])
             ->add('category', ModelType::class, [
                 'class' => Category::class,
                 'property' => 'name',
+                'required' => true,
             ])
             ->add('genres', ModelType::class, [
                 'class' => Genre::class,
