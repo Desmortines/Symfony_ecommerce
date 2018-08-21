@@ -28,6 +28,16 @@ class Category
      */
     private $name;
 
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="picture",type="text")
+     */
+
+
+    protected $picture;
+
     /**
      * @var Genre
      *
@@ -42,13 +52,13 @@ class Category
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Article", mappedBy="category")
      */
     private $article;
-
     /**
      * Constructor
      */
     public function __construct()
     {
         $this->genre = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->article = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -83,6 +93,30 @@ class Category
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * Set picture.
+     *
+     * @param string $picture
+     *
+     * @return Category
+     */
+    public function setPicture($picture)
+    {
+        $this->picture = $picture;
+
+        return $this;
+    }
+
+    /**
+     * Get picture.
+     *
+     * @return string
+     */
+    public function getPicture()
+    {
+        return $this->picture;
     }
 
     /**

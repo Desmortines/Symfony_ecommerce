@@ -15,14 +15,16 @@ class CategoryAdmin extends AbstractAdmin
         $datagridMapper
             ->add('id')
             ->add('name')
+            ->add('picture')
+
         ;
     }
 
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('id')
             ->add('name')
+            ->add('picture')
             ->add('_action', null, [
                 'actions' => [
                     'show' => [],
@@ -37,6 +39,7 @@ class CategoryAdmin extends AbstractAdmin
     {
         $formMapper
             ->add('name')
+            ->add('picture')
         ;
     }
 
@@ -45,6 +48,7 @@ class CategoryAdmin extends AbstractAdmin
         $showMapper
             ->add('id')
             ->add('name')
+            ->add('picture')
         ;
     }
 }

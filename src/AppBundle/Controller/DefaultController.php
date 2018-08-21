@@ -24,7 +24,15 @@ class DefaultController extends Controller
      */
     public function catalogueAction()
     {
-        return $this->render('catalogue.html.twig');
+        $em = $this->getDoctrine()->getManager();
+
+        $categories = $em->getRepository('AppBundle:Category')
+            ->findAll();
+
+
+        return $this->render('catalogue.html.twig',[
+            'categories' => $categories
+        ]);
     }
 
     /**
