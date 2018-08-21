@@ -36,7 +36,7 @@ class ImageAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('link')
+            ->add('link','url')
         ;
     }
 

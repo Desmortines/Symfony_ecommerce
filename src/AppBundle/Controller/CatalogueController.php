@@ -9,6 +9,8 @@
 namespace AppBundle\Controller;
 
 
+use AppBundle\Entity\Category;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -21,7 +23,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class CatalogueController extends Controller
 {
     /**
-     * @Route("/", name="index")
+     * @Route("/", name="category_index")
+     * @Method("GET")
      */
     public function indexAction()
     {
@@ -30,22 +33,17 @@ class CatalogueController extends Controller
         $categories = $em->getRepository('AppBundle:Category')
             ->findAll();
 
-
         return $this->render('catalogue/index.html.twig',[
             'categories' => $categories
         ]);
     }
 
     /**
-     * @Route("/{id}",requirements={"id" = "\d+"},defaults={"id" = 1},name="showAction")
+     * @Route("/{id}",requirements={"id" = "\d+"},name="category_show")
+     * @Method("GET")
      */
 
-    public function showAction($id) {
-        $em = $this->getDoctrine()->getManager();
-
-        $category = $em->getRepository('AppBundle:Category')
-            ->find($id);
-
+    public function showAction(Category $category) {
         return $this->render('catalogue/show.html.twig',[
             'category' => $category
         ]);

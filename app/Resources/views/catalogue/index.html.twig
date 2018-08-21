@@ -1,5 +1,6 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}Categories{% endblock %}
 {% block body %}
     {{ parent() }}
     {% block MonthProduct %}
@@ -48,11 +49,11 @@
 
                 <div class="col-lg-4">
                     <div class="card">
-                        <img class="card-img-top" src="{{ category.picture }}" width="100%" height="100%"
+                        <img class="card-img-top" src="{{ category.picture ?: asset('assets/img/No_Image_Available.gif') }}" width="100%" height="100%"
                              alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title text-center center-block">{{ category.name }}</h5>
-                            <a href="{{ category.id }}" class="btn btn-primary centerButton">Go somewhere</a>
+                            <a href="{{ path('category_show', {'id': category.id}) }}" class="btn btn-primary centerButton">Go somewhere</a>
                         </div>
                     </div>
                 </div>
