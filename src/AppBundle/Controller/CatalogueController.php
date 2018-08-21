@@ -33,7 +33,7 @@ class CatalogueController extends Controller
         $categories = $em->getRepository('AppBundle:Category')
             ->findAll();
 
-        return $this->render('catalogue/index.html.twig',[
+        return $this->render('catalogue/index.html.twig', [
             'categories' => $categories
         ]);
     }
@@ -43,8 +43,9 @@ class CatalogueController extends Controller
      * @Method("GET")
      */
 
-    public function showAction(Category $category) {
-        return $this->render('catalogue/show.html.twig',[
+    public function showAction(Category $category)
+    {
+        return $this->render('catalogue/show.html.twig', [
             'category' => $category
         ]);
     }
