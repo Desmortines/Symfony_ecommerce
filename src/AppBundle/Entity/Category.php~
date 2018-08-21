@@ -31,7 +31,7 @@ class Category
     /**
      * @var Genre
      *
-     * Many Category have Many Genre.
+     * Many Category have Many Gender.
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Genre", inversedBy="categories")
      */
     private $genre;
@@ -119,41 +119,5 @@ class Category
     public function getGenre()
     {
         return $this->genre;
-    }
-
-    /**
-     * Add article.
-     *
-     * @param \AppBundle\Entity\Article $article
-     *
-     * @return Category
-     */
-    public function addArticle(\AppBundle\Entity\Article $article)
-    {
-        $this->article[] = $article;
-
-        return $this;
-    }
-
-    /**
-     * Remove article.
-     *
-     * @param \AppBundle\Entity\Article $article
-     *
-     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
-     */
-    public function removeArticle(\AppBundle\Entity\Article $article)
-    {
-        return $this->article->removeElement($article);
-    }
-
-    /**
-     * Get article.
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getArticle()
-    {
-        return $this->article;
     }
 }

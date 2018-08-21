@@ -27,11 +27,18 @@
                 <td>{{ article.name }}</td>
                 <td>{% if article.characteristics %}{{ article.characteristics|join(', ') }}{% endif %}</td>
                 <td>{{ article.price }}</td>
-                <td>{% if article.image %}{{ article.image|join(', ') }}{% endif %}</td>
+                <td>
+                    {% for key,image in article.images %}
+                        <th>Image {{ key }}</th>
+                        <td>{% if image %}
+                                <img src="{{ image.link }}" alt="image {{ key }}">
+                            {% endif %}</td>
+                    {% endfor %}
+                </td>
                 <td>{{ article.isbnReference }}</td>
-                <td>{{ article.category }}</td>
+                <td>{{ article.category.name }}</td>
                 <td>{{ article.stock }}</td>
-                <td>{%for genre in article.genre %}
+                <td>{%for genre in article.genres %}
                         <li>{{ genre.name }} </li>
                     {% endfor %}
                 </td>

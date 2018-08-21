@@ -1,0 +1,71 @@
+{% trans_default_domain 'FOSUserBundle' %}
+    <div class="fondcontainer" style="margin-bottom: 2rem;">
+        <h1 class="h1Hello">Bonjour {{ user.username }} !</h1>
+    </div>
+
+{% block profil %}
+    <div class="fos_user_user_show fondcontainer" style="padding: 2rem; margin-bottom: 2rem;">
+        <div class="profil">
+            <p>{{ 'profile.show.username'|trans }}: {{ user.username }}</p>
+            <p>{{ 'profile.show.email'|trans }}: {{ user.email }}</p>
+            <p>prout</p>
+        </div>
+        <button class="btn btn-outline-success my-2 my-sm-0 buttonHeaderOk editProfilButton" type="submit">Modifier</button>
+    </div>
+{% endblock %}
+
+{% block infos %}
+    <div class="container fondcontainer" style="padding: 2rem; margin-bottom: 2rem;">
+        <div class="row">
+
+            <div class="col-lg-5 profilInfo" style="padding-left: 1rem;">
+                <div>
+                    <h2 class="profilH2">Votre dernier achat</h2>
+                </div>
+            </div>
+
+            <div class="col-lg-2"></div>
+
+            <div class="col-lg-5 profilInfo" style="padding-right: 1rem;">
+                <div>
+                    <h2 class="profilH2">Votre commande en cours</h2>
+                </div>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
+
+{% block suggestion %}
+    <div class="container-fluid fondcontainer" style="padding: 2rem; margin-bottom: 2rem;">
+        <div class="row">
+
+            <div class="col-lg-12 profilInfo" style="padding-left: 1rem;">
+                <h2 class="profilH2">Nous avons sélectionné pour vous ...</h2>
+
+
+                <div class="owl-carousel owl-theme" style="margin-top: -30px;">
+                    <a class="item"><img src="{{ asset('assets/img/selection.jpg') }}" class="MonthBook" style="width: 180px; height: auto"></a>
+                    <a class="item"><img src="{{ asset('assets/img/selection.jpg') }}" class="MonthBook" style="width: 180px; height: auto"></a>
+                    <a class="item"><img src="{{ asset('assets/img/selection.jpg') }}" class="MonthBook" style="width: 180px; height: auto"></a>
+                    <a class="item"><img src="{{ asset('assets/img/selection.jpg') }}" class="MonthBook" style="width: 180px; height: auto"></a>
+                    <a class="item"><img src="{{ asset('assets/img/selection.jpg') }}" class="MonthBook" style="width: 180px; height: auto"></a>
+                    <a class="item"><img src="{{ asset('assets/img/selection.jpg') }}" class="MonthBook" style="width: 180px; height: auto"></a>
+                    <a class="item"><img src="{{ asset('assets/img/selection.jpg') }}" class="MonthBook" style="width: 180px; height: auto"></a>
+                    <a class="item"><img src="{{ asset('assets/img/selection.jpg') }}" class="MonthBook" style="width: 180px; height: auto"></a>
+                    <a class="item"><img src="{{ asset('assets/img/selection.jpg') }}" class="MonthBook" style="width: 180px; height: auto"></a>
+                    <a class="item"><img src="{{ asset('assets/img/selection.jpg') }}" class="MonthBook" style="width: 180px; height: auto"></a>
+                    <a class="item"><img src="{{ asset('assets/img/selection.jpg') }}" class="MonthBook" style="width: 180px; height: auto"></a>
+                    <a class="item"><img src="{{ asset('assets/img/selection.jpg') }}" class="MonthBook" style="width: 180px; height: auto"></a>
+                    <a class="item"><img src="{{ asset('assets/img/selection.jpg') }}" class="MonthBook" style="width: 180px; height: auto"></a>
+                    <a class="item"><img src="{{ asset('assets/img/selection.jpg') }}" class="MonthBook" style="width: 180px; height: auto"></a>
+                    <a class="item"><img src="{{ asset('assets/img/selection.jpg') }}" class="MonthBook" style="width: 180px; height: auto"></a>
+                    <a class="item"><img src="{{ asset('assets/img/selection.jpg') }}" class="MonthBook" style="width: 180px; height: auto"></a>
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

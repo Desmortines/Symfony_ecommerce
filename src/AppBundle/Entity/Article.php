@@ -19,113 +19,121 @@ class Article
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
      */
-    private $name;
+    protected $name;
 
     /**
      * @var Characteristics
      *
-     * @ORM\OneToOne(targetEntity="Characteristics",  mappedBy="article")
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Characteristics",  mappedBy="article")
      */
-    private $characteristics;
+    protected $characteristics;
 
     /**
      * @var float
      *
      * @ORM\Column(name="price", type="float")
      */
-    private $price;
+    protected $price;
 
     /**
-     * @var array
+     * @var Image[]
      *
-     * @ORM\Column(name="image", type="array")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Image", inversedBy="article", cascade={"ALL"})
      */
-    private $image;
+    protected $images;
 
     /**
      * @var string
      *
      * @ORM\Column(name="isbnReference", type="string", length=255)
      */
-    private $isbnReference;
+    protected $isbnReference;
 
     /**
      * @var Category
      *
-     * @ORM\OneToOne(targetEntity="Category", mappedBy="article")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Category", inversedBy="article")
      */
-    private $category;
+    protected $category;
 
     /**
      * @var int
      *
      * @ORM\Column(name="stock", type="integer")
      */
-    private $stock;
+    protected $stock;
 
     /**
-     * @var Genre
+     * @var Genre[]
      *
-     * @ORM\OneToMany(targetEntity="Genre", mappedBy="article")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Genre", inversedBy="article", cascade={"ALL"})
      */
-    private $genre;
+    protected $genres;
 
     /**
      * @var int
      *
      * @ORM\Column(name="totalBought", type="integer", nullable=true)
      */
-    private $totalBought;
+    protected $totalBought;
 
     /**
      * @var int
      *
      * @ORM\Column(name="nbrClicked", type="integer", nullable=true)
      */
-    private $nbrClicked;
+    protected $nbrClicked;
 
     /**
      * @var Supplier
      *
-     * @ORM\ManyToMany(targetEntity="Supplier", inversedBy="article")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Supplier", inversedBy="article")
      */
-    private $supplier;
+    protected $supplier;
 
     /**
      * @var Rating
      *
-     * @ORM\OneToOne(targetEntity="Rating", mappedBy="article")
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Rating", mappedBy="article")
      */
-    private $rating;
+    protected $rating;
 
     /**
      * @var UserOrder
      *
-     * @ORM\ManyToOne(targetEntity="UserOrder", inversedBy="article")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\UserOrder", inversedBy="article")
      */
-    private $userOrder;
+    protected $userOrder;
 
     /**
      * @var Cart
      *
-     * @ORM\ManyToOne(targetEntity="Cart", inversedBy="article")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Cart", inversedBy="article")
      */
-    private $cart;
+    protected $cart;
 
     /**
      * @var SupplierOrder
      *
-     * @ORM\ManyToOne(targetEntity="SupplierOrder", inversedBy="article")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\SupplierOrder", inversedBy="article")
      */
-    private $supplierOrder;
-
+    protected $supplierOrder;
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->images = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->genres = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->supplier = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id.
@@ -162,30 +170,6 @@ class Article
     }
 
     /**
-     * Set characteristics.
-     *
-     * @param array $characteristics
-     *
-     * @return Article
-     */
-    public function setCharacteristics($characteristics)
-    {
-        $this->characteristics = $characteristics;
-
-        return $this;
-    }
-
-    /**
-     * Get characteristics.
-     *
-     * @return array
-     */
-    public function getCharacteristics()
-    {
-        return $this->characteristics;
-    }
-
-    /**
      * Set price.
      *
      * @param float $price
@@ -207,30 +191,6 @@ class Article
     public function getPrice()
     {
         return $this->price;
-    }
-
-    /**
-     * Set image.
-     *
-     * @param array $image
-     *
-     * @return Article
-     */
-    public function setImage($image)
-    {
-        $this->image = $image;
-
-        return $this;
-    }
-
-    /**
-     * Get image.
-     *
-     * @return array
-     */
-    public function getImage()
-    {
-        return $this->image;
     }
 
     /**
@@ -258,30 +218,6 @@ class Article
     }
 
     /**
-     * Set category.
-     *
-     * @param int $category
-     *
-     * @return Article
-     */
-    public function setCategory($category)
-    {
-        $this->category = $category;
-
-        return $this;
-    }
-
-    /**
-     * Get category.
-     *
-     * @return int
-     */
-    public function getCategory()
-    {
-        return $this->category;
-    }
-
-    /**
      * Set stock.
      *
      * @param int $stock
@@ -306,37 +242,13 @@ class Article
     }
 
     /**
-     * Set genre.
-     *
-     * @param int $genre
-     *
-     * @return Article
-     */
-    public function setGenre($genre)
-    {
-        $this->genre = $genre;
-
-        return $this;
-    }
-
-    /**
-     * Get genre.
-     *
-     * @return int
-     */
-    public function getGenre()
-    {
-        return $this->genre;
-    }
-
-    /**
      * Set totalBought.
      *
-     * @param int $totalBought
+     * @param int|null $totalBought
      *
      * @return Article
      */
-    public function setTotalBought($totalBought)
+    public function setTotalBought($totalBought = null)
     {
         $this->totalBought = $totalBought;
 
@@ -346,7 +258,7 @@ class Article
     /**
      * Get totalBought.
      *
-     * @return int
+     * @return int|null
      */
     public function getTotalBought()
     {
@@ -356,11 +268,11 @@ class Article
     /**
      * Set nbrClicked.
      *
-     * @param int $nbrClicked
+     * @param int|null $nbrClicked
      *
      * @return Article
      */
-    public function setNbrClicked($nbrClicked)
+    public function setNbrClicked($nbrClicked = null)
     {
         $this->nbrClicked = $nbrClicked;
 
@@ -370,11 +282,95 @@ class Article
     /**
      * Get nbrClicked.
      *
-     * @return int
+     * @return int|null
      */
     public function getNbrClicked()
     {
         return $this->nbrClicked;
+    }
+
+    /**
+     * Set characteristics.
+     *
+     * @param \AppBundle\Entity\Characteristics|null $characteristics
+     *
+     * @return Article
+     */
+    public function setCharacteristics(\AppBundle\Entity\Characteristics $characteristics = null)
+    {
+        $this->characteristics = $characteristics;
+
+        return $this;
+    }
+
+    /**
+     * Get characteristics.
+     *
+     * @return \AppBundle\Entity\Characteristics|null
+     */
+    public function getCharacteristics()
+    {
+        return $this->characteristics;
+    }
+
+    /**
+     * Add image.
+     *
+     * @param \AppBundle\Entity\Image $image
+     *
+     * @return Article
+     */
+    public function addImage(\AppBundle\Entity\Image $image)
+    {
+        $this->images[] = $image;
+
+        return $this;
+    }
+
+    /**
+     * Remove image.
+     *
+     * @param \AppBundle\Entity\Image $image
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeImage(\AppBundle\Entity\Image $image)
+    {
+        return $this->images->removeElement($image);
+    }
+
+    /**
+     * Get images.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getImages()
+    {
+        return $this->images;
+    }
+
+    /**
+     * Set category.
+     *
+     * @param \AppBundle\Entity\Category|null $category
+     *
+     * @return Article
+     */
+    public function setCategory(\AppBundle\Entity\Category $category = null)
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * Get category.
+     *
+     * @return \AppBundle\Entity\Category|null
+     */
+    public function getCategory()
+    {
+        return $this->category;
     }
 
     /**
@@ -386,7 +382,7 @@ class Article
      */
     public function addGenre(\AppBundle\Entity\Genre $genre)
     {
-        $this->genre[] = $genre;
+        $this->genres[] = $genre;
 
         return $this;
     }
@@ -400,7 +396,17 @@ class Article
      */
     public function removeGenre(\AppBundle\Entity\Genre $genre)
     {
-        return $this->genre->removeElement($genre);
+        return $this->genres->removeElement($genre);
+    }
+
+    /**
+     * Get genres.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getGenres()
+    {
+        return $this->genres;
     }
 
     /**
@@ -486,15 +492,6 @@ class Article
     {
         return $this->cart;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->genre = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->supplier = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
 
     /**
      * Set supplierOrder.
