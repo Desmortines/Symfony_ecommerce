@@ -29,12 +29,24 @@ class Category
     private $name;
 
     /**
-     * @var Article
+     * @var Genre
      *
-     * @ORM\OneToOne(targetEntity="Article", inversedBy="category")
+     * Many Category have Many Gender.
+     * @ORM\ManyToMany(targetEntity="Genre")
+     * @ORM\JoinTable(name="category_to_genre",
+     *      joinColumns={@ORM\JoinColumn(name="category_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="genre_id", referencedColumnName="id", unique=true)}
+     *      )
      */
-    private $article;
+    private $genre;
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->genre = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id.
@@ -71,26 +83,38 @@ class Category
     }
 
     /**
-     * Set article.
+     * Add genre.
      *
-     * @param \AppBundle\Entity\Article|null $article
+     * @param \AppBundle\Entity\Genre $genre
      *
      * @return Category
      */
-    public function setArticle(\AppBundle\Entity\Article $article = null)
+    public function addGenre(\AppBundle\Entity\Genre $genre)
     {
-        $this->article = $article;
+        $this->genre[] = $genre;
 
         return $this;
     }
 
     /**
-     * Get article.
+     * Remove genre.
      *
-     * @return \AppBundle\Entity\Article|null
+     * @param \AppBundle\Entity\Genre $genre
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
      */
-    public function getArticle()
+    public function removeGenre(\AppBundle\Entity\Genre $genre)
     {
-        return $this->article;
+        return $this->genre->removeElement($genre);
+    }
+
+    /**
+     * Get genre.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getGenre()
+    {
+        return $this->genre;
     }
 }
