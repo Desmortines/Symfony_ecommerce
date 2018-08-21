@@ -20,22 +20,6 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/catalogue", name="catalogue")
-     */
-    public function catalogueAction()
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $categories = $em->getRepository('AppBundle:Category')
-            ->findAll();
-
-
-        return $this->render('catalogue.html.twig',[
-            'categories' => $categories
-        ]);
-    }
-
-    /**
      * @Route("/basket", name="basket")
      */
     public function basketAction()
