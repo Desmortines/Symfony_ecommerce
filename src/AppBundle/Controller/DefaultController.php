@@ -34,4 +34,12 @@ class DefaultController extends Controller
     {
         return $this->render('basket.html.twig');
     }
+
+    /**
+     * @Route("/command", name="command")
+     */
+    public function commandAction()
+    {
+        return $this->render('command.html.twig');
+    }
 }
