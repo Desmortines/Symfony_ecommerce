@@ -479,6 +479,16 @@ input[type=number]::-webkit-inner-spin-button {
     width:70%;
     height:70%;
 }
+.legal{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: -8em;
+    margin-top: 2em;
+}
+.legal a {
+    margin-top: 0.5em;
+}
 .newsletter{
     display: flex;
     padding: 1em;
