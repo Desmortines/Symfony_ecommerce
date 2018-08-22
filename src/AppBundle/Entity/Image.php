@@ -34,7 +34,6 @@ class Image
      *
      * @ORM\Column(name="link", type="text", nullable=true)
      */
-
     private $link;
 
     /**

@@ -31,7 +31,7 @@ class Article
     /**
      * @var Characteristics
      *
-     * @ORM\OneToOne(targetEntity="Characteristics",  mappedBy="article")
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Characteristics",  mappedBy="article")
      */
     private $characteristics;
 
@@ -43,11 +43,11 @@ class Article
     private $price;
 
     /**
-     * @var Image
+     * @var Images[]
      *
-     * @ORM\OneToMany(targetEntity="Image", mappedBy="id")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Image", mappedBy="article", cascade={"persist"})
      */
-    private $image;
+    private $images;
 
     /**
      * @var string
@@ -59,7 +59,7 @@ class Article
     /**
      * @var Category
      *
-     * @ORM\OneToOne(targetEntity="Category")
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Category")
      */
     private $category;
 
@@ -71,9 +71,9 @@ class Article
     private $stock;
 
     /**
-     * @var Genre
+     * @var Genre[]
      *
-     * @ORM\ManyToMany(targetEntity="Genre", inversedBy="article")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Genre", inversedBy="article")
      */
     private $genre;
 
@@ -94,35 +94,35 @@ class Article
     /**
      * @var Supplier
      *
-     * @ORM\ManyToMany(targetEntity="Supplier", inversedBy="article")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Supplier", inversedBy="article")
      */
     private $supplier;
 
     /**
      * @var Rating
      *
-     * @ORM\OneToOne(targetEntity="Rating", mappedBy="article")
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Rating", mappedBy="article")
      */
     private $rating;
 
     /**
      * @var UserOrder
      *
-     * @ORM\ManyToOne(targetEntity="UserOrder", inversedBy="article")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\UserOrder", inversedBy="article")
      */
     private $userOrder;
 
     /**
      * @var Cart
      *
-     * @ORM\ManyToOne(targetEntity="Cart", inversedBy="article")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Cart", inversedBy="article")
      */
     private $cart;
 
     /**
      * @var SupplierOrder
      *
-     * @ORM\ManyToOne(targetEntity="SupplierOrder", inversedBy="article")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\SupplierOrder", inversedBy="article")
      */
     private $supplierOrder;
 
@@ -131,7 +131,7 @@ class Article
      */
     public function __construct()
     {
-        $this->image = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->images = new \Doctrine\Common\Collections\ArrayCollection();
         $this->genre = new \Doctrine\Common\Collections\ArrayCollection();
         $this->supplier = new \Doctrine\Common\Collections\ArrayCollection();
     }
@@ -323,7 +323,7 @@ class Article
      */
     public function addImage(\AppBundle\Entity\Image $image)
     {
-        $this->image[] = $image;
+        $this->images[] = $image;
 
         return $this;
     }
@@ -337,17 +337,17 @@ class Article
      */
     public function removeImage(\AppBundle\Entity\Image $image)
     {
-        return $this->image->removeElement($image);
+        return $this->images->removeElement($image);
     }
 
     /**
-     * Get image.
+     * Get images.
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getImage()
+    public function getImages()
     {
-        return $this->image;
+        return $this->images;
     }
 
     /**
