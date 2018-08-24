@@ -1,6 +1,7 @@
 body {
     font-family: 'Raleway', sans-serif;
     height: 100%;
+    color: #604310;
    /* background-repeat: no-repeat;*/
     background-attachment: fixed;
 }
@@ -86,6 +87,17 @@ article {
     color: #43CBFF;
 }
 
+.buttonHeaderCat {
+    background-color: #B3FF5C;
+    color: #43CBFF;
+    margin-left: 10px;
+}
+
+.buttonHeaderCat:hover {
+    background-color: #ab44ff;
+    color: #B3FF5C;
+}
+
 .buttonHeaderOk {
     background-color: #B3FF5C;
     border-color: #B3FF5C;
@@ -125,6 +137,7 @@ article {
 .buttonHeaderNavMin {
     border-color: #B3FF5C;
     color: #B3FF5C;
+    margin-left: 10px;
 }
 
 .buttonHeaderNavMin:hover {
@@ -165,6 +178,62 @@ article {
     display: block;
     margin : auto;
 }
+
+/****************** START LOGIN PAGE ******************/
+.connexion {
+    padding: 3em;
+}
+
+.formContenu {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 300px;
+}
+
+.formLogin {
+    text-align: center;
+}
+
+.form-group {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.form-control-placeholder {
+    position: absolute;
+    top: 0;
+    padding: 7px 0 0 13px;
+    transition: all 200ms;
+    opacity: 0.5;
+    font-size: inherit;
+}
+
+.form-control:focus + .form-control-placeholder,
+.form-control:valid + .form-control-placeholder {
+    font-size: 75%;
+    transform: translate3d(0, -100%, 0);
+    opacity: 1;
+}
+
+.validButton {
+    border: inherit;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 8px;
+    background-color: #B3FF5C;
+    border-radius: 5px;
+    color: #8C7448;
+}
+
+.validButton:hover {
+    background-color: #B3FF5C;
+    color: #43CBFF;
+    box-shadow: 1px 1px 12px #43CBFF;
+}
+/****************** END LOGIN PAGE ******************/
+
 /****************** START HOME PAGE ******************/
 
 .space {
@@ -260,6 +329,18 @@ article {
 /****************** END EDITPROFIL PAGE ******************/
 
 /****************** ARTICLE PAGE ******************/
+.carouR {
+    border-right: 1px solid #B3FF5C;
+}
+
+.carouL {
+    border-left: 1px solid #B3FF5C;
+}
+
+.backgPrice {
+    background-color: rgba(67, 203, 255, 0.4);
+}
+
 #carousel-example-generic {
     margin: 20px auto;
     width: 400px;
@@ -306,6 +387,64 @@ article {
     margin-right: auto;
     display: block;
 }
+
+.articleName {
+    color: #604310;
+    font-size: 160%;
+    font-weight: 700;
+}
+
+.articleStatut {
+    color: #604310;
+    font-size: 110%;
+    font-weight: 500;
+}
+
+.dispo {
+    color: #B3FF5C;
+}
+
+.articlePrice {
+    color: #604310;
+    font-size: 150%;
+    font-weight: 500;
+}
+
+.articlePriceOccaz {
+    color: #604310;
+    font-size: 150%;
+    font-weight: 500;
+    margin-top: -1em;
+}
+
+#sprice {
+    font-size: 80%;
+}
+
+.articleIsbn {
+    color: #604310;
+    font-size: 100%;
+}
+
+.buttonBasket {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #B3FF5C;
+    border-color: #B3FF5C;
+    color: #8C7448;
+}
+
+.buttonBasket:hover {
+    background-color: #B3FF5C;
+    color: #43CBFF;
+}
+
+.paraArticle {
+    border: 2px solid #B3FF5C;
+    padding: 1em;
+}
+
 /****************** END ARTICLE PAGE ******************/
 
 /****************** START BASKET PAGE ******************/
