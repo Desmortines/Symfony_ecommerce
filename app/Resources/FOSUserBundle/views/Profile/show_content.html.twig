@@ -8,9 +8,10 @@
         <div class="profil">
             <p>{{ 'profile.show.username'|trans }}: {{ user.username }}</p>
             <p>{{ 'profile.show.email'|trans }}: {{ user.email }}</p>
-            <p>prout</p>
         </div>
-        <button class="btn btn-outline-success my-2 my-sm-0 buttonHeaderOk editProfilButton" type="submit">Modifier</button>
+        <a href="{{ path('fos_user_profile_edit') }}">
+            <button class="btn btn-outline-success my-2 my-sm-0 buttonHeaderOk editProfilButton" type="submit">Modifier</button>
+        </a>
     </div>
 {% endblock %}
 

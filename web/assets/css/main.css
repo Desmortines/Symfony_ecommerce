@@ -26,10 +26,10 @@ aside {
     position: fixed;
     float: right;
     z-index: 99;
-    background-color: rgba(179,255, 92, 0.5);
+    background-color: rgba(179,255, 92, 0.8);
     border: 2px solid #B3FF5C;
     border-radius: 5px;
-    margin-left: 73%;
+    margin-left: 83%;
     padding: 2em;
 }
 
@@ -167,10 +167,12 @@ article {
 /**************************** END OF MINI NAV ****************************/
 /******************************* END OF HEADER *******************************/
 
-@media (max-width: 768px) {
-    #buttonNav {
-        visibility: hidden;
-    }
+/**** button Top page ****/
+.topPage {
+    cursor: pointer;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /******************************* BODY *******************************/
@@ -662,5 +664,11 @@ input[type=number]::-webkit-inner-spin-button {
     .MonthButton {
         margin-left: 0;
         margin-bottom: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    #buttonNav {
+        visibility: hidden;
     }
 }
