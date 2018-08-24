@@ -22,11 +22,8 @@ class Image
     private $id;
 
     /**
-     * Many Image have One Article.
-     * @ORM\ManyToOne(targetEntity="Article", inversedBy="image")
-     * @ORM\JoinColumn(name="article_id", referencedColumnName="id")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Article", mappedBy="images",cascade={"ALL"})
      */
-
     private $article;
 
     /**
@@ -35,12 +32,6 @@ class Image
      * @ORM\Column(name="link", type="text", nullable=true)
      */
     private $link;
-
-    /**
-     * Get id.
-     *
-     * @return int
-     */
 
     /**
      * Get id.

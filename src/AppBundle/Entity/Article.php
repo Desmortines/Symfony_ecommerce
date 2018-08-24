@@ -19,120 +19,119 @@ class Article
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
      */
-    private $name;
+    protected $name;
 
     /**
      * @var Characteristics
      *
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\Characteristics",  mappedBy="article")
      */
-    private $characteristics;
+    protected $characteristics;
 
     /**
      * @var float
      *
      * @ORM\Column(name="price", type="float")
      */
-    private $price;
+    protected $price;
 
     /**
-     * @var Images[]
+     * @var Image[]
      *
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Image", mappedBy="article", cascade={"persist"})
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Image", inversedBy="article", cascade={"ALL"})
      */
-    private $images;
+    protected $images;
 
     /**
      * @var string
      *
      * @ORM\Column(name="isbnReference", type="string", length=255)
      */
-    private $isbnReference;
+    protected $isbnReference;
 
     /**
      * @var Category
      *
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Category")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Category", inversedBy="article")
      */
-    private $category;
+    protected $category;
 
     /**
      * @var int
      *
      * @ORM\Column(name="stock", type="integer")
      */
-    private $stock;
+    protected $stock;
 
     /**
      * @var Genre[]
      *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Genre", inversedBy="article")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Genre", inversedBy="article", cascade={"ALL"})
      */
-    private $genre;
+    protected $genres;
 
     /**
      * @var int
      *
      * @ORM\Column(name="totalBought", type="integer", nullable=true)
      */
-    private $totalBought;
+    protected $totalBought;
 
     /**
      * @var int
      *
      * @ORM\Column(name="nbrClicked", type="integer", nullable=true)
      */
-    private $nbrClicked;
+    protected $nbrClicked;
 
     /**
      * @var Supplier
      *
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Supplier", inversedBy="article")
      */
-    private $supplier;
+    protected $supplier;
 
     /**
      * @var Rating
      *
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\Rating", mappedBy="article")
      */
-    private $rating;
+    protected $rating;
 
     /**
      * @var UserOrder
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\UserOrder", inversedBy="article")
      */
-    private $userOrder;
+    protected $userOrder;
 
     /**
      * @var Cart
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Cart", inversedBy="article")
      */
-    private $cart;
+    protected $cart;
 
     /**
      * @var SupplierOrder
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\SupplierOrder", inversedBy="article")
      */
-    private $supplierOrder;
-
+    protected $supplierOrder;
     /**
      * Constructor
      */
     public function __construct()
     {
         $this->images = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->genre = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->genres = new \Doctrine\Common\Collections\ArrayCollection();
         $this->supplier = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
@@ -383,7 +382,7 @@ class Article
      */
     public function addGenre(\AppBundle\Entity\Genre $genre)
     {
-        $this->genre[] = $genre;
+        $this->genres[] = $genre;
 
         return $this;
     }
@@ -397,17 +396,17 @@ class Article
      */
     public function removeGenre(\AppBundle\Entity\Genre $genre)
     {
-        return $this->genre->removeElement($genre);
+        return $this->genres->removeElement($genre);
     }
 
     /**
-     * Get genre.
+     * Get genres.
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getGenre()
+    public function getGenres()
     {
-        return $this->genre;
+        return $this->genres;
     }
 
     /**

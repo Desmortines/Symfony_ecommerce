@@ -81,5 +81,9 @@ fos_user:
 sonata_block:
     blocks:
         # enable the SonataAdminBundle block
+        sonata.admin.block.stats:
+            contexts:   [admin]
         sonata.admin.block.admin_list:
-            contexts: [admin]
+            contexts:   [admin]
+        sonata.admin.block.search_result:
+            contexts:   [admin]

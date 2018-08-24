@@ -23,7 +23,7 @@ class ArticleType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('image', 'collection', [
+            ->add('images', 'collection', [
                 'entry_type' => \AppBundle\Form\ImageType::class,
                 'allow_add' => true,
                 'allow_delete' => true,
@@ -33,15 +33,13 @@ class ArticleType extends AbstractType
                 ),
             ])
             ->add('price')
-            ->add('genre', EntityType::class, [
+            ->add('genres', EntityType::class, [
                 'class' => 'AppBundle:Genre',
                 'choice_label' => 'name',
-                'mapped' => false,
             ])
             ->add('category', EntityType::class, [
                 'class' => 'AppBundle:Category',
                 'choice_label' => 'name',
-                'mapped' => false,
             ])
             ->add('isbnReference')
             ->add('stock');

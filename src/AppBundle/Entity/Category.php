@@ -28,24 +28,37 @@ class Category
      */
     private $name;
 
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="picture",type="text")
+     */
+
+
+    protected $picture;
+
     /**
      * @var Genre
      *
-     * Many Category have Many Gender.
-     * @ORM\ManyToMany(targetEntity="Genre")
-     * @ORM\JoinTable(name="category_to_genre",
-     *      joinColumns={@ORM\JoinColumn(name="category_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="genre_id", referencedColumnName="id", unique=true)}
-     *      )
+     * Many Category have Many Genre.
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Genre", inversedBy="categories")
      */
     private $genre;
 
+    /**
+     * @var Article
+     *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Article", mappedBy="category")
+     */
+    private $article;
     /**
      * Constructor
      */
     public function __construct()
     {
         $this->genre = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->article = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -83,6 +96,30 @@ class Category
     }
 
     /**
+     * Set picture.
+     *
+     * @param string $picture
+     *
+     * @return Category
+     */
+    public function setPicture($picture)
+    {
+        $this->picture = $picture;
+
+        return $this;
+    }
+
+    /**
+     * Get picture.
+     *
+     * @return string
+     */
+    public function getPicture()
+    {
+        return $this->picture;
+    }
+
+    /**
      * Add genre.
      *
      * @param \AppBundle\Entity\Genre $genre
@@ -116,5 +153,41 @@ class Category
     public function getGenre()
     {
         return $this->genre;
+    }
+
+    /**
+     * Add article.
+     *
+     * @param \AppBundle\Entity\Article $article
+     *
+     * @return Category
+     */
+    public function addArticle(\AppBundle\Entity\Article $article)
+    {
+        $this->article[] = $article;
+
+        return $this;
+    }
+
+    /**
+     * Remove article.
+     *
+     * @param \AppBundle\Entity\Article $article
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeArticle(\AppBundle\Entity\Article $article)
+    {
+        return $this->article->removeElement($article);
+    }
+
+    /**
+     * Get article.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getArticle()
+    {
+        return $this->article;
     }
 }

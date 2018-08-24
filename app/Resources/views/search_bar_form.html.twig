@@ -1,0 +1,10 @@
+<div>
+    {{ form_start(form, { 'attr': {'class': 'form-inline'} }) }}
+    <div class="form-group">
+        {{ form_widget(form.search, { 'attr': {'class': 'form-control'}} ) }}
+        {{ form_widget(form.send, { 'attr': {'class': 'btn btn-outline-success buttonHeaderOkNavMin'} }) }}
+        <a id="AdvanceSearchNavMin">Recherches avancées</a>
+    </div>
+    {{ form_rest(form) }}
+    {{ form_end(form) }}
+</div>

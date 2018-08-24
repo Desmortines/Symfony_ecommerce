@@ -1,13 +1,13 @@
-$(document).ready(function() {
+$(document).ready(function () {
     if ($(this).scrollTop() > 155) {
         $('#FixNav').show();
     }
 
-    $(this).scroll(function() {
+    $(this).scroll(function () {
         if ($(document).scrollTop() > 155) {
-
-                $('#FixNav').fadeIn('slow','swing')
-
+            if ($('#FixNav').is(':hidden')) {
+                $('#FixNav').fadeIn('slow', 'swing');
+            }
         }
         else {
             $('#FixNav').hide();
@@ -16,20 +16,19 @@ $(document).ready(function() {
 });
 
 
-
 $('.owl-carousel').owlCarousel({
-    loop:true,
-    margin:10,
-    nav:true,
-    responsive:{
-        0:{
-            items:1
+    loop: true,
+    margin: 10,
+    nav: true,
+    responsive: {
+        0: {
+            items: 1
         },
-        600:{
-            items:3
+        600: {
+            items: 3
         },
-        1000:{
-            items:5
+        1000: {
+            items: 5
         }
     }
 })
