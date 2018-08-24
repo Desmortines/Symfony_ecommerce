@@ -1,10 +1,73 @@
 {% extends 'base.html.twig' %}
 {% block body %}
     {{ parent() }}
+
     {% block title %}
     <div class="fondcontainer" style="margin-bottom: 2rem;">
         <h1 class="h1edit">Votre panier !</h1>
     </div>
     {% endblock %}
-{% endblock %}
 
+    {% block aside %}
+        <aside>
+            <h3>Total à régler :</h3>
+            <ul>
+                <li><a href="#">40 $</a></li>
+                <li><a href="#">+ les intérêts</a></li>
+                <li><a href="#">Code promo</a></li>
+                <li><a href="#">Re-code promo</a></li>
+            </ul>
+            <button class="btn btn-outline-success my-2 my-sm-0 buttonCde" type="submit">Commandez !</button>
+        </aside>
+    {% endblock %}
+
+    {% block Command %}
+        <div class="container-fluid fondcontainer mTop mBottom">
+            <div class="row divCommand">
+                <div class="col-lg-9">
+                    <div class="row mBottom mTop" style="text-align:left; height:50px; display: table; width: 100%;"
+
+
+                    >
+                        <article class="col-lg-2">
+
+                            <img src="{{ asset('assets/img/selection.jpg') }}" style="width: 150px; height: auto;">
+
+                        </article>
+
+                        <article class="col-lg-2">
+
+                            <p>Harry Potdbeurre</p>
+                            <p>JK Rowling</p>
+                            <p>Bla blabla</p>
+                            <p>Bla blibla</p>
+
+                        </article>
+
+                        <article class="col-lg-2">
+                            <p>Prix à l'unité :</p>
+                            <p>20 $</p>
+
+                        </article>
+
+                        <article class="col-lg-2">
+                            <p>Quantité :</p>
+                            <input id="howMuch" type="number" value="0" min="0" max="64">
+                        </article>
+
+                        <article class="col-lg-2">
+
+                            <p>Total :</p>
+                            <p>40 $</p>
+
+                        </article>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+
+{% endblock %}

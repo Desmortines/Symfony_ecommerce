@@ -1,6 +1,7 @@
 body {
     font-family: 'Raleway', sans-serif;
     height: 100%;
+    color: #604310;
    /* background-repeat: no-repeat;*/
     background-attachment: fixed;
 }
@@ -10,9 +11,32 @@ h1 {
     color: #604310;
 }
 
+h2 {
+    font-family: 'Raleway', sans-serif;
+    color: #604310;
+    padding-top: 0.5em;
+}
+
 label{
     margin-right: 10px;
-    margin-bottom: 1em;
+    font-size: 130%;
+}
+
+aside {
+    position: fixed;
+    float: right;
+    z-index: 99;
+    background-color: rgba(179,255, 92, 0.5);
+    border: 2px solid #B3FF5C;
+    border-radius: 5px;
+    margin-left: 73%;
+    padding: 2em;
+}
+
+article {
+    margin: 0.5em;
+    vertical-align:middle;
+    display: table-cell;
 }
 
 .profil {
@@ -23,6 +47,16 @@ label{
     text-align: center;
 }
 
+.fondcontainer {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.mTop {
+    margin-top: 1.5em;
+}
+.mBottom {
+    margin-bottom: 1.5em;
+}
 /******************************* HEADER *******************************/
 
 /**************************** PRINCIPAL NAV ****************************/
@@ -51,6 +85,17 @@ label{
 .buttonHeader:hover {
     background-color: #B3FF5C;
     color: #43CBFF;
+}
+
+.buttonHeaderCat {
+    background-color: #B3FF5C;
+    color: #43CBFF;
+    margin-left: 10px;
+}
+
+.buttonHeaderCat:hover {
+    background-color: #ab44ff;
+    color: #B3FF5C;
 }
 
 .buttonHeaderOk {
@@ -92,6 +137,7 @@ label{
 .buttonHeaderNavMin {
     border-color: #B3FF5C;
     color: #B3FF5C;
+    margin-left: 10px;
 }
 
 .buttonHeaderNavMin:hover {
@@ -113,7 +159,7 @@ label{
 
 .pipeHeaderNavMin {
     color: #8C7448;
-    margin: 0px 10px 0px 10px;
+    margin: 0 10px 0 10px;
     font-size: 3em;
     font-weight: 100;
 }
@@ -132,6 +178,62 @@ label{
     display: block;
     margin : auto;
 }
+
+/****************** START LOGIN PAGE ******************/
+.connexion {
+    padding: 3em;
+}
+
+.formContenu {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 300px;
+}
+
+.formLogin {
+    text-align: center;
+}
+
+.form-group {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.form-control-placeholder {
+    position: absolute;
+    top: 0;
+    padding: 7px 0 0 13px;
+    transition: all 200ms;
+    opacity: 0.5;
+    font-size: inherit;
+}
+
+.form-control:focus + .form-control-placeholder,
+.form-control:valid + .form-control-placeholder {
+    font-size: 75%;
+    transform: translate3d(0, -100%, 0);
+    opacity: 1;
+}
+
+.validButton {
+    border: inherit;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 8px;
+    background-color: #B3FF5C;
+    border-radius: 5px;
+    color: #8C7448;
+}
+
+.validButton:hover {
+    background-color: #B3FF5C;
+    color: #43CBFF;
+    box-shadow: 1px 1px 12px #43CBFF;
+}
+/****************** END LOGIN PAGE ******************/
+
 /****************** START HOME PAGE ******************/
 
 .space {
@@ -139,9 +241,6 @@ label{
     margin-bottom: 1em;
 }
 
-.fondcontainer {
-    background-color: rgba(255, 255, 255, 0.5);
-}
 /****************** END OF HOME PAGE ******************/
 
 /****************** START CATALOGUE PAGE ******************/
@@ -229,6 +328,264 @@ label{
 }
 /****************** END EDITPROFIL PAGE ******************/
 
+/****************** ARTICLE PAGE ******************/
+.carouR {
+    border-right: 1px solid #B3FF5C;
+}
+
+.carouL {
+    border-left: 1px solid #B3FF5C;
+}
+
+.backgPrice {
+    background-color: rgba(67, 203, 255, 0.4);
+}
+
+#carousel-example-generic {
+    margin: 20px auto;
+    width: 400px;
+}
+
+#carousel-custom {
+    margin: 20px auto;
+    width: 400px;
+    border: 2px solid #B3FF5C;
+    padding: 15px;
+    border-radius: 5px;
+}
+#carousel-custom .carousel-indicators {
+    margin: 10px 0 0;
+    overflow: auto;
+    position: static;
+    text-align: left;
+    white-space: nowrap;
+    width: 100%;
+}
+#carousel-custom .carousel-indicators li {
+    background-color: transparent;
+    -webkit-border-radius: 0;
+    border-radius: 0;
+    display: inline-block;
+    height: auto;
+    margin: 0 !important;
+    width: auto;
+    position: inherit;
+}
+#carousel-custom .carousel-indicators li img {
+    display: block;
+    opacity: 0.5;
+}
+#carousel-custom .carousel-indicators li.active img {
+    opacity: 1;
+}
+#carousel-custom .carousel-indicators li:hover img {
+    opacity: 0.75;
+}
+
+.imgCar {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.articleName {
+    color: #604310;
+    font-size: 160%;
+    font-weight: 700;
+}
+
+.articleStatut {
+    color: #604310;
+    font-size: 110%;
+    font-weight: 500;
+}
+
+.dispo {
+    color: #B3FF5C;
+}
+
+.articlePrice {
+    color: #604310;
+    font-size: 150%;
+    font-weight: 500;
+}
+
+.articlePriceOccaz {
+    color: #604310;
+    font-size: 150%;
+    font-weight: 500;
+    margin-top: -1em;
+}
+
+#sprice {
+    font-size: 80%;
+}
+
+.articleIsbn {
+    color: #604310;
+    font-size: 100%;
+}
+
+.buttonBasket {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #B3FF5C;
+    border-color: #B3FF5C;
+    color: #8C7448;
+}
+
+.buttonBasket:hover {
+    background-color: #B3FF5C;
+    color: #43CBFF;
+}
+
+.paraArticle {
+    border: 2px solid #B3FF5C;
+    padding: 1em;
+}
+
+/****************** END ARTICLE PAGE ******************/
+
+/****************** START BASKET PAGE ******************/
+
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
+}
+
+#howMuch {
+    width: 4rem;
+    background-color: #B3FF5C;
+    border: 2px solid #43CBFF;
+    border-radius: 5px;
+    padding: 4px;
+    font-size: 110%;
+}
+/****************** END BASKET PAGE ******************/
+
+/****************** START COMMAND PAGE ******************/
+#divDel {
+    margin-bottom: 2em;
+    margin-top: 2em;
+    padding-bottom: 2em;
+}
+
+.commandBorder {
+    padding: 1rem;
+    border: 5px solid #B3FF5C;
+    border-radius: 5px;
+}
+
+.buttonCde {
+    background-color: #B3FF5C;
+    border-color: #43CBFF;
+    color: #8C7448;
+    margin-left: 5px;
+}
+
+.buttonCde:hover {
+    background-color: #B3FF5C;
+    color: #43CBFF;
+}
+
+.divAdress {
+    background-color: rgba(179,255, 92, 0.5);
+    border: 2px solid #B3FF5C;
+    border-radius: 5px;
+    margin-left: 12px;
+}
+
+#titleAdd {
+    margin-top: 0.5em;
+}
+
+.divCommand {
+    margin-top: 7px;
+}
+
+.buttonAdress {
+    background-color: #B3FF5C;
+    border-color: #B3FF5C;
+    color: #8C7448;
+    margin-left: 5px;
+}
+
+.buttonAdress:hover {
+    background-color: #B3FF5C;
+    color: #43CBFF;
+}
+
+.formfield-select {
+    position: relative;
+}
+
+.formfield-select--container {
+    position: relative;
+    width: 500px;
+    background-color: #B3FF5C;
+    border: #B3FF5C 2px solid;
+    border-radius: 5px;
+    margin: 0 0 1.5em 0;
+    font-size: 110%;
+
+    overflow: hidden;
+    /*
+        Le select natif pourra
+        dépasser sans être vu
+    */
+}
+
+.formfield-select--container select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    width: 100%;
+    /*
+        On est sûr de ne plus voir
+        la flèche native
+    */
+    height: auto;
+    border: 0;
+    margin: 0;
+    padding: .75em;
+    border-radius: 0;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /*
+        On empêche le texte d'aller
+        jusqu'au bout s'il est trop long
+    */
+}
+
+.formfield-select--container::after {
+    /* Le pointeur du select */
+    content: '';
+    position: absolute;
+    top: 50%;
+    margin-top: -3px;
+    right: .75em;
+    display: block;
+    width: 0; height: 0;
+    border-color: transparent;
+    border-top-color: #444;
+    border-width: 6px;
+    border-style: solid;
+    pointer-events: none;
+}
+
+.imgPaiement {
+    width: 50px;
+    height: auto;
+    margin: 1em 1em 1em 1em;
+}
+/****************** END COMMAND PAGE ******************/
+
 /*------- FOOTER ---------*/
 .footer{
     position: relative;
@@ -260,6 +617,16 @@ label{
 .descriptif img {
     width:70%;
     height:70%;
+}
+.legal{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: -8em;
+    margin-top: 2em;
+}
+.legal a {
+    margin-top: 0.5em;
 }
 .newsletter{
     display: flex;
