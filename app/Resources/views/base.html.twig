@@ -144,68 +144,23 @@
 
 {% endblock %}
 
-        {% block footer %}
-            <div class="footer">
-                <section class="command">
-                    <div class="debit text-right">
-                        <img src="{{ asset('assets/img/ico-paiement-livraison-big.gif') }}" alt="paiement-livraison" />
-                        <h6>Débit à la Livraison</h6>
-                        <p>blablablablablablabla</p>
-                    </div>
-                    <div class="xpaye text-right">
-                        <img src="{{ asset('assets/img/Facilités.png') }}" alt="Facilités" />
-                        <h6>Paiement en 300000x</h6>
-                        <p>blablablablablablabla</p>
-                    </div>
-                    <div class="livraison text-right">
-                        <img src="{{ asset('assets/img/Fusee-bleu-600x600.png') }}" alt="Livraison" />
-                        <h6>Livraison express en Fusée</h6>
-                        <p>blablablablablablabla</p>
-                    </div>
-                </section>
-                <HR align="center" size="8" width="80%">
-                <section class="descriptif">
-                    <div class="mode_payement">
-                        <h6>Modes de Paiement :</h6>
-                        <img src="{{ asset('assets/img/modes-virtuels.png') }}" alt="Mode-Paiement" />
-                    </div>
-                    <div class="legal center">
-                        <a href="#" target="=_blank">Contact</a>
-                        <br>
-                        <a href="#" target="=_blank">Mentions légales</a>
-                    </div>
-                    <div class="dead">
-                        <h6>La Rubrique DEAD</h6>
-                    </div>
-                </section>
-                <HR align="center" width="80%">
-                <section class="newsletter">
-                    <h4>Newsletter :</h4>
-                    <input type="email">
-                    <button type="button" class="btn btn-outline-dark">Send</button>
-                </section>
-                <section class="bottomfooter text-right">
-                    <div class="socialink">
-                        <a href="https://www.facebook.com/" target="=_blank"><img src="{{ asset('assets/img/facebook.png') }}" alt="Facebook" /></a>
-                        <a href="https://twitter.com/" target="=_blank"><img src="{{ asset('assets/img/twitter.png') }}" alt="Twitter" /></a>
-                        <a href="https://www.instagram.com/" target="=_blank"><img src="{{ asset('assets/img/Instagram-170x170-icon_large.png') }}" alt="Instagram"/></a>
-                        <a href="https://www.youtube.com/" target="=_blank"><img src="{{ asset('assets/img/youtube-128.png') }}" alt="Youtube"/></a>
-                        <a href="https://www.google.com/?hl=fr" target="=_blank"><img src="{{ asset('assets/img/google.png') }}" alt="Google"/></a>
-                    </div>
-                    <div>
-                        <p>&copy; Copyright | Chasse, Pêche et PHP</p>
-                    </div>
-                </section>
+{% block footer %}
+    <div class="footer">
+        <section class="command">
+            <div class="debit text-right">
+                <img src="{{ asset('assets/img/ico-paiement-livraison-big.gif') }}" alt="paiement-livraison"/>
+                <h6>Débit à la Livraison</h6>
+                <p>blablablablablablabla</p>
             </div>
             <div class="xpaye text-right">
+                <img src="{{ asset('assets/img/Facilités.png') }}" alt="Facilités"/>
                 <h6>Paiement en 300000x</h6>
                 <p>blablablablablablabla</p>
-                <img src="{{ asset('assets/img/Facilités.png') }}" alt="Facilités"/>
             </div>
             <div class="livraison text-right">
+                <img src="{{ asset('assets/img/Fusee-bleu-600x600.png') }}" alt="Livraison"/>
                 <h6>Livraison express en Fusée</h6>
                 <p>blablablablablablabla</p>
-                <img src="{{ asset('assets/img/Fusee-bleu-600x600.png') }}" alt="Livraison"/>
             </div>
         </section>
         <HR align="center" size="8" width="80%">
@@ -216,6 +171,7 @@
             </div>
             <div class="legal center">
                 <a href="#" target="=_blank">Contact</a>
+                <br>
                 <a href="#" target="=_blank">Mentions légales</a>
             </div>
             <div class="dead">
