@@ -10,4 +10,13 @@ namespace AppBundle\Repository;
  */
 class GenreRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findLike($search) {
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT g
+            FROM AppBundle:Genre g
+            WHERE g.name LIKE :search')
+            ->setParameter('search',$search.'%')
+            ->getResult();
+    }
 }

@@ -20,18 +20,9 @@
 {% block header %}
     <nav class="navbar navbar-expand-lg navbar-light headerNav">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#"><img src="{{ asset('assets/img/arbrelogo.jpg') }}" width="150px;"></a>
-
-            <form class="form-inline my-2 my-lg-0 d-flex flex-column bd-highlight">
-                <div class="p-2 bd-highlight mt-4">
-                    <input class="form-control" type="search" placeholder="Rechercher" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0 buttonHeaderOk" type="submit">OK</button>
-                    <div class="p-2 bd-highlight mr-auto" style="margin-top: -8px;">
-                        <a href="#" id="AdvanceSearch">Recherches avancées</a>
-                    </div>
-                </div>
-
-            </form>
+            <a class="navbar-brand" href="{{ path('homepage') }}"><img src="{{ asset('assets/img/arbrelogo.jpg') }}"
+                                                                       width="150px;"></a>
+            {{ render(controller('AppBundle:Default:search')) }}
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -45,7 +36,7 @@
                             <button class="btn btn-outline-success my-2 my-sm-0 buttonHeader">Mon profil</button>
                         </a>
                         <a href="{{ path('fos_user_security_logout') }}">
-                            <button class="btn btn-outline-success my-2 my-sm-0 buttonHeader">Se déconecter</button>
+                            <button class="btn btn-outline-success my-2 my-sm-0 buttonHeader">Se déconnecter</button>
                         </a>
                     {% else %}
                         {#<button type="button" class="btn btn-outline-success my-2 my-sm-0 buttonHeader" data-toggle="modal" data-target="#connexionModal">S'identifier</button>#}
@@ -58,7 +49,10 @@
                         </a>
                     {% endif %}
                     <span class="pipeHeader">|</span>
-                    <button class="btn btn-outline-success my-2 my-sm-0 buttonHeader" type="submit">Mon panier</button>
+                    <a href="{{ path('basket') }}">
+                        <button class="btn btn-outline-success my-2 my-sm-0 buttonHeader" type="submit">Mon panier
+                        </button>
+                    </a>
                 </div>
             </div>
         </div>
@@ -68,11 +62,7 @@
          style="background-color: #43CBFF;">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-            <form class="form-inline">
-                <input class="form-control" type="search" placeholder="Rechercher" aria-label="Search">
-                <button class="btn btn-outline-success buttonHeaderOkNavMin" type="submit">OK</button>
-                <a href="#" id="AdvanceSearchNavMin">Recherches avancées</a>
-            </form>
+            {{ render(controller('AppBundle:Default:search')) }}
 
             <div class="form-inline navbar-nav ml-auto">
                 {% if app.user %}
@@ -80,7 +70,7 @@
                         <button class="btn btn-outline-success my-2 my-sm-0 buttonHeader">Mon profil</button>
                     </a>
                     <a href="{{ path('fos_user_security_logout') }}">
-                        <button class="btn btn-outline-success my-2 my-sm-0 buttonHeader">Se déconecter</button>
+                        <button class="btn btn-outline-success my-2 my-sm-0 buttonHeader">Se déconnecter</button>
                     </a>
                 {% else %}
                     {#<button type="button" class="btn btn-outline-success my-2 my-sm-0 buttonHeader" data-toggle="modal" data-target="#connexionModal">S'identifier</button>#}
@@ -93,8 +83,10 @@
                     </a>
                 {% endif %}
                 <span class="pipeHeaderNavMin">|</span>
-                <button class="btn btn-outline-success my-2 my-sm-0 buttonHeaderNavMin" type="submit">Mon panier
-                </button>
+                <a href="{{ path('basket') }}">
+                    <button class="btn btn-outline-success my-2 my-sm-0 buttonHeader" type="submit">Mon panier
+                    </button>
+                </a>
             </div>
         </div>
     </nav>

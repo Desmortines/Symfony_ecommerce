@@ -10,4 +10,13 @@ namespace AppBundle\Repository;
  */
 class ArticleRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findLike($search) {
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT a
+            FROM AppBundle:Article a
+            WHERE a.name LIKE :search')
+            ->setParameter('search',$search.'%')
+            ->getResult();
+    }
 }
