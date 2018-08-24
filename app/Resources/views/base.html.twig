@@ -22,7 +22,7 @@
         <div class="container-fluid">
             <a class="navbar-brand" href="{{ path('homepage') }}"><img src="{{ asset('assets/img/arbrelogo.jpg') }}"
                                                                        width="150px;"></a>
-            {{ render(controller('AppBundle:Default:search')) }}
+            {{ render(controller('AppBundle:Search:search')) }}
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -62,7 +62,7 @@
          style="background-color: #43CBFF;">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-            {{ render(controller('AppBundle:Default:search')) }}
+            {{ render(controller('AppBundle:Search:search')) }}
 
             <div class="form-inline navbar-nav ml-auto">
                 {% if app.user %}
