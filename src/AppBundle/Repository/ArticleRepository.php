@@ -19,4 +19,16 @@ class ArticleRepository extends \Doctrine\ORM\EntityRepository
             ->setParameter('search',$search.'%')
             ->getResult();
     }
+
+    public function findCategoryGenreLike($search) {
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT a
+                FROM AppBundle:Article a
+                Where a.name LIKE :ArticleSearch')
+            ->setParameter('ArticleSearch', $search['textSearch'].'%')
+            ->setParameter('CategorySearch', $search['CategorySearch'].'%')
+            ->setParameter('GenreSearch', $search['GenreSearch'].'%')
+            ->getResult();
+    }
 }

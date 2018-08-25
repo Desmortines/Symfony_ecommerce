@@ -71,6 +71,9 @@ class SearchController extends Controller
             if ($search['categorySearch'] && $search['genreSearch']) {
                 dump($search['categorySearch']);
                 dump($search['genreSearch']);
+                $article = $this->getDoctrine()
+                    ->getRepository(Article::class)
+                    ->findCategoryGenreLike($search);
                 $category = [];
                 $genre = [];
             }
@@ -85,6 +88,9 @@ class SearchController extends Controller
                 $genre = [];
             }
             else {
+                $article = $this->getDoctrine()
+                    ->getRepository(Article::class)
+                    ->findLike($search['textSearch']);
                 $category = $this->getDoctrine()
                     ->getRepository(Category::class)
                     ->findLike($search['textSearch']);
@@ -92,12 +98,6 @@ class SearchController extends Controller
                     ->getRepository(Genre::class)
                     ->findLike($search['textSearch']);
             }
-            $article = $this->getDoctrine()
-                ->getRepository(Article::class)
-                ->findLike($search['textSearch']);
-
-
-
             return $this->render('result.html.twig', [
                 'ArticleSearch' => $article,
                 'CategorySearch' => $category,
