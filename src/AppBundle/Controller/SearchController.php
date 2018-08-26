@@ -28,7 +28,8 @@ class SearchController extends Controller
      * @Method("GET")
      */
 
-    public function indexAction() {
+    public function indexAction()
+    {
         return $this->redirectToRoute('homepage');
     }
 
@@ -52,7 +53,7 @@ class SearchController extends Controller
                 'multiple' => true,
                 'required' => false,
             ])
-            ->add('genreSearch',EntityType::class,[
+            ->add('genreSearch', EntityType::class, [
                 'class' => 'AppBundle\Entity\Genre',
                 'choice_label' => 'name',
                 'multiple' => true,
@@ -68,7 +69,9 @@ class SearchController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $search = $form->getData();
 
-            if ($search['categorySearch'] && $search['genreSearch']) {
+            dump($search);
+
+            if ($search['categorySearch'][0] && $search['genreSearch'][0]) {
                 dump($search['categorySearch']);
                 dump($search['genreSearch']);
                 $article = $this->getDoctrine()
@@ -76,18 +79,21 @@ class SearchController extends Controller
                     ->findCategoryGenreLike($search);
                 $category = [];
                 $genre = [];
-            }
-            elseif ($search['categorySearch']) {
+            } elseif ($search['categorySearch'][0]) {
                 dump($search['categorySearch']);
+                $article = $this->getDoctrine()
+                    ->getRepository(Article::class)
+                    ->findCategoryLike($search);
                 $category = [];
                 $genre = [];
-            }
-            elseif ($search['genreSearch']) {
+            } elseif ($search['genreSearch'][0]) {
                 dump($search['genreSearch']);
+                $article = $this->getDoctrine()
+                    ->getRepository(Article::class)
+                    ->findGenreLike($search);
                 $category = [];
                 $genre = [];
-            }
-            else {
+            } else {
                 $article = $this->getDoctrine()
                     ->getRepository(Article::class)
                     ->findLike($search['textSearch']);

@@ -25,10 +25,40 @@ class ArticleRepository extends \Doctrine\ORM\EntityRepository
             ->createQuery(
                 'SELECT a
                 FROM AppBundle:Article a
-                Where a.name LIKE :ArticleSearch')
+                JOIN AppBundle:Category c
+                JOIN AppBundle:Genre g
+                WHERE a.name LIKE :ArticleSearch
+                AND c.name = :CategorySearch
+                AND g.name = :GenreSearch')
             ->setParameter('ArticleSearch', $search['textSearch'].'%')
-            ->setParameter('CategorySearch', $search['CategorySearch'].'%')
-            ->setParameter('GenreSearch', $search['GenreSearch'].'%')
+            ->setParameter('CategorySearch', $search['categorySearch'])
+            ->setParameter('GenreSearch', $search['genreSearch'])
+            ->getResult();
+    }
+
+    public function findCategoryLike($search) {
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT a
+                FROM AppBundle:Article a
+                JOIN AppBundle:Category c
+                WHERE a.name LIKE :ArticleSearch
+                AND c.name = :CategorySearch')
+            ->setParameter('ArticleSearch', $search['textSearch'].'%')
+            ->setParameter('CategorySearch', $search['categorySearch'])
+            ->getResult();
+    }
+
+    public function findGenreLike($search) {
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT a
+                FROM AppBundle:Article a
+                JOIN AppBundle:Genre g
+                WHERE a.name LIKE :ArticleSearch
+                AND g.name = :GenreSearch')
+            ->setParameter('ArticleSearch', $search['textSearch'].'%')
+            ->setParameter('GenreSearch', $search['genreSearch'])
             ->getResult();
     }
 }

@@ -32,7 +32,7 @@ class Category
     /**
      * @var string
      *
-     * @ORM\Column(name="picture",type="text")
+     * @ORM\Column(name="picture",type="text",nullable=true)
      */
 
 
