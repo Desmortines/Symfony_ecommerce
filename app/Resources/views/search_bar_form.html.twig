@@ -1,9 +1,13 @@
 <div>
     {{ form_start(form, { 'attr': {'class': 'form-inline'} }) }}
     <div class="form-group">
-        {{ form_widget(form.search, { 'attr': {'class': 'form-control'}} ) }}
+        {{ form_widget(form.textSearch, { 'attr': {'class': 'form-control'}} ) }}
         {{ form_widget(form.send, { 'attr': {'class': 'btn btn-outline-success buttonHeaderOkNavMin'} }) }}
-        <a id="AdvanceSearchNavMin">Recherches avancées</a>
+        <a href="" class="AdvanceSearchNav"> Recherches avancées</a>
+        <div class="AdvanceSearchContent" style="display: none">
+            {{ form_widget(form.categorySearch) }}
+            {{ form_widget(form.genreSearch) }}
+        </div>
     </div>
     {{ form_rest(form) }}
     {{ form_end(form) }}

@@ -72,6 +72,15 @@ article {
 #AdvanceSearch {
     color: #B3FF5C;
 }
+
+.AdvanceSearchNav {
+    color: #B3FF5C;
+    padding-left: 5px;
+}
+
+.AdvanceSearchContent {
+
+}
 /****** End of Search Zone ******/
 
 /****** Buttons ******/
@@ -125,11 +134,6 @@ article {
     box-shadow: 0 4px 2px -2px gray;
     padding: inherit;
     padding: 0px 10px 0px 10px;
-}
-
-#AdvanceSearchNavMin {
-    color: #B3FF5C;
-    padding-left: 5px;
 }
 
 /****** Buttons ******/
