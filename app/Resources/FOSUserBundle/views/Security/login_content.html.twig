@@ -7,18 +7,10 @@
 <div class="container-fluid fondcontainer mTop mBottom connexion">
 <div class="formContenu">
 <form action="{{ path("fos_user_security_check") }}" method="post">
+
     {% if csrf_token %}
         <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
     {% endif %}
-    <!--<div class="form-group">
-        <input class="form-control" type="text" id="username" name="_username" value="{{ last_username }}" required="required" autocomplete="username" /></br>
-        <label class="form-control-placeholder" for="username">{{ 'security.login.username'|trans }}</label>
-    </div>-->
-
-    <!--<div class="form-group">
-        <input class="form-control" type="password" id="password" name="_password" required="required" autocomplete="current-password" /></br>
-        <label class="form-control-placeholder" for="password">{{ 'security.login.password'|trans }}</label>
-    </div>-->
 
     <div class="container my-5">
         <div class="row">
@@ -38,12 +30,7 @@
                 </div>
             </div>
         </div>
-
-
-
     </div>
-
-
 </form>
 
 </div>
