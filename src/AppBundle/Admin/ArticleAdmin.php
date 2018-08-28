@@ -9,6 +9,7 @@ use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Form\Type\ModelListType;
 use Sonata\AdminBundle\Form\Type\ModelType;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -24,8 +25,7 @@ class ArticleAdmin extends AbstractAdmin
             ->add('isbnReference')
             ->add('stock')
             ->add('totalBought')
-            ->add('nbrClicked')
-        ;
+            ->add('nbrClicked');
     }
 
     protected function configureListFields(ListMapper $listMapper)
@@ -33,6 +33,18 @@ class ArticleAdmin extends AbstractAdmin
         $listMapper
             ->add('id')
             ->add('name')
+            ->add('category', null, [
+                'associated_property' => 'name',
+                'route' => [
+                    'name' => 'show'
+                ]
+            ])
+            ->add('genres', null, [
+                'associated_property' => 'name',
+                'route' => [
+                    'name' => 'show'
+                ]
+            ])
             ->add('price')
             ->add('isbnReference')
             ->add('stock')
@@ -44,8 +56,7 @@ class ArticleAdmin extends AbstractAdmin
                     'edit' => [],
                     'delete' => [],
                 ],
-            ])
-        ;
+            ]);
     }
 
     protected function configureFormFields(FormMapper $formMapper)
@@ -53,7 +64,7 @@ class ArticleAdmin extends AbstractAdmin
         $formMapper
             ->add('name')
             ->add('price')
-            ->add('images',ModelType::class,[
+            ->add('images', ModelType::class, [
                 'class' => Image::class,
                 'property' => 'link',
                 'multiple' => true,
@@ -69,8 +80,7 @@ class ArticleAdmin extends AbstractAdmin
                 'multiple' => true,
             ])
             ->add('isbnReference')
-            ->add('stock')
-        ;
+            ->add('stock');
     }
 
     protected function configureShowFields(ShowMapper $showMapper)
@@ -78,15 +88,22 @@ class ArticleAdmin extends AbstractAdmin
         $showMapper
             ->add('id')
             ->add('name')
-            ->add('category',ModelType::class,[
-                'class' => Category::class,
-                'property' => 'name'
+            ->add('category', null, [
+                'associated_property' => 'name',
+                'route' => [
+                    'name' => 'show'
+                ]
+            ])
+            ->add('genres', null, [
+                'associated_property' => 'name',
+                'route' => [
+                    'name' => 'show'
+                ]
             ])
             ->add('price')
             ->add('isbnReference')
             ->add('stock')
             ->add('totalBought')
-            ->add('nbrClicked')
-        ;
+            ->add('nbrClicked');
     }
 }
