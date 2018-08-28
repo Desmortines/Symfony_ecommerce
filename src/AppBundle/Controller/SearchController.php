@@ -13,6 +13,7 @@ use AppBundle\Entity\Article;
 use AppBundle\Entity\Category;
 use AppBundle\Entity\Genre;
 use Doctrine\ORM\EntityRepository;
+use PUGX\AutocompleterBundle\Form\Type\AutocompleteFilterType;
 use PUGX\AutocompleterBundle\Form\Type\AutocompleteType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -47,8 +48,7 @@ class SearchController extends Controller
     {
         $form = $this->createFormBuilder()
             ->setAction($this->generateUrl('search_action'))
-            ->add('textSearch', AutocompleteType::class, [
-                'class' => Article::class,
+            ->add('textSearch', SearchType::class, [
                 'attr' => [
                     'placeholder' => 'Recherche'
                 ]
@@ -81,6 +81,8 @@ class SearchController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $search = $form->getData();
+
+            dump($search['textSearch']);
 
             if ($search['categorySearch'] && $search['genreSearch'][0]) {
                 $article = $this->getDoctrine()
@@ -121,26 +123,5 @@ class SearchController extends Controller
         return $this->render('search/search_bar_form.html.twig', [
             'form' => $form->createView(),
         ]);
-    }
-
-    /**
-     * @Route("/article_search")
-     */
-    public function searchArticle(Request $request)
-    {
-        $q = $request->query->get('term'); // use "term" instead of "q" for jquery-ui
-        $results = $this->getDoctrine()->getRepository('AppBundle:Article')->findLike($q);
-
-        return $this->render('search/search.json.twig', ['results' => $results]);
-    }
-
-    /**
-     * @Route("/article_get/{id}")
-     */
-    public function getArticle($id = null)
-    {
-        $article = $this->getDoctrine()->getRepository('AppBundle:Article')->find($id);
-
-        return $this->json($article->getName());
     }
 }

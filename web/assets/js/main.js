@@ -20,8 +20,7 @@ $(document).ready(function () {
     });
 
     $('#form_textSearch').autocompleter({
-        url_list: '/search/article_search',
-        url_get: '/search/article_get/'
+        url_list: '/article_search',
     });
 });
 
