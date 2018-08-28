@@ -1,13 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ category.name }}{% endblock %}
+{% block title %}{{ genre.name }}{% endblock %}
 {% block body %}
     {{ parent() }}
 
     {% block cards %}
         <div class="container-fluid fondcontainer">
-            <h1 class="mt-5 mb-1 pt-3 text-center h1Categorie">{{ category.name }}</h1>
-            {% for k,article in category.article %}
+            <h1 class="mt-5 mb-1 pt-3 text-center h1Categorie">{{ genre.name }}</h1>
+            {% for k,article in genre.article %}
                 {% if (k%3 == 0) %}
                     <div class="row space pb-3">
                 {% endif %}

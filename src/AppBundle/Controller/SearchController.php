@@ -78,22 +78,18 @@ class SearchController extends Controller
             $search = $form->getData();
 
             if ($search['categorySearch'] && $search['genreSearch'][0]) {
-                dump($search['categorySearch']);
-                dump($search['genreSearch']);
                 $article = $this->getDoctrine()
                     ->getRepository(Article::class)
                     ->findCategoryGenreLike($search);
                 $category = [];
                 $genre = [];
             } elseif ($search['categorySearch']) {
-                dump($search['categorySearch']);
                 $article = $this->getDoctrine()
                     ->getRepository(Article::class)
                     ->findCategoryLike($search);
                 $category = [];
                 $genre = [];
-            } elseif ($search['genreSearch']) {
-                dump($search['genreSearch']);
+            } elseif ($search['genreSearch'][0]) {
                 $article = $this->getDoctrine()
                     ->getRepository(Article::class)
                     ->findGenreLike($search);
@@ -110,14 +106,14 @@ class SearchController extends Controller
                     ->getRepository(Genre::class)
                     ->findLike($search['textSearch']);
             }
-            return $this->render('result.html.twig', [
+            return $this->render('search/result.html.twig', [
                 'ArticleSearch' => $article,
                 'CategorySearch' => $category,
                 'GenreSearch' => $genre,
             ]);
         }
 
-        return $this->render('search_bar_form.html.twig', [
+        return $this->render('search/search_bar_form.html.twig', [
             'form' => $form->createView(),
         ]);
     }

@@ -281,6 +281,11 @@ article {
 .carouCata {
     margin: 3rem 0 3rem 0;
 }
+.card-img-top {
+    width: 474px;
+    height: 300px;
+}
+
 /****************** END OF CATALOGUE PAGE ******************/
 
 /****************** START PROFIL PAGE ******************/
