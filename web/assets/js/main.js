@@ -17,7 +17,12 @@ $(document).ready(function () {
     $('.AdvanceSearchNav').click(function (e) {
         e.preventDefault();
         $('.AdvanceSearchContent').toggle();
-    })
+    });
+
+    $('#form_textSearch').autocompleter({
+        url_list: '/search/article_search',
+        url_get: '/search/article_get/'
+    });
 });
 
 
@@ -36,4 +41,4 @@ $('.owl-carousel').owlCarousel({
             items: 5
         }
     }
-})
+});

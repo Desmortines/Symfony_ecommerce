@@ -13,6 +13,7 @@ use AppBundle\Entity\Article;
 use AppBundle\Entity\Category;
 use AppBundle\Entity\Genre;
 use Doctrine\ORM\EntityRepository;
+use PUGX\AutocompleterBundle\Form\Type\AutocompleteType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -21,11 +22,14 @@ use Symfony\Component\Form\Extension\Core\Type\SearchType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 
+/**
+ * @Route("/search")
+ */
 class SearchController extends Controller
 {
 
     /**
-     * @Route("/search", name="search_index")
+     * @Route("/", name="search_index")
      * @Method("GET")
      */
 
@@ -35,7 +39,7 @@ class SearchController extends Controller
     }
 
     /**
-     * @Route("/search", name="search_action")
+     * @Route("/", name="search_action")
      *
      */
 
@@ -43,7 +47,8 @@ class SearchController extends Controller
     {
         $form = $this->createFormBuilder()
             ->setAction($this->generateUrl('search_action'))
-            ->add('textSearch', SearchType::class, [
+            ->add('textSearch', AutocompleteType::class, [
+                'class' => Article::class,
                 'attr' => [
                     'placeholder' => 'Recherche'
                 ]
@@ -116,5 +121,26 @@ class SearchController extends Controller
         return $this->render('search/search_bar_form.html.twig', [
             'form' => $form->createView(),
         ]);
+    }
+
+    /**
+     * @Route("/article_search")
+     */
+    public function searchArticle(Request $request)
+    {
+        $q = $request->query->get('term'); // use "term" instead of "q" for jquery-ui
+        $results = $this->getDoctrine()->getRepository('AppBundle:Article')->findLike($q);
+
+        return $this->render('search/search.json.twig', ['results' => $results]);
+    }
+
+    /**
+     * @Route("/article_get/{id}")
+     */
+    public function getArticle($id = null)
+    {
+        $article = $this->getDoctrine()->getRepository('AppBundle:Article')->find($id);
+
+        return $this->json($article->getName());
     }
 }
