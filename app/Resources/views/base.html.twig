@@ -24,20 +24,11 @@
                                                                        width="150px;"></a>
             {{ render(controller('AppBundle:Search:search')) }}
 
-                    <form class="form-inline my-2 my-lg-0 d-flex flex-column bd-highlight">
-                        <div class="p-2 bd-highlight mt-4">
-                            <input class="form-control" type="search" placeholder="Rechercher" aria-label="Search">
-                            <button class="btn btn-outline-success my-2 my-sm-0 buttonHeaderOk" type="submit">OK</button>
-                            <div class="p-2 bd-highlight mr-auto" style="margin-top: -8px;">
-                                <a href="#" id="AdvanceSearch">Recherches avancées</a>
-                            </div>
-                        </div>
 
-                    </form>
-
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
             <div class="collapse navbar-collapse mb-2" id="navbarSupportedContent">
                 <div id="buttonNav" class="form-inline navbar-nav ml-auto">
@@ -69,152 +60,160 @@
         </div>
     </nav>
 
-            <nav id="FixNav" class="navbar navbar-expand-lg navbar-light sticky-top navbar-light headerNavMin" style="background-color: #43CBFF;">
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <nav id="FixNav" class="navbar navbar-expand-lg navbar-light sticky-top navbar-light headerNavMin"
+         style="background-color: #43CBFF;">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
             {{ render(controller('AppBundle:Search:search')) }}
 
-                    <div class="form-inline navbar-nav ml-auto">
-                        <a href="{{ path('category_index') }}">
-                            <button class="btn btn-outline-success my-2 my-sm-0 buttonHeaderCat">Voir le catalogue</button>
-                        </a>
-                        {% if app.user %}
-                            <a href="{{ path('fos_user_profile_show') }}">
-                                <button class="btn btn-outline-success my-2 my-sm-0 buttonHeader">Mon profil</button>
-                            </a>
-                            <a href="{{ path('fos_user_security_logout') }}">
-                                <button class="btn btn-outline-success my-2 my-sm-0 buttonHeader">Se déconnecter</button>
-                            </a>
-                        {% else %}
-                            <a href="{{ path('fos_user_security_login') }}">
-                                <button class="btn btn-outline-success my-2 my-sm-0 buttonHeader">S'identifier</button>
-                            </a>
-                            <a href="{{ path('fos_user_registration_register') }}">
-                                <button class="btn btn-outline-success my-2 my-sm-0 buttonHeader">S'inscrire</button>
-                            </a>
-                        {% endif %}
-                        <span class="pipeHeaderNavMin">|</span>
-                        <button class="btn btn-outline-success my-2 my-sm-0 buttonHeaderNavMin" type="submit">Mon panier</button>
-                    </div>
-                </div>
-            </nav>
-            <!-- Modal connexion -->
-            <!--<div class="modal fade" id="connexionModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            ...
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
-                        </div>
-                    </div>
-                </div>
-            </div>-->
-            <!-- END Modal connexion -->
-
-            <!-- Modal inscription -->
-            <!--<div class="modal fade" id="inscriptionModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            ...
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
-                        </div>
-                    </div>
-                </div>
-            </div>-->
-            <!-- END Modal inscription -->
-        {% endblock %}
-
-        {% block body %}
-
-
-
-        {% endblock %}
-
-        {% block topPage %}
-            <img id="btn-up" class="topPage mTop mBottom" src="{{ asset('assets/img/return-bookOk.png') }}" width="60px;" height="auto">
-        {% endblock %}
-
-        {% block footer %}
-            <div class="footer">
-                <section class="command">
-                    <div class="debit text-right">
-                        <img src="{{ asset('assets/img/ico-paiement-livraison-big.gif') }}" alt="paiement-livraison" />
-                        <h6>Débit à la Livraison</h6>
-                        <p>blablablablablablabla</p>
-                    </div>
-                    <div class="xpaye text-right">
-                        <img src="{{ asset('assets/img/Facilités.png') }}" alt="Facilités" />
-                        <h6>Paiement en 300000x</h6>
-                        <p>blablablablablablabla</p>
-                    </div>
-                    <div class="livraison text-right">
-                        <img src="{{ asset('assets/img/Fusee-bleu-600x600.png') }}" alt="Livraison" />
-                        <h6>Livraison express en Fusée</h6>
-                        <p>blablablablablablabla</p>
-                    </div>
-                </section>
-                <HR align="center" size="8" width="80%">
-                <section class="descriptif">
-                    <div class="mode_payement">
-                        <h6>Modes de Paiement :</h6>
-                        <img src="{{ asset('assets/img/modes-virtuels.png') }}" alt="Mode-Paiement" />
-                    </div>
-                    <div class="legal center">
-                        <a href="#" target="=_blank">Contact</a>
-                        <br>
-                        <a href="#" target="=_blank">Mentions légales</a>
-                    </div>
-                    <div class="dead">
-                        <h6>La Rubrique DEAD</h6>
-                    </div>
-                </section>
-                <HR align="center" width="80%">
-                <section class="newsletter">
-                    <h4>Newsletter :</h4>
-                    <input type="email">
-                    <button type="button" class="btn btn-outline-dark">Send</button>
-                </section>
-                <section class="bottomfooter text-right">
-                    <div class="socialink">
-                        <a href="https://www.facebook.com/" target="=_blank"><img src="{{ asset('assets/img/facebook.png') }}" alt="Facebook" /></a>
-                        <a href="https://twitter.com/" target="=_blank"><img src="{{ asset('assets/img/twitter.png') }}" alt="Twitter" /></a>
-                        <a href="https://www.instagram.com/" target="=_blank"><img src="{{ asset('assets/img/Instagram-170x170-icon_large.png') }}" alt="Instagram"/></a>
-                        <a href="https://www.youtube.com/" target="=_blank"><img src="{{ asset('assets/img/youtube-128.png') }}" alt="Youtube"/></a>
-                        <a href="https://www.google.com/?hl=fr" target="=_blank"><img src="{{ asset('assets/img/google.png') }}" alt="Google"/></a>
-                    </div>
-                    <div>
-                        <p>&copy; Copyright | Chasse, Pêche et PHP</p>
-                    </div>
-                </section>
+            <div class="form-inline navbar-nav ml-auto">
+                <a href="{{ path('category_index') }}">
+                    <button class="btn btn-outline-success my-2 my-sm-0 buttonHeaderCat">Voir le catalogue</button>
+                </a>
+                {% if app.user %}
+                    <a href="{{ path('fos_user_profile_show') }}">
+                        <button class="btn btn-outline-success my-2 my-sm-0 buttonHeader">Mon profil</button>
+                    </a>
+                    <a href="{{ path('fos_user_security_logout') }}">
+                        <button class="btn btn-outline-success my-2 my-sm-0 buttonHeader">Se déconnecter</button>
+                    </a>
+                {% else %}
+                    <a href="{{ path('fos_user_security_login') }}">
+                        <button class="btn btn-outline-success my-2 my-sm-0 buttonHeader">S'identifier</button>
+                    </a>
+                    <a href="{{ path('fos_user_registration_register') }}">
+                        <button class="btn btn-outline-success my-2 my-sm-0 buttonHeader">S'inscrire</button>
+                    </a>
+                {% endif %}
+                <span class="pipeHeaderNavMin">|</span>
+                <button class="btn btn-outline-success my-2 my-sm-0 buttonHeaderNavMin" type="submit">Mon panier
+                </button>
             </div>
-        {% endblock %}
-    </body>
-        {% block javascripts %}
-            <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
-            <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
-            <script src="{{ asset('assets/js/owlCarousel/owl.carousel.min.js') }}"></script>
-            <script src="{{ asset('assets/js/main.js') }}"></script>
-            <script src="{{ asset('assets/js/topPage.js') }}"></script>
-            <script src="{{ asset('assets/js/jquery.collection.js') }}"></script>
-        {% endblock %}
+        </div>
+    </nav>
+    <!-- Modal connexion -->
+    <!--<div class="modal fade" id="connexionModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>-->
+    <!-- END Modal connexion -->
+
+    <!-- Modal inscription -->
+    <!--<div class="modal fade" id="inscriptionModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>-->
+    <!-- END Modal inscription -->
+{% endblock %}
+
+{% block body %}
+
+
+
+{% endblock %}
+
+{% block topPage %}
+    <img id="btn-up" class="topPage mTop mBottom" src="{{ asset('assets/img/return-bookOk.png') }}" width="60px;"
+         height="auto">
+{% endblock %}
+
+{% block footer %}
+    <div class="footer">
+        <section class="command">
+            <div class="debit text-right">
+                <img src="{{ asset('assets/img/ico-paiement-livraison-big.gif') }}" alt="paiement-livraison"/>
+                <h6>Débit à la Livraison</h6>
+                <p>blablablablablablabla</p>
+            </div>
+            <div class="xpaye text-right">
+                <img src="{{ asset('assets/img/Facilités.png') }}" alt="Facilités"/>
+                <h6>Paiement en 300000x</h6>
+                <p>blablablablablablabla</p>
+            </div>
+            <div class="livraison text-right">
+                <img src="{{ asset('assets/img/Fusee-bleu-600x600.png') }}" alt="Livraison"/>
+                <h6>Livraison express en Fusée</h6>
+                <p>blablablablablablabla</p>
+            </div>
+        </section>
+        <HR align="center" size="8" width="80%">
+        <section class="descriptif">
+            <div class="mode_payement">
+                <h6>Modes de Paiement :</h6>
+                <img src="{{ asset('assets/img/modes-virtuels.png') }}" alt="Mode-Paiement"/>
+            </div>
+            <div class="legal center">
+                <a href="#" target="=_blank">Contact</a>
+                <br>
+                <a href="#" target="=_blank">Mentions légales</a>
+            </div>
+            <div class="dead">
+                <h6>La Rubrique DEAD</h6>
+            </div>
+        </section>
+        <HR align="center" width="80%">
+        <section class="newsletter">
+            <h4>Newsletter :</h4>
+            <input type="email">
+            <button type="button" class="btn btn-outline-dark">Send</button>
+        </section>
+        <section class="bottomfooter text-right">
+            <div class="socialink">
+                <a href="https://www.facebook.com/" target="=_blank"><img src="{{ asset('assets/img/facebook.png') }}"
+                                                                          alt="Facebook"/></a>
+                <a href="https://twitter.com/" target="=_blank"><img src="{{ asset('assets/img/twitter.png') }}"
+                                                                     alt="Twitter"/></a>
+                <a href="https://www.instagram.com/" target="=_blank"><img
+                            src="{{ asset('assets/img/Instagram-170x170-icon_large.png') }}" alt="Instagram"/></a>
+                <a href="https://www.youtube.com/" target="=_blank"><img src="{{ asset('assets/img/youtube-128.png') }}"
+                                                                         alt="Youtube"/></a>
+                <a href="https://www.google.com/?hl=fr" target="=_blank"><img src="{{ asset('assets/img/google.png') }}"
+                                                                              alt="Google"/></a>
+            </div>
+            <div>
+                <p>&copy; Copyright | Chasse, Pêche et PHP</p>
+            </div>
+        </section>
+    </div>
+{% endblock %}
+</body>
+{% block javascripts %}
+    <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets/js/owlCarousel/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('assets/js/main.js') }}"></script>
+    <script src="{{ asset('assets/js/topPage.js') }}"></script>
+    <script src="{{ asset('assets/js/jquery.collection.js') }}"></script>
+{% endblock %}
 
 </html>
