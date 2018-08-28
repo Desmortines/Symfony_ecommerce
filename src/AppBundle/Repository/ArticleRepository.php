@@ -10,4 +10,50 @@ namespace AppBundle\Repository;
  */
 class ArticleRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findLike($search)
+    {
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT a
+            FROM AppBundle:Article a
+            WHERE a.name LIKE :search')
+            ->setParameter('search', $search . '%')
+            ->getResult();
+    }
+
+    public function findCategoryGenreLike($search)
+    {
+        $query = $this->createQueryBuilder('a')
+            ->where('a.name LIKE :ArticleSearch')
+            ->setParameter('ArticleSearch', $search['textSearch'] . '%')
+            ->andWhere('a.category = :CategorySearch')
+            ->setParameter('CategorySearch', $search['categorySearch'])
+            ->andWhere(':GenreSearch MEMBER OF a.genres')
+            ->setParameter('GenreSearch', $search['genreSearch'])
+            ->getQuery();
+        return $query->getResult();
+
+    }
+
+    public function findCategoryLike($search)
+    {
+        $query = $this->createQueryBuilder('a')
+            ->where('a.name LIKE :ArticleSearch')
+            ->setParameter('ArticleSearch', $search['textSearch'] . '%')
+            ->andWhere('a.category = :CategorySearch')
+            ->setParameter('CategorySearch', $search['categorySearch'])
+            ->getQuery();
+        return $query->getResult();
+    }
+
+    public function findGenreLike($search)
+    {
+        $query = $this->createQueryBuilder('a')
+            ->where('a.name LIKE :ArticleSearch')
+            ->setParameter('ArticleSearch', $search['textSearch'] . '%')
+            ->andWhere(':GenreSearch MEMBER OF a.genres')
+            ->setParameter('GenreSearch', $search['genreSearch'])
+            ->getQuery();
+        return $query->getResult();
+    }
 }

@@ -2,30 +2,24 @@
 
 namespace AppBundle\Controller;
 
+
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Request;
 
 class DefaultController extends Controller
 {
     /**
      * @Route("/", name="homepage")
+     * @Method("GET")
      */
-    public function indexAction(Request $request)
+    public function indexAction()
     {
-        // replace this example code with whatever you need
         return $this->render('default/index.html.twig', [
-            'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
+            'base_dir' => realpath($this->getParameter('kernel.project_dir')) . DIRECTORY_SEPARATOR,
         ]);
     }
 
-    /**
-     * @Route("/catalogue", name="catalogue")
-     */
-    public function catalogueAction()
-    {
-        return $this->render('catalogue.html.twig');
-    }
 
     /**
      * @Route("/basket", name="basket")
@@ -33,5 +27,13 @@ class DefaultController extends Controller
     public function basketAction()
     {
         return $this->render('basket.html.twig');
+    }
+
+    /**
+     * @Route("/command", name="command")
+     */
+    public function commandAction()
+    {
+        return $this->render('command.html.twig');
     }
 }

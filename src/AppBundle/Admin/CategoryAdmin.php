@@ -7,6 +7,7 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class CategoryAdmin extends AbstractAdmin
 {
@@ -15,14 +16,16 @@ class CategoryAdmin extends AbstractAdmin
         $datagridMapper
             ->add('id')
             ->add('name')
+            ->add('picture')
+
         ;
     }
 
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('id')
             ->add('name')
+            ->add('picture','url')
             ->add('_action', null, [
                 'actions' => [
                     'show' => [],
@@ -37,6 +40,7 @@ class CategoryAdmin extends AbstractAdmin
     {
         $formMapper
             ->add('name')
+            ->add('picture')
         ;
     }
 
@@ -45,6 +49,7 @@ class CategoryAdmin extends AbstractAdmin
         $showMapper
             ->add('id')
             ->add('name')
+            ->add('picture')
         ;
     }
 }

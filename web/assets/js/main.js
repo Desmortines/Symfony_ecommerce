@@ -13,6 +13,11 @@ $(document).ready(function () {
             $('#FixNav').hide();
         }
     });
+
+    $('.AdvanceSearchNav').click(function (e) {
+        e.preventDefault();
+        $('.AdvanceSearchContent').toggle();
+    })
 });
 
 
