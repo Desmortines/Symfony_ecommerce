@@ -12,6 +12,7 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Article;
 use AppBundle\Entity\Category;
 use AppBundle\Entity\Genre;
+use Doctrine\ORM\EntityRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -50,14 +51,21 @@ class SearchController extends Controller
             ->add('categorySearch', EntityType::class, [
                 'class' => 'AppBundle\Entity\Category',
                 'choice_label' => 'name',
-                'multiple' => true,
                 'required' => false,
+                'query_builder' => function (EntityRepository $er) {
+                    return $er->createQueryBuilder('c')
+                        ->orderBy('c.name', 'ASC');
+                },
             ])
             ->add('genreSearch', EntityType::class, [
                 'class' => 'AppBundle\Entity\Genre',
                 'choice_label' => 'name',
-                'multiple' => true,
                 'required' => false,
+                'multiple' => true,
+                'query_builder' => function (EntityRepository $er) {
+                    return $er->createQueryBuilder('g')
+                        ->orderBy('g.name', 'ASC');
+                },
             ])
             ->add('send', SubmitType::class, [
                 'label' => 'Ok'
@@ -69,25 +77,19 @@ class SearchController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $search = $form->getData();
 
-            dump($search);
-
-            if ($search['categorySearch'][0] && $search['genreSearch'][0]) {
-                dump($search['categorySearch']);
-                dump($search['genreSearch']);
+            if ($search['categorySearch'] && $search['genreSearch'][0]) {
                 $article = $this->getDoctrine()
                     ->getRepository(Article::class)
                     ->findCategoryGenreLike($search);
                 $category = [];
                 $genre = [];
-            } elseif ($search['categorySearch'][0]) {
-                dump($search['categorySearch']);
+            } elseif ($search['categorySearch']) {
                 $article = $this->getDoctrine()
                     ->getRepository(Article::class)
                     ->findCategoryLike($search);
                 $category = [];
                 $genre = [];
             } elseif ($search['genreSearch'][0]) {
-                dump($search['genreSearch']);
                 $article = $this->getDoctrine()
                     ->getRepository(Article::class)
                     ->findGenreLike($search);
@@ -104,14 +106,14 @@ class SearchController extends Controller
                     ->getRepository(Genre::class)
                     ->findLike($search['textSearch']);
             }
-            return $this->render('result.html.twig', [
+            return $this->render('search/result.html.twig', [
                 'ArticleSearch' => $article,
                 'CategorySearch' => $category,
                 'GenreSearch' => $genre,
             ]);
         }
 
-        return $this->render('search_bar_form.html.twig', [
+        return $this->render('search/search_bar_form.html.twig', [
             'form' => $form->createView(),
         ]);
     }

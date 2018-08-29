@@ -115,7 +115,7 @@ class Article
     /**
      * @var Cart
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Cart", inversedBy="article")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Cart", inversedBy="article")
      */
     protected $cart;
 
