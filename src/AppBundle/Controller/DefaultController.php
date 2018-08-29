@@ -36,4 +36,28 @@ class DefaultController extends Controller
     {
         return $this->render('command.html.twig');
     }
+
+    /**
+     * @Route("/legal_mention", name="legal_mention")
+     */
+    public function legal_mentionAction()
+    {
+        return $this->render('legality/legal_mention.html.twig');
+    }
+
+    /**
+     * @Route("/cgv", name="CGV")
+     */
+    public function CGVAction()
+    {
+        return $this->render('legality/general condition of sale.html.twig');
+    }
+
+    /**
+     * @Route("/RGPD", name="RGPD")
+     */
+    public function RGPDAction()
+    {
+        return $this->render('legality/RGPD.html.twig');
+    }
 }
