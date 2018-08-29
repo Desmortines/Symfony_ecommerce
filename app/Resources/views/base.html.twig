@@ -20,8 +20,7 @@
 {% block header %}
     <nav class="navbar navbar-expand-lg navbar-light headerNav">
         <div class="container-fluid">
-            <a class="navbar-brand" href="{{ path('homepage') }}"><img src="{{ asset('assets/img/arbrelogo.jpg') }}"
-                                                                       width="150px;"></a>
+            <a class="navbar-brand" href="{{ path('homepage') }}"><img src="{{ asset('assets/img/arbrelogo.jpg') }}" width="150px;"></a>
             {{ render(controller('AppBundle:Search:search')) }}
 
 
@@ -40,7 +39,7 @@
                             <button class="btn btn-outline-success my-2 my-sm-0 buttonHeader">Mon profil</button>
                         </a>
                         <a href="{{ path('fos_user_security_logout') }}">
-                            <button class="btn btn-outline-success my-2 my-sm-0 buttonHeader">Se déconnecter</button>
+                            <button class="btn btn-outline-success my-2 my-sm-0 buttonPower" title="Se déconnecter"><img src="{{ asset('assets/img/powe-symbol-4OK.png') }}" width="26px;" height="auto;"></button>
                         </a>
                     {% else %}
                         <a href="{{ path('fos_user_security_login') }}">
@@ -75,7 +74,7 @@
                         <button class="btn btn-outline-success my-2 my-sm-0 buttonHeader">Mon profil</button>
                     </a>
                     <a href="{{ path('fos_user_security_logout') }}">
-                        <button class="btn btn-outline-success my-2 my-sm-0 buttonHeader">Se déconnecter</button>
+                        <button class="btn btn-outline-success my-2 my-sm-0 buttonPower" title="Se déconnecter"><img src="{{ asset('assets/img/powe-symbol-4OK.png') }}" width="26px;" height="auto;"></button>
                     </a>
                 {% else %}
                     <a href="{{ path('fos_user_security_login') }}">
@@ -142,10 +141,10 @@
 
 {% endblock %}
 
-{% block topPage %}
-    <img id="btn-up" style="display:none;" class="topPage mTop mBottom"
-         src="{{ asset('assets/img/return-bookOk.png') }}" width="60px;" height="auto">
-{% endblock %}
+        {% block topPage %}
+            <img id="btn-up" style="display:none;" class="topPage mTop mBottom" src="{{ asset('assets/img/return-bookOk.png') }}" width="60px;" height="auto">
+         height="auto">
+        {% endblock %}
 
 {% block footer %}
     <div class="footer">
@@ -184,7 +183,7 @@
         <HR align="center" width="80%">
         <section class="newsletter">
             <h4>Newsletter :</h4>
-            <input type="email" title="email">
+            <input type="email">
             <button type="button" class="btn btn-outline-dark">Send</button>
         </section>
         <section class="bottomfooter text-right">
@@ -213,7 +212,7 @@
     <script src="{{ asset('assets/js/owlCarousel/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('assets/js/main.js') }}"></script>
     <script src="{{ asset('assets/js/topPage.js') }}"></script>
-    <!--<script src="{{ asset('assets/js/jquery.collection.js') }}"></script>-->
+    <script src="{{ asset('assets/js/jquery.collection.js') }}"></script>
 {% endblock %}
 
 </html>

@@ -88,7 +88,7 @@ article {
 .buttonHeader {
     border-color: #B3FF5C;
     color: #B3FF5C;
-    margin-left: 10px;
+    margin-left: 5px;
 }
 
 .buttonHeader:hover {
@@ -121,9 +121,18 @@ article {
 
 .pipeHeader {
     color: #8C7448;
-    margin: 0px 0px 0px 10px;
+    margin: 0px 0px 0px 5px;
     font-size: 3em;
     font-weight: 100;
+}
+
+.buttonPower {
+    background-color: #B3FF5C;
+    margin-left: 5px;
+}
+
+.buttonPower:hover {
+    background-color: red;
 }
 /****** End of Buttons ******/
 /**************************** END OF PRINCIPAL NAV ****************************/
@@ -163,7 +172,7 @@ article {
 
 .pipeHeaderNavMin {
     color: #8C7448;
-    margin: 0 10px 0 10px;
+    margin: 0 -3px 0 7px;
     font-size: 3em;
     font-weight: 100;
 }
