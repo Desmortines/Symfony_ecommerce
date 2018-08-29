@@ -24,7 +24,7 @@ class Cart
     /**
      * @var Article
      *
-     * @ORM\OneToMany(targetEntity="Article", mappedBy="cart")
+     * @ORM\ManyToMany(targetEntity="Article", mappedBy="cart")
      */
     private $article;
 
