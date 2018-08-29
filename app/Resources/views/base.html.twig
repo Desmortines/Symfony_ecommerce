@@ -142,9 +142,10 @@
 
 {% endblock %}
 
-        {% block topPage %}
-            <img id="btn-up" style="display:none;" class="topPage mTop mBottom" src="{{ asset('assets/img/return-bookOk.png') }}" width="60px;" height="auto">
-        {% endblock %}
+{% block topPage %}
+    <img id="btn-up" style="display:none;" class="topPage mTop mBottom"
+         src="{{ asset('assets/img/return-bookOk.png') }}" width="60px;" height="auto">
+{% endblock %}
 
 {% block footer %}
     <div class="footer">
@@ -183,7 +184,7 @@
         <HR align="center" width="80%">
         <section class="newsletter">
             <h4>Newsletter :</h4>
-            <input type="email">
+            <input type="email" title="email">
             <button type="button" class="btn btn-outline-dark">Send</button>
         </section>
         <section class="bottomfooter text-right">
