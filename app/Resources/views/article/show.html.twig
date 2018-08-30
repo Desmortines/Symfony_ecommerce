@@ -14,139 +14,129 @@
             <div class="row divCommand mBottom">
                 <div class="col-xs-9 col-md-12">
                     <div class="row">
-
                         <div class="col-md-5 carouR">
-                            <article class="">
-                                <div id='carousel-custom' class='carousel slide' data-ride='carousel'>
-                                    <!-- Wrapper for slides -->
-                                    <div class='carousel-inner'>
-                                        <div class='carousel-item active'>
-                                            <img class="imgCar" src="{{ asset('assets/img/selection.jpg') }}" style="width: 155px; height: 220px;" alt='' />
-                                        </div>
-                                        <div class='carousel-item'>
-                                            <img class="imgCar" src="{{ asset('assets/img/selection2.jpg') }}" style="width: 155px; height: 220px;" alt='' />
-                                        </div>
-                                        <div class='carousel-item'>
-                                            <img class="imgCar" src="{{ asset('assets/img/selection3.png') }}" style="width: 155px; height: 220px;" alt='' />
-                                        </div>
-
-                                        <div class='carousel-item'>
-                                            <img class="imgCar" src="{{ asset('assets/img/selection4.jpg') }}" style="width: 155px; height: 220px;" alt='' />
-                                        </div>
-                                        <div class='carousel-item'>
-                                            <img class="imgCar" src="{{ asset('assets/img/selection5.jpg') }}" style="width: 155px; height: 220px;" alt='' />
-                                        </div>
-                                        <div class='carousel-item'>
-                                            <img class="imgCar" src="{{ asset('assets/img/selection.jpg') }}" style="width: 155px; height: 220px;" alt='' />
-                                        </div>
-
-                                        <div class='carousel-item'>
-                                            <img class="imgCar" src="{{ asset('assets/img/selection.jpg') }}" style="width: 155px; height: 220px;" alt='' />
-                                        </div>
-                                        <div class='carousel-item'>
-                                            <img class="imgCar" src="{{ asset('assets/img/selection.jpg') }}" style="width: 155px; height: 220px;" alt='' />
-                                        </div>
-                                        <div class='carousel-item'>
-                                            <img class="imgCar" src="{{ asset('assets/img/selection.jpg') }}" style="width: 155px; height: 220px;" alt='' />
-                                        </div>
-
-                                        <!-- Controls -->
-                                        <a class='left carousel-control' href='#carousel-custom' data-slide='prev'>
-                                            <span class='glyphicon glyphicon-chevron-left'></span>
-                                        </a>
-                                        <a class='right carousel-control' href='#carousel-custom' data-slide='next'>
-                                            <span class='glyphicon glyphicon-chevron-right'></span>
-                                        </a>
-
+                            <div id='carousel-custom' class='carousel slide' data-ride='carousel'>
+                                <!-- Wrapper for slides -->
+                                {% if article.images is empty %}
+                                    <div class="carousel-item active">
+                                        <img class="imgCar" src="{{ asset('assets/img/No_Image_Available.gif') }}"
+                                             alt="">
                                     </div>
-                                    <!-- Indicators -->
-                                    <ol class='carousel-indicators'>
-                                        <li data-target='#carousel-custom' data-slide-to='0' class='active'><img src="{{ asset('assets/img/selection.jpg') }}" style="width: 35px; height: 55px;" alt='' /></li>
-                                        <li data-target='#carousel-custom' data-slide-to='1'><img src="{{ asset('assets/img/selection2.jpg') }}" style="width: 35px; height: 55px;" alt='' /></li>
-                                        <li data-target='#carousel-custom' data-slide-to='2'><img src="{{ asset('assets/img/selection3.png') }}" style="width: 35px; height: 55px;" alt='' /></li>
-                                        <li data-target='#carousel-custom' data-slide-to='3'><img src="{{ asset('assets/img/selection4.jpg') }}" style="width: 35px; height: 55px;" alt='' /></li>
-                                        <li data-target='#carousel-custom' data-slide-to='4'><img src="{{ asset('assets/img/selection5.jpg') }}" style="width: 35px; height: 55px;" alt='' /></li>
-                                        <li data-target='#carousel-custom' data-slide-to='5'><img src="{{ asset('assets/img/selection.jpg') }}" style="width: 35px; height: 55px;" alt='' /></li>
-                                        <li data-target='#carousel-custom' data-slide-to='6'><img src="{{ asset('assets/img/selection.jpg') }}" style="width: 35px; height: 55px;" alt='' /></li>
-                                        <li data-target='#carousel-custom' data-slide-to='7'><img src="{{ asset('assets/img/selection.jpg') }}" style="width: 35px; height: 55px;" alt='' /></li>
-                                        <li data-target='#carousel-custom' data-slide-to='8'><img src="{{ asset('assets/img/selection.jpg') }}" style="width: 35px; height: 55px;" alt='' /></li>
-                                    </ol>
+                                {% endif %}
+                                <div class='carousel-inner'>
+                                    {% for k,image in article.images %}
+                                        {% if k == 0 %}
+                                            <div class='carousel-item active'>
+                                                <img class="imgCar" src="{{ image.link }}"
+                                                     style="width: 155px; height: 220px;" alt=''/>
+                                            </div>
+                                        {% else %}
+                                            <div class='carousel-item'>
+                                                <img class="imgCar" src="{{ image.link }}"
+                                                     style="width: 155px; height: 220px;" alt=''/>
+                                            </div>
+                                        {% endif %}
+                                    {% endfor %}
+
                                 </div>
-                            </article>
+                                <!-- Indicators -->
+                                <ol class='carousel-indicators'>
+                                    {% for k,image in article.images %}
+                                        {% if k == 0 %}
+                                            <li data-target='#carousel-custom' data-slide-to={{ k }} class='active'><img
+                                                        src="{{ image.link }}"
+                                                        style="width: 35px; height: 55px;" alt=''/>
+                                            </li>
+                                        {% else %}
+                                            <li data-target='#carousel-custom' data-slide-to={{ k }}><img
+                                                        src="{{ image.link }}"
+                                                        style="width: 35px; height: 55px;" alt=''/>
+                                            </li>
+                                        {% endif %}
+
+                                    {% endfor %}
+                                </ol>
+                            </div>
                         </div>
 
-                    <div class="col-md-4 mTop">
-                        <div class="row">
-                            <article class="mTop">
-                                <p class="articleName">{{ article.name }},</p>
-                                <p>JK Rowling</p>
-                            </article>
-                        </div>
-                        <div class="row">
-                            <article>
-                                <p class="articleIsbn">Isbnreference : {{ article.isbnReference }}</p>
-                            </article>
-                        </div>
-                        <div class="row text-center">
-                            <article>
-                                    <a href="#resum"> >>> Lire le résumé <<< </a>
-                            </article>
-                        </div>
-                        <div class="row">
-                            <article>
-                                <a href="#carac"> >>> Voir les détails <<<</a>
-                            </article>
-                        </div>
-                        <!-- <article>
-                                    <p>Totalbought</p>
-                                    <p>{{ article.totalBought }}</p>
+                        <div class="col-md-4 mTop">
+                            <div class="row">
+                                <article class="mTop">
+                                    <p class="articleName">{{ article.name }},</p>
+                                    <p>JK Rowling</p>
                                 </article>
+                            </div>
+                            <div class="row">
+                                <article>
+                                    <p class="articleIsbn">Isbnreference : {{ article.isbnReference }}</p>
+                                </article>
+                            </div>
+                            <div class="row text-center">
+                                <article>
+                                    <a href="#resum"> >>> Lire le résumé <<< </a>
+                                </article>
+                            </div>
+                            <div class="row">
+                                <article>
+                                    <a href="#carac"> >>> Voir les détails <<<</a>
+                                </article>
+                            </div>
                         </div>
-                        <article>
-                            <p>Nbrclicked</p>
-                            <p>{{ article.nbrClicked }}</p>
-                        </article>-->
-                    </div>
 
-                    <div class="col-md-3 carouL backgPrice">
+                        <div class="col-md-3 carouL backgPrice">
 
-                        <div class="row mTop">
-                            <!--<article>
-                                    <p>Stock</p>
-                                    <p>{{ article.stock }}</p>
-                                 </article>-->
-                            <article class="mTop">
-                                <p class="articleStatut">Article <span class="dispo">en stock !</span></p>
+                            <div class="row mTop">
+                                <article class="mTop">
 
-                            </article>
-                            <div class="row ml-3">
-                            <article>
-                                <p class="articlePrice"> Prix neuf : <p class="articlePriceOccaz">{{ article.price }} euros</p></p>
-                            </article>
-                            <article>
-                                <p class="articlePrice"> <span id="sprice">Prix occasion :</span> <p class="articlePriceOccaz">A partir de 4 euros</p></p>
-                            </article>
+                                    {% if article.stock > 10 %}
+                                        <p class="articleStatut">Article <span class="dispo">en stock !</span></p>
+                                    {% elseif article.stock < 10 and article.stock > 2 %}
+                                        <p class="articleStatut">Article <span
+                                                    class="text-warning">dernier exemplaire</span></p>
+                                    {% else %}
+                                        <p class="articleStatut">Article <span class="text-danger">indisponible</span>
+                                        </p>
+                                    {% endif %}
+
+
+                                </article>
+                                <div class="row ml-3">
+                                    <article>
+                                        <p class="articlePrice"> Prix neuf :
+                                        <p class="articlePriceOccaz">{{ article.price }} euros </p>
+                                    </article>
+                                    <article>
+                                        <p class="articlePrice"><span id="sprice">Prix occasion :</span>
+                                        <p class="articlePriceOccaz">A partir de {{ random(range(1,article.price)) }}
+                                            euros
+                                        </p>
+                                    </article>
+
+                                </div>
+
+                                <a href="#">
+                                    <button class="btn btn-outline-success my-2 my-sm-0 buttonBasket" type="submit">
+                                        Ajouter
+                                        au panier !
+                                    </button>
+                                </a>
 
                             </div>
 
-                            <button class="btn btn-outline-success my-2 my-sm-0 buttonBasket" type="submit">Ajouter au panier !</button>
                         </div>
-
-                    </div>
                     </div>
                 </div>
             </div>
-
-
         </div>
     {% endblock %}
 
-    {% block resume%}
+    {% block resume %}
         <div class="container-fluid fondcontainer mTop mBottom">
             <div class="row divCommand" style="padding: 1em;">
                 <h2 id="resum">Résumé</h2>
-                <p class="paraArticle">Lorem Elsass ipsum barapli ftomi! Chulia Roberstau tchao bissame ornare Chulien kuglopf ullamcorper
-                    Christkindelsmärik so schneck leo DNA, in, non eleifend auctor, tristique  dignissim risus,
+                <p class="paraArticle">Lorem Elsass ipsum barapli ftomi! Chulia Roberstau tchao bissame ornare Chulien
+                    kuglopf ullamcorper
+                    Christkindelsmärik so schneck leo DNA, in, non eleifend auctor, tristique dignissim risus,
                     mamsell rhoncus Richard Schirmeck nullam leo non Coopé de Truchtersheim baeckeoffe Racing.
                     kougelhopf merci vielmols hopla Pellentesque rucksack ac sed s'guelt wurscht sit Morbi Heineken
                     vielmols, gal gewurztraminer porta id, Oberschaeffolsheim ac flammekueche leverwurscht lacus et
@@ -168,13 +158,13 @@
                     </div>
                     <div>
                         <p>Category :</p>
-                        <p>{{ article.category }}</p>
+                        <p>{{ article.category.name }}</p>
                     </div>
                     <div>
                         <p>Genre :</p>
-                        <p>{%for genre in article.genres %}
-                        <p>{{ genre.name }} </p>
-                        {% endfor %}</p>
+                        {% for genre in article.genres %}
+                            <p>{{ genre.name }} </p>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
@@ -190,22 +180,15 @@
 
 
                     <div class="owl-carousel owl-theme" style="margin-top: -30px;">
-                        <a class="item"><img src="{{ asset('assets/img/selection.jpg') }}" class="MonthBook" style="width: 180px; height: auto"></a>
-                        <a class="item"><img src="{{ asset('assets/img/selection.jpg') }}" class="MonthBook" style="width: 180px; height: auto"></a>
-                        <a class="item"><img src="{{ asset('assets/img/selection.jpg') }}" class="MonthBook" style="width: 180px; height: auto"></a>
-                        <a class="item"><img src="{{ asset('assets/img/selection.jpg') }}" class="MonthBook" style="width: 180px; height: auto"></a>
-                        <a class="item"><img src="{{ asset('assets/img/selection.jpg') }}" class="MonthBook" style="width: 180px; height: auto"></a>
-                        <a class="item"><img src="{{ asset('assets/img/selection.jpg') }}" class="MonthBook" style="width: 180px; height: auto"></a>
-                        <a class="item"><img src="{{ asset('assets/img/selection.jpg') }}" class="MonthBook" style="width: 180px; height: auto"></a>
-                        <a class="item"><img src="{{ asset('assets/img/selection.jpg') }}" class="MonthBook" style="width: 180px; height: auto"></a>
-                        <a class="item"><img src="{{ asset('assets/img/selection.jpg') }}" class="MonthBook" style="width: 180px; height: auto"></a>
-                        <a class="item"><img src="{{ asset('assets/img/selection.jpg') }}" class="MonthBook" style="width: 180px; height: auto"></a>
-                        <a class="item"><img src="{{ asset('assets/img/selection.jpg') }}" class="MonthBook" style="width: 180px; height: auto"></a>
-                        <a class="item"><img src="{{ asset('assets/img/selection.jpg') }}" class="MonthBook" style="width: 180px; height: auto"></a>
-                        <a class="item"><img src="{{ asset('assets/img/selection.jpg') }}" class="MonthBook" style="width: 180px; height: auto"></a>
-                        <a class="item"><img src="{{ asset('assets/img/selection.jpg') }}" class="MonthBook" style="width: 180px; height: auto"></a>
-                        <a class="item"><img src="{{ asset('assets/img/selection.jpg') }}" class="MonthBook" style="width: 180px; height: auto"></a>
-                        <a class="item"><img src="{{ asset('assets/img/selection.jpg') }}" class="MonthBook" style="width: 180px; height: auto"></a>
+                        {% for k,article_category in article.category.article %}
+                            {% if article_category != article %}
+                                <a class="item" href="{{ path('article_show', {'id': article_category.id}) }}">
+                                    <img src="{{ article_category.images|first.link ?? asset('assets/img/No_Image_Available.gif') }}"
+                                            class="MonthBook"
+                                            style="width: 180px; height: auto;">
+                                </a>
+                            {% endif %}
+                        {% endfor %}
                     </div>
 
 

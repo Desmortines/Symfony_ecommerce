@@ -54,9 +54,8 @@
                              height="100%"
                              alt="Card image cap">
                         <div class="card-body">
-                            <h5 class="card-title text-center center-block">{{ category.name }}</h5>
                             <a href="{{ path('category_show', {'id': category.id}) }}"
-                               class="btn btn-primary centerButton">Go somewhere</a>
+                               class="btn btn-primary centerButton">{{ category.name }}</a>
                         </div>
                     </div>
                 </div>
