@@ -63,6 +63,13 @@ class Cart
      */
     private $articleAmount;
 
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="cartArticleQuantity", type="integer")
+     */
+    private $cartArticleQuantity;
+
 
     /**
      * Get id.

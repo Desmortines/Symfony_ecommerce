@@ -20,15 +20,6 @@ class DefaultController extends Controller
         ]);
     }
 
-
-    /**
-     * @Route("/basket", name="basket")
-     */
-    public function basketAction()
-    {
-        return $this->render('basket.html.twig');
-    }
-
     /**
      * @Route("/command", name="command")
      */

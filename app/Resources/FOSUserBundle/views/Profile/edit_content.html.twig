@@ -10,8 +10,9 @@
             {{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
                 {{ form_widget(form) }}
         </div>
-        <div>
-            <input class="btn btn-outline-success my-2 my-sm-0 buttonHeaderOk editProfilButton" type="submit" value="{{ 'profile.edit.submit'|trans }}" />
+        <div style="text-align: center;">
+            <input class="btn btn-outline-success buttonHeaderOk" type="submit" value="{{ 'profile.edit.submit'|trans }}"/>
+            <input class="btn btn-outline-success buttonSupp" type="submit" value="Désactiver mon compte"/>
         </div>
         {{ form_end(form) }}
     </div>
