@@ -45,7 +45,7 @@ class Article
     /**
      * @var Image[]
      *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Image", inversedBy="article", cascade={"ALL"})
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Image", inversedBy="article", cascade={"persist"})
      */
     protected $images;
 
@@ -73,7 +73,7 @@ class Article
     /**
      * @var Genre[]
      *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Genre", inversedBy="article", cascade={"ALL"})
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Genre", inversedBy="article", cascade={"persist"})
      */
     protected $genres;
 

@@ -179,7 +179,7 @@
                     <h2 class="profilH2">Dans la même catégorie ...</h2>
 
 
-                    <div class="owl-carousel owl-theme" style="margin-top: -30px;">
+                    <div class="owl-carousel owl-theme py-4" style="margin-top: -30px;">
                         {% for k,article_category in article.category.article %}
                             {% if article_category != article %}
                                 <a class="item" href="{{ path('article_show', {'id': article_category.id}) }}">

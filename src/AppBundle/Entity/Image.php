@@ -22,7 +22,7 @@ class Image
     private $id;
 
     /**
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Article", mappedBy="images",cascade={"ALL"})
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Article", mappedBy="images",cascade={"persist"})
      */
     private $article;
 

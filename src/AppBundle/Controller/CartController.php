@@ -26,6 +26,6 @@ class CartController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $quantity = $em->getRepository()
+        $quantity = $em->getRepository();
     }
 }
