@@ -22,20 +22,6 @@ class Cart
     private $id;
 
     /**
-     * @var Article
-     *
-     * @ORM\ManyToMany(targetEntity="Article", mappedBy="cart")
-     */
-    private $article;
-
-    /**
-     * @var array
-     *
-     * @ORM\Column(name="quantity", type="array")
-     */
-    private $quantity;
-
-    /**
      * @var User
      *
      * @ORM\OneToOne(targetEntity="User")
@@ -64,11 +50,11 @@ class Cart
     private $articleAmount;
 
     /**
-     * @var int
+     * @var CartElement
      *
-     * @ORM\Column(name="cartArticleQuantity", type="integer")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\CartElement", mappedBy="cart")
      */
-    private $cartArticleQuantity;
+    private $cartElement;
 
 
     /**
@@ -79,54 +65,6 @@ class Cart
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set article.
-     *
-     * @param array $article
-     *
-     * @return Cart
-     */
-    public function setArticle($article)
-    {
-        $this->article = $article;
-
-        return $this;
-    }
-
-    /**
-     * Get article.
-     *
-     * @return array
-     */
-    public function getArticle()
-    {
-        return $this->article;
-    }
-
-    /**
-     * Set quantity.
-     *
-     * @param array $quantity
-     *
-     * @return Cart
-     */
-    public function setQuantity($quantity)
-    {
-        $this->quantity = $quantity;
-
-        return $this;
-    }
-
-    /**
-     * Get quantity.
-     *
-     * @return array
-     */
-    public function getQuantity()
-    {
-        return $this->quantity;
     }
 
     /**
@@ -256,5 +194,41 @@ class Cart
     public function removeArticle(\AppBundle\Entity\Article $article)
     {
         return $this->article->removeElement($article);
+    }
+
+    /**
+     * Add cartElement.
+     *
+     * @param \AppBundle\Entity\CartElement $cartElement
+     *
+     * @return Cart
+     */
+    public function addCartElement(\AppBundle\Entity\CartElement $cartElement)
+    {
+        $this->cartElement[] = $cartElement;
+
+        return $this;
+    }
+
+    /**
+     * Remove cartElement.
+     *
+     * @param \AppBundle\Entity\CartElement $cartElement
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeCartElement(\AppBundle\Entity\CartElement $cartElement)
+    {
+        return $this->cartElement->removeElement($cartElement);
+    }
+
+    /**
+     * Get cartElement.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCartElement()
+    {
+        return $this->cartElement;
     }
 }

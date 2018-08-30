@@ -80,7 +80,7 @@ class Characteristics
     /**
      * @var Article
      *
-     * @ORM\OneToOne(targetEntity="Article", inversedBy="characteristics")
+     * @ORM\OneToOne(targetEntity="Article")
      */
     private $article;
 

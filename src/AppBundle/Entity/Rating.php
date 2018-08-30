@@ -31,7 +31,7 @@ class Rating
     /**
      * @var Article
      *
-     * @ORM\OneToOne(targetEntity="Article", mappedBy="rating")
+     * @ORM\OneToOne(targetEntity="Article")
      */
     private $article;
 

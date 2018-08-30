@@ -31,7 +31,7 @@ class Favs
     /**
      * @var User
      *
-     * @ORM\OneToOne(targetEntity="User", inversedBy="favorites")
+     * @ORM\OneToOne(targetEntity="User")
      */
     private $user;
 

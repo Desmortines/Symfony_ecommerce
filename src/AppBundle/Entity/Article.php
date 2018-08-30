@@ -31,7 +31,7 @@ class Article
     /**
      * @var Characteristics
      *
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Characteristics",  mappedBy="article")
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Characteristics")
      */
     protected $characteristics;
 
@@ -101,7 +101,7 @@ class Article
     /**
      * @var Rating
      *
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Rating", mappedBy="article")
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Rating")
      */
     protected $rating;
 
@@ -113,18 +113,12 @@ class Article
     protected $userOrder;
 
     /**
-     * @var Cart
-     *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Cart", inversedBy="article")
-     */
-    protected $cart;
-
-    /**
      * @var SupplierOrder
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\SupplierOrder", inversedBy="article")
      */
     protected $supplierOrder;
+
     /**
      * Constructor
      */
@@ -470,30 +464,6 @@ class Article
     }
 
     /**
-     * Set cart.
-     *
-     * @param \AppBundle\Entity\Cart|null $cart
-     *
-     * @return Article
-     */
-    public function setCart(\AppBundle\Entity\Cart $cart = null)
-    {
-        $this->cart = $cart;
-
-        return $this;
-    }
-
-    /**
-     * Get cart.
-     *
-     * @return \AppBundle\Entity\Cart|null
-     */
-    public function getCart()
-    {
-        return $this->cart;
-    }
-
-    /**
      * Set supplierOrder.
      *
      * @param \AppBundle\Entity\SupplierOrder|null $supplierOrder
@@ -515,5 +485,55 @@ class Article
     public function getSupplierOrder()
     {
         return $this->supplierOrder;
+    }
+
+    /**
+     * Add cart.
+     *
+     * @param \AppBundle\Entity\Cart $cart
+     *
+     * @return Article
+     */
+    public function addCart(\AppBundle\Entity\Cart $cart)
+    {
+        $this->cart[] = $cart;
+
+        return $this;
+    }
+
+    /**
+     * Remove cart.
+     *
+     * @param \AppBundle\Entity\Cart $cart
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeCart(\AppBundle\Entity\Cart $cart)
+    {
+        return $this->cart->removeElement($cart);
+    }
+
+    /**
+     * Set cartElement.
+     *
+     * @param \AppBundle\Entity\CartElement|null $cartElement
+     *
+     * @return Article
+     */
+    public function setCartElement(\AppBundle\Entity\CartElement $cartElement = null)
+    {
+        $this->CartElement = $cartElement;
+
+        return $this;
+    }
+
+    /**
+     * Get cartElement.
+     *
+     * @return \AppBundle\Entity\CartElement|null
+     */
+    public function getCartElement()
+    {
+        return $this->CartElement;
     }
 }
