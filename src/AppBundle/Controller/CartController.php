@@ -24,6 +24,8 @@ class CartController extends Controller
 
     public function quantityAction()
     {
+        $em = $this->getDoctrine()->getManager();
 
+        $quantity = $em->getRepository()
     }
 }
