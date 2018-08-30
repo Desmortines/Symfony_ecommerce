@@ -641,6 +641,14 @@ input[type=number]::-webkit-inner-spin-button {
     width: 90%;
     padding: 2em;
 }
+
+#mailform input, textarea {
+    width: 20em;
+}
+
+#mailform textarea {
+    height: 10em;
+}
 /*------- FOOTER ---------*/
 .footer{
     position: relative;

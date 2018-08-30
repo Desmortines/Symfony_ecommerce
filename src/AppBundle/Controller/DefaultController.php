@@ -51,4 +51,12 @@ class DefaultController extends Controller
     {
         return $this->render('legality/RGPD.html.twig');
     }
+
+    /**
+     * @Route("/contact", name="contact")
+     */
+    public function contactAction()
+    {
+        return $this->render('legality/contact.html.twig');
+    }
 }
