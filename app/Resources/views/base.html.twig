@@ -85,8 +85,10 @@
                     </a>
                 {% endif %}
                 <span class="pipeHeaderNavMin">|</span>
-                <button class="btn btn-outline-success my-2 my-sm-0 buttonHeaderNavMin" type="submit">Mon panier
-                </button>
+                <a href="{{ path('cart_index') }}">
+                    <button class="btn btn-outline-success my-2 my-sm-0 buttonHeaderNavMin" type="submit">Mon panier
+                    </button>
+                </a>
             </div>
         </div>
     </nav>
