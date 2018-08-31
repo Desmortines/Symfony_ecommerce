@@ -8,11 +8,66 @@
     </div>
     {% endblock %}
 
+    {% block Command %}
+        <div class="container-fluid fondcontainer mTop mBottom">
+            <ul class="cartElementList">
+                {% if (cartElements is not defined) %}
+                    {% set cartElements = [] %}
+                {% endif %}
+                {% for k, cartElement in cartElements %}
+                <li><div class="row divCommand">
+                    <div class="col-lg-9">
+                        <div class="row mBottom mTop" style="text-align:left; height:50px; display: table; width: 100%;">
+                            <article class="col-lg-2">
+
+                                <img src="{{ asset('assets/img/selection.jpg') }}" style="width: 150px; height: auto;">
+
+                            </article>
+
+                            <article class="col-lg-2">
+
+                                <p>{{ cart.cartElement.article.name }}</p>
+                                <p>{{ cart.cartElement.article.characteristics.author }}</p>
+                                <p><label style="font-size: inherit;" for="scales">Cadeau</label><input type="checkbox" name="kdo" value="kdo"></p>
+                                <p>{{ cart.cartElement.article.characteristics.synopsis }}</p>
+
+                            </article>
+
+                            <article class="col-lg-2">
+                                <p>Prix à l\'unité :</p>
+                                <p>{{ cart.cartElement.article.price }}</p>
+
+                            </article>
+
+                            <article class="col-lg-2">
+                                <p>Quantité :</p>
+                                <input id="howMuch" type="number" value="1" min="1" max="64">
+
+                            </article>
+
+                            <article class="col-lg-2">
+
+                                <p>Total :</p>
+                                <p>{{ cart.preTotal }}</p>
+
+                            </article>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+
+                    </div>
+                </div>
+                </li>
+            {% endfor %}
+        </ul>
+        </div>
+    {% endblock %}
+
     {% block aside %}
         <aside>
             <h3>Total à régler :</h3>
             <ul>
-                <li><a href="#">40 $</a></li>
+                <li><a href="#">{# cart.total #}</a></li>
                 <li><a href="#">+ les intérêts</a></li>
                 <li><a href="#">Code promo</a></li>
                 <li><a href="#">Re-code promo</a></li>
@@ -20,54 +75,4 @@
             <button class="btn btn-outline-success my-2 my-sm-0 buttonCde" type="submit">Commandez !</button>
         </aside>
     {% endblock %}
-
-    {% block Command %}
-        <div class="container-fluid fondcontainer mTop mBottom">
-            <div class="row divCommand">
-                <div class="col-lg-9">
-                    <div class="row mBottom mTop" style="text-align:left; height:50px; display: table; width: 100%;"
-
-
-                    >
-                        <article class="col-lg-2">
-
-                            <img src="{{ asset('assets/img/selection.jpg') }}" style="width: 150px; height: auto;">
-
-                        </article>
-
-                        <article class="col-lg-2">
-
-                            <p>{{ cart.article }}</p>
-                            <p>JK Rowling</p>
-                            <p><label style="font-size: inherit;" for="scales">Cadeau</label><input type="checkbox" name="kdo" value="kdo"></p>
-                            <p>Bla blibla</p>
-
-                        </article>
-
-                        <article class="col-lg-2">
-                            <p>Prix à l'unité :</p>
-                            <p>20 $</p>
-
-                        </article>
-
-                        <article class="col-lg-2">
-                            <p>Quantité :</p>
-                            <input id="howMuch" type="number" value="1" min="1" max="64">
-                        </article>
-
-                        <article class="col-lg-2">
-
-                            <p>Total :</p>
-                            <p>40 $</p>
-
-                        </article>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-
-                </div>
-            </div>
-        </div>
-    {% endblock %}
-
 {% endblock %}

@@ -7,7 +7,6 @@ use AppBundle\Entity\CartElement;
 use FOS\UserBundle\Model\UserInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use AppBundle\Entity\Article;
 use AppBundle\Entity\Cart;
 use AppBundle\Entity\User;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -28,10 +27,8 @@ class CartController extends Controller
      */
     public function indexAction()
     {
-       $cartElement = $this->getUser()->getCart();
-       dump($cartElement);
-       die();
-
+       //$cartElement = $this->getUser()->getCart();
+       
        $user = $this->getUser();
 
        if ($user)
@@ -44,7 +41,7 @@ class CartController extends Controller
        }
 
         return $this->render('cart/index.html.twig', array(
-            'cartElement' => $cartElement,
+            //'cartElement' => $cartElement,
         ));
     }
 
