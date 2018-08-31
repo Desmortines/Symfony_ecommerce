@@ -3,14 +3,12 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Article;
+use AppBundle\Entity\Cart;
 use AppBundle\Entity\CartElement;
-use FOS\UserBundle\Model\UserInterface;
+use AppBundle\Entity\User;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use AppBundle\Entity\Cart;
-use AppBundle\Entity\User;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
 
@@ -27,13 +25,12 @@ class CartController extends Controller
      */
     public function indexAction()
     {
-       //$cartElement = $this->getUser()->getCart();
-       
-       $user = $this->getUser();
-
+        /** @var User $user */
+        $user = $this->getUser();
        if ($user)
        {
-           $cartElement = $user->getCart();
+           /** @var Cart $cart */
+           $cart = $user->getCart();
        }
        else
        {
@@ -41,7 +38,7 @@ class CartController extends Controller
        }
 
         return $this->render('cart/index.html.twig', array(
-            //'cartElement' => $cartElement,
+            'cart' => $cart,
         ));
     }
 
@@ -62,20 +59,51 @@ class CartController extends Controller
     }
 
     /**
-     * @Route("/addtocart", name="cart_add")
+     * @Route("/addtocart/{article}", name="cart_add")
+     * @Method("GET")
      */
-    public function addToCart(Article $article, User $user)
+    public function addToCart(Article $article)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $cart = new Cart();
+        /** @var User $user */
+        $user = $this->getUser();
 
-        $em->getRepository(AppBundle::Cart);
+        if ($user) {
+            /** @var Cart $cart */
+            $cart = $user->getCart()->first();
+        } else return $this->redirectToRoute('cart_index');
 
-        $em->getRepository(AppBundle::CartElement)->setArticle($article.id);
+        if (!$cart){
+            $cart = new Cart();
+            $cart->setUser($user);
+            $cart->setTotal($article->getPrice());
+            $cart->setPreTotal($article->getPrice());
+            $cart->setArticleAmount(1);
+        } else {
+            $cart->setPreTotal($cart->getPreTotal()+$article->getPrice());
+            $cart->setTotal($cart->getTotal()+$article->getPrice());
+            $cart->setArticleAmount($cart->getArticleAmount()+1);
+        }
+
+        $cart_element = $em->getRepository('AppBundle:CartElement')
+            ->findOneBy([
+                'article' => $article,
+            ]);
+
+        if (!$cart_element) {
+            $cart_element = new CartElement();
+            $cart_element->setArticle($article);
+            $cart_element->setQuantity(1);
+            $cart_element->setCart($cart);
+            $cart_element->setIsGift(0);
+        } else {
+            /** @var CartElement $cart_element */
+            $cart_element->setQuantity($cart_element->getQuantity()+1);
+        }
 
         $em->persist($cart);
-
+        $em->persist($cart_element);
         $em->flush();
 
         return $this->redirectToRoute('cart_index');
