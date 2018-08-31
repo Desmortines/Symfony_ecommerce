@@ -2,12 +2,17 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Article;
+use AppBundle\Entity\CartElement;
+use FOS\UserBundle\Model\UserInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use AppBundle\Entity\Article;
 use AppBundle\Entity\Cart;
 use AppBundle\Entity\User;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 
 
 /**
@@ -19,17 +24,44 @@ class CartController extends Controller
 {
     /**
      * @Route("/", name="cart_index")
+     * @Method("GET")
      */
     public function indexAction()
     {
-        return $this->render('cart/index.html.twig');
+       $cartElement = $this->getUser()->getCart();
+       dump($cartElement);
+       die();
+
+       $user = $this->getUser();
+
+       if ($user)
+       {
+           $cartElement = $user->getCart();
+       }
+       else
+       {
+           $cartElement = [];
+       }
+
+        return $this->render('cart/index.html.twig', array(
+            'cartElement' => $cartElement,
+        ));
     }
 
-    public function quantityAction()
+    /**
+     * @Route("/cart_element/{id}/update_quantity", name="cart_element_update_quantity")
+     * @Method("POST")
+     */
+    public function cartElementUpdateQuantityAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $quantity = $em->getRepository();
+        $cartElement = $em->getRepository('AppBundle:CartElement')
+            ->find($request->get("id"));
+        var_dump($cartElement->getQuantity());
+        /*return new JsonResponse([
+
+        ])*/
     }
 
     /**
