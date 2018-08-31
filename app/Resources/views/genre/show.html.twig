@@ -26,6 +26,7 @@
                             <h5 class="card-title text-center center-block">{{ article.name }}</h5>
                             <p class="text-center">{{ article.price }} €</p>
                             <a href="{{ path('article_show', {'id': article.id}) }}" class="btn btn-primary centerButton">Go somewhere</a>
+                            <a href="{{ path('cart_add', {'article' : article.id }) }}" class="btn btn-outline-success buttonHeaderOkNavMin centerButton mt-2">Ajouter au panier</a>
                         </div>
                     </div>
                 </div>
