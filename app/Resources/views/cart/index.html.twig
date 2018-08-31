@@ -11,11 +11,12 @@
     {% block Command %}
         <div class="container-fluid fondcontainer mTop mBottom">
             <ul class="cartElementList">
-                {% if (cartElements is not defined) %}
+                {% if (cart is not defined) %}
                     {% set cartElements = [] %}
                 {% endif %}
-                {% for k, cartElement in cartElements %}
-                <li><div class="row divCommand">
+                {% for k, cartElement in cart.cartElement %}
+                <li>
+                    <div class="row divCommand">
                     <div class="col-lg-9">
                         <div class="row mBottom mTop" style="text-align:left; height:50px; display: table; width: 100%;">
                             <article class="col-lg-2">
@@ -26,16 +27,16 @@
 
                             <article class="col-lg-2">
 
-                                <p>{{ cart.cartElement.article.name }}</p>
-                                <p>{{ cart.cartElement.article.characteristics.author }}</p>
+                                <p>{{ cartElement.article.name }}</p>
+                                {#<p>{{ cartElement.article.characteristics.author }}</p>#}
                                 <p><label style="font-size: inherit;" for="scales">Cadeau</label><input type="checkbox" name="kdo" value="kdo"></p>
-                                <p>{{ cart.cartElement.article.characteristics.synopsis }}</p>
+                                {#<p>{{ cartElement.article.characteristics.synopsis }}</p>#}
 
                             </article>
 
                             <article class="col-lg-2">
                                 <p>Prix à l\'unité :</p>
-                                <p>{{ cart.cartElement.article.price }}</p>
+                                <p>{{ cartElement.article.price }}</p>
 
                             </article>
 

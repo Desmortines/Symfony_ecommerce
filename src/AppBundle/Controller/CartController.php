@@ -30,11 +30,11 @@ class CartController extends Controller
        if ($user)
        {
            /** @var Cart $cart */
-           $cart = $user->getCart();
+           $cart = $user->getCart()->first();
        }
        else
        {
-           $cartElement = [];
+           $cart = [];
        }
 
         return $this->render('cart/index.html.twig', array(
