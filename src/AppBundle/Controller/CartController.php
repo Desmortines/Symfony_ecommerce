@@ -4,6 +4,8 @@ namespace AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use AppBundle\Entity\Article;
+use AppBundle\Entity\Cart;
+use AppBundle\Entity\User;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 
@@ -33,16 +35,20 @@ class CartController extends Controller
     /**
      * @Route("/addtocart", name="cart_add")
      */
-    public function addToCart(Article $article)
+    public function addToCart(Article $article, User $user)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $em->getRepository(AppBundle::Cart)->setUser($user.id);
+        $cart = new Cart();
+
+        $em->getRepository(AppBundle::Cart);
 
         $em->getRepository(AppBundle::CartElement)->setArticle($article.id);
 
+        $em->persist($cart);
+
         $em->flush();
 
-        return $this->render('cart_index');
+        return $this->redirectToRoute('cart_index');
     }
 }
