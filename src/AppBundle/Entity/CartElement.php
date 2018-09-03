@@ -48,7 +48,7 @@ class CartElement
      * @ORM\ManyToOne(targetEntity="Cart", inversedBy="cartElement")
      */
     private $cart;
-
+    
 
     /**
      * Get id.
@@ -58,30 +58,6 @@ class CartElement
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set article.
-     *
-     * @param \stdClass $article
-     *
-     * @return CartElement
-     */
-    public function setArticle($article)
-    {
-        $this->article = $article;
-
-        return $this;
-    }
-
-    /**
-     * Get article.
-     *
-     * @return \stdClass
-     */
-    public function getArticle()
-    {
-        return $this->article;
     }
 
     /**
@@ -130,6 +106,30 @@ class CartElement
     public function getIsGift()
     {
         return $this->isGift;
+    }
+
+    /**
+     * Set article.
+     *
+     * @param \AppBundle\Entity\Article|null $article
+     *
+     * @return CartElement
+     */
+    public function setArticle(\AppBundle\Entity\Article $article = null)
+    {
+        $this->article = $article;
+
+        return $this;
+    }
+
+    /**
+     * Get article.
+     *
+     * @return \AppBundle\Entity\Article|null
+     */
+    public function getArticle()
+    {
+        return $this->article;
     }
 
     /**

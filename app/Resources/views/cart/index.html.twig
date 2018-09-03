@@ -17,7 +17,9 @@
                 <li><a href="#">Code promo</a></li>
                 <li><a href="#">Re-code promo</a></li>
             </ul>
-            <button class="btn btn-outline-success my-2 my-sm-0 buttonCde" type="submit">Commandez !</button>
+            <a href="{{ path('command_index') }}">
+                <button class="btn btn-outline-success my-2 my-sm-0 buttonCde" type="submit">Commandez !</button>
+            </a>
         </aside>
     {% endblock %}
 
@@ -28,31 +30,28 @@
                     {% set cart = cart|merge({'cartElement': [] }) %}
                 {% endif %}
                 {% for k, cartElement in cart.cartElement %}
-                    <li class="mTop mBottom">
-                        <div class="row divCommand ">
-                            <div class="col-lg-9">
-                                <div class="row mBottom mTop"
-                                     style="text-align:left; height:50px; display: table; width: 100%;">
-                                    <article class="col-lg-2">
+                <li class="articleDeco">
+                    <div class="row divCommand">
+                    <div class="col-lg-11 col-xs-12">
+                        <div class="row" style="text-align:left; height:50px; display: table; width: 100%;">
+                            <article class="col-lg-2 col-xs-1">
 
-                                        <img src="{{ asset('assets/img/selection.jpg') }}"
-                                             style="width: 150px; height: auto;">
+                                <img src="{{ asset('assets/img/selection.jpg') }}" style="width: 150px; height: auto;">
 
-                                    </article>
+                            </article>
 
-                                    <article class="col-lg-2">
+                            <article class="col-lg-4 col-xs-1">
 
-                                        <a class="articleName" href="{{ path('article_show', {'id': cartElement.article.id}) }}"> {{ cartElement.article.name }}</a>
-                                        {#<p>{{ cartElement.article.characteristics.author }}</p>#}
-                                        <p><label style="font-size: inherit;" for="scales">Cadeau</label><input
-                                                    type="checkbox" name="kdo" value="kdo"></p>
-                                        {#<p>{{ cartElement.article.characteristics.synopsis }}</p>#}
+                                <p class="articleName">{{ cartElement.article.name }}</p>
+                                {#<p>{{ cartElement.article.characteristics.author }}</p>#}
+                                <p><label style="font-size: inherit;" for="scales">Cadeau</label><input type="checkbox" name="kdo" value="kdo"></p>
+                                {#<p>{{ cartElement.article.characteristics.synopsis }}</p>#}
 
-                                    </article>
+                            </article>
 
-                                    <article class="col-lg-2">
-                                        <p>Prix à l'unité :</p>
-                                        <p>{{ cartElement.article.price }}</p>
+                            <article class="col-lg-2 col-xs-1">
+                                <p>Prix à l'unité :</p>
+                                <p>{{ cartElement.article.price }}</p>
 
                                     </article>
 
@@ -63,21 +62,25 @@
 
                                     </article>
 
-                                    <article class="col-lg-2">
+                            <article class="col-lg-1">
 
-                                        <p>Total :</p>
-                                        <p>{{ cart.preTotal }}</p>
+                                <p>Total :</p>
+                                <p>{{ cart.preTotal }}</p>
 
-                                    </article>
-                                </div>
-                            </div>
-                            <div class="col-lg-3">
+                            </article>
+                            <article class="col-lg-1">
 
-                            </div>
+                                <a href="">
+                                    <button class="btn btn-outline-success my-2 my-sm-0 buttonPower" title="Supprimer">Supprimer</button>
+                                </a>
+
+                            </article>
                         </div>
-                    </li>
-                {% endfor %}
-            </ul>
+                    </div>
+                </div>
+                </li>
+            {% endfor %}
+        </ul>
         </div>
     {% endblock %}
 {% endblock %}

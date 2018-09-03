@@ -36,9 +36,9 @@ class UserOrder
     private $article;
 
     /**
-     * @var array
+     * @var integer
      *
-     * @ORM\Column(name="quantity", type="array")
+     * @ORM\Column(name="quantity", type="integer")
      */
     private $quantity;
 
@@ -80,14 +80,6 @@ class UserOrder
     private $email;
 
     /**
-     * @var \stdClass
-     *
-     * @ORM\Column(name="payMethod", type="object")
-     * @ORM\OneToOne(targetEntity="PayMethod", mappedBy="id") //a voir plus tard
-     */
-    private $payMethod;
-
-    /**
      * @var bool
      *
      * @ORM\Column(name="gift", type="boolean")
@@ -118,10 +110,17 @@ class UserOrder
     /**
      * @var Cart
      *
-     * @ORM\OneToOne(targetEntity="Cart", inversedBy="userOrder")
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Cart", inversedBy="userOrder")
      */
     private $cart;
-
+    
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->article = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id.
@@ -134,57 +133,9 @@ class UserOrder
     }
 
     /**
-     * Set user.
-     *
-     * @param int $user
-     *
-     * @return UserOrder
-     */
-    public function setUser($user)
-    {
-        $this->user = $user;
-
-        return $this;
-    }
-
-    /**
-     * Get user.
-     *
-     * @return int
-     */
-    public function getUser()
-    {
-        return $this->user;
-    }
-
-    /**
-     * Set article.
-     *
-     * @param array $article
-     *
-     * @return UserOrder
-     */
-    public function setArticle($article)
-    {
-        $this->article = $article;
-
-        return $this;
-    }
-
-    /**
-     * Get article.
-     *
-     * @return array
-     */
-    public function getArticle()
-    {
-        return $this->article;
-    }
-
-    /**
      * Set quantity.
      *
-     * @param array $quantity
+     * @param int $quantity
      *
      * @return UserOrder
      */
@@ -198,7 +149,7 @@ class UserOrder
     /**
      * Get quantity.
      *
-     * @return array
+     * @return int
      */
     public function getQuantity()
     {
@@ -278,6 +229,30 @@ class UserOrder
     }
 
     /**
+     * Set deliveryAdress.
+     *
+     * @param string $deliveryAdress
+     *
+     * @return UserOrder
+     */
+    public function setDeliveryAdress($deliveryAdress)
+    {
+        $this->deliveryAdress = $deliveryAdress;
+
+        return $this;
+    }
+
+    /**
+     * Get deliveryAdress.
+     *
+     * @return string
+     */
+    public function getDeliveryAdress()
+    {
+        return $this->deliveryAdress;
+    }
+
+    /**
      * Set email.
      *
      * @param string $email
@@ -299,30 +274,6 @@ class UserOrder
     public function getEmail()
     {
         return $this->email;
-    }
-
-    /**
-     * Set payMethod.
-     *
-     * @param \stdClass $payMethod
-     *
-     * @return UserOrder
-     */
-    public function setPayMethod($payMethod)
-    {
-        $this->payMethod = $payMethod;
-
-        return $this;
-    }
-
-    /**
-     * Get payMethod.
-     *
-     * @return \stdClass
-     */
-    public function getPayMethod()
-    {
-        return $this->payMethod;
     }
 
     /**
@@ -350,37 +301,6 @@ class UserOrder
     }
 
     /**
-     * Set deliveryAdress.
-     *
-     * @param string $deliveryAdress
-     *
-     * @return UserOrder
-     */
-    public function setDeliveryAdress($deliveryAdress)
-    {
-        $this->deliveryAdress = $deliveryAdress;
-
-        return $this;
-    }
-
-    /**
-     * Get deliveryAdress.
-     *
-     * @return string
-     */
-    public function getDeliveryAdress()
-    {
-        return $this->deliveryAdress;
-    }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->article = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
      * Set validatedAt.
      *
      * @param \DateTime $validatedAt
@@ -402,6 +322,30 @@ class UserOrder
     public function getValidatedAt()
     {
         return $this->validatedAt;
+    }
+
+    /**
+     * Set user.
+     *
+     * @param \AppBundle\Entity\User|null $user
+     *
+     * @return UserOrder
+     */
+    public function setUser(\AppBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user.
+     *
+     * @return \AppBundle\Entity\User|null
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 
     /**
@@ -428,6 +372,16 @@ class UserOrder
     public function removeArticle(\AppBundle\Entity\Article $article)
     {
         return $this->article->removeElement($article);
+    }
+
+    /**
+     * Get article.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getArticle()
+    {
+        return $this->article;
     }
 
     /**
