@@ -470,6 +470,10 @@ article {
 /****************** END ARTICLE PAGE ******************/
 
 /****************** START CART PAGE ******************/
+.cartElementList {
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
 
 input[type=number]::-webkit-outer-spin-button,
 input[type=number]::-webkit-inner-spin-button {
@@ -488,10 +492,27 @@ input[type=number]::-webkit-inner-spin-button {
     font-size: 110%;
 }
 
+.articleDeco {
+    border: 5px solid #B3FF5C;
+    border-radius: 5px;
+    padding: 1em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
 .articleName {
     font-weight: 600;
     text-transform: uppercase;
     padding-top: 6px;
+}
+
+.buttonSupp {
+    background-color: #B3FF5C;
+    margin-left: 5px;
+}
+
+.buttonSupp:hover {
+    background-color: red;
 }
 /****************** END CART PAGE ******************/
 

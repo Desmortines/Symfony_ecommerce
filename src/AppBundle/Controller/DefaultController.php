@@ -21,14 +21,6 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/command", name="command")
-     */
-    public function commandAction()
-    {
-        return $this->render('command.html.twig');
-    }
-
-    /**
      * @Route("/legal_mention", name="legal_mention")
      */
     public function legal_mentionAction()
