@@ -3,9 +3,9 @@
     {{ parent() }}
 
     {% block pageTitle %}
-    <div class="fondcontainer" style="margin-bottom: 2rem;">
-        <h1 class="h1edit">Votre panier !</h1>
-    </div>
+        <div class="fondcontainer" style="margin-bottom: 2rem;">
+            <h1 class="h1edit">Votre panier !</h1>
+        </div>
     {% endblock %}
 
     {% block aside %}
@@ -24,56 +24,60 @@
     {% block Command %}
         <div class="container-fluid fondcontainer mTop mBottom">
             <ul class="cartElementList">
-                {% if (cart is not defined) %}
-                    {% set cartElements = [] %}
+                {% if (cart is empty) %}
+                    {% set cart = cart|merge({'cartElement': [] }) %}
                 {% endif %}
                 {% for k, cartElement in cart.cartElement %}
-                <li>
-                    <div class="row divCommand mTop mBottom">
-                    <div class="col-lg-9">
-                        <div class="row mBottom mTop" style="text-align:left; height:50px; display: table; width: 100%;">
-                            <article class="col-lg-2">
+                    <li class="mTop mBottom">
+                        <div class="row divCommand ">
+                            <div class="col-lg-9">
+                                <div class="row mBottom mTop"
+                                     style="text-align:left; height:50px; display: table; width: 100%;">
+                                    <article class="col-lg-2">
 
-                                <img src="{{ asset('assets/img/selection.jpg') }}" style="width: 150px; height: auto;">
+                                        <img src="{{ asset('assets/img/selection.jpg') }}"
+                                             style="width: 150px; height: auto;">
 
-                            </article>
+                                    </article>
 
-                            <article class="col-lg-2">
+                                    <article class="col-lg-2">
 
-                                <p class="articleName">{{ cartElement.article.name }}</p>
-                                {#<p>{{ cartElement.article.characteristics.author }}</p>#}
-                                <p><label style="font-size: inherit;" for="scales">Cadeau</label><input type="checkbox" name="kdo" value="kdo"></p>
-                                {#<p>{{ cartElement.article.characteristics.synopsis }}</p>#}
+                                        <a class="articleName" href="{{ path('article_show', {'id': cartElement.article.id}) }}"> {{ cartElement.article.name }}</a>
+                                        {#<p>{{ cartElement.article.characteristics.author }}</p>#}
+                                        <p><label style="font-size: inherit;" for="scales">Cadeau</label><input
+                                                    type="checkbox" name="kdo" value="kdo"></p>
+                                        {#<p>{{ cartElement.article.characteristics.synopsis }}</p>#}
 
-                            </article>
+                                    </article>
 
-                            <article class="col-lg-2">
-                                <p>Prix à l'unité :</p>
-                                <p>{{ cartElement.article.price }}</p>
+                                    <article class="col-lg-2">
+                                        <p>Prix à l'unité :</p>
+                                        <p>{{ cartElement.article.price }}</p>
 
-                            </article>
+                                    </article>
 
-                            <article class="col-lg-2">
-                                <p>Quantité :</p>
-                                <input id="howMuch" type="number" value="1" min="1" max="64">
+                                    <article class="col-lg-2">
+                                        <p>Quantité :</p>
+                                        <input id="howMuch" type="number" value="{{ cartElement.quantity }}" min="1"
+                                               max="64">
 
-                            </article>
+                                    </article>
 
-                            <article class="col-lg-2">
+                                    <article class="col-lg-2">
 
-                                <p>Total :</p>
-                                <p>{{ cart.preTotal }}</p>
+                                        <p>Total :</p>
+                                        <p>{{ cart.preTotal }}</p>
 
-                            </article>
+                                    </article>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-lg-3">
-
-                    </div>
-                </div>
-                </li>
-            {% endfor %}
-        </ul>
+                    </li>
+                {% endfor %}
+            </ul>
         </div>
     {% endblock %}
 {% endblock %}
