@@ -44,69 +44,6 @@
                     </div>
                 </div>
             {% endfor %}
-
-            {#<!--<table>#}
-            {#<thead>#}
-            {#<tr>#}
-            {#<th>Id</th>#}
-            {#<th>Name</th>#}
-            {#<th>Characteristics</th>#}
-            {#<th>Price</th>#}
-            {#<th>Image</th>#}
-            {#<th>Isbnreference</th>#}
-            {#<th>Category</th>#}
-            {#<th>Stock</th>#}
-            {#<th>Genre</th>#}
-            {#<th>Totalbought</th>#}
-            {#<th>Nbrclicked</th>#}
-            {#<th>Actions</th>#}
-            {#</tr>#}
-            {#</thead>#}
-            {#<tbody>#}
-            {#{% for article in articles %}#}
-            {#<tr>#}
-            {#<td><a href="{{ path('article_show', { 'id': article.id }) }}">{{ article.id }}</a></td>#}
-            {#<td>{{ article.name }}</td>#}
-            {#<td>{% if article.characteristics %}{{ article.characteristics|join(', ') }}{% endif %}</td>#}
-            {#<td>{{ article.price }}</td>#}
-            {#<td>#}
-            {#{% for key,image in article.images %}#}
-            {#<th>Image {{ key }}</th>#}
-            {#<td>{% if image %}#}
-            {#<img src="{{ image.link }}" alt="image {{ key }}">#}
-            {#{% endif %}</td>#}
-            {#{% endfor %}#}
-            {#</td>#}
-            {#<td>{{ article.isbnReference }}</td>#}
-            {#<td>{{ article.category.name }}</td>#}
-            {#<td>{{ article.stock }}</td>#}
-            {#<td>{% for genre in article.genres %}#}
-            {#<li>{{ genre.name }} </li>#}
-            {#{% endfor %}#}
-            {#</td>#}
-            {#<td>{{ article.totalBought }}</td>#}
-            {#<td>{{ article.nbrClicked }}</td>#}
-            {#<td>#}
-            {#<ul>#}
-            {#<li>#}
-            {#<a href="{{ path('article_show', { 'id': article.id }) }}">show</a>#}
-            {#</li>#}
-            {#<li>#}
-            {#<a href="{{ path('article_edit', { 'id': article.id }) }}">edit</a>#}
-            {#</li>#}
-            {#</ul>#}
-            {#</td>#}
-            {#</tr>#}
-            {#{% endfor %}#}
-            {#</tbody>#}
-            {#</table>#}
-            {#<ul>#}
-            {#<li>#}
-            {#<a href="{{ path('article_new') }}">Create a new article</a>#}
-            {#</li>#}
-            {#</ul>#}
-            {#{% endblock %}#}
-            {#</ul>-->#}
         </div>
     </div>
 {% endblock %}
