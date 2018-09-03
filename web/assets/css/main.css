@@ -250,12 +250,10 @@ article {
 /****************** END LOGIN PAGE ******************/
 
 /****************** START HOME PAGE ******************/
-
 .space {
     margin-top: 1em;
     margin-bottom: 1em;
 }
-
 /****************** END OF HOME PAGE ******************/
 
 /****************** START CATALOGUE PAGE ******************/
@@ -293,7 +291,6 @@ article {
     width: 474px;
     height: 300px;
 }
-
 /****************** END OF CATALOGUE PAGE ******************/
 
 /****************** START PROFIL PAGE ******************/
@@ -318,8 +315,6 @@ article {
     text-align: center;
 }
 
-
-
 #owl-demo .item{
     display: block;
     cursor: pointer;
@@ -336,8 +331,6 @@ article {
 #owl-demo .item:hover{
     background: #F2CD00;
 }
-
-
 /****************** END PROFIL PAGE ******************/
 
 /****************** START EDITPROFIL PAGE ******************/
@@ -474,10 +467,9 @@ article {
     border: 2px solid #B3FF5C;
     padding: 1em;
 }
-
 /****************** END ARTICLE PAGE ******************/
 
-/****************** START BASKET PAGE ******************/
+/****************** START CART PAGE ******************/
 
 input[type=number]::-webkit-outer-spin-button,
 input[type=number]::-webkit-inner-spin-button {
@@ -495,7 +487,13 @@ input[type=number]::-webkit-inner-spin-button {
     padding: 4px;
     font-size: 110%;
 }
-/****************** END BASKET PAGE ******************/
+
+.articleName {
+    font-weight: 600;
+    text-transform: uppercase;
+    padding-top: 6px;
+}
+/****************** END CART PAGE ******************/
 
 /****************** START COMMAND PAGE ******************/
 #divDel {

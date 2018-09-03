@@ -8,6 +8,19 @@
     </div>
     {% endblock %}
 
+    {% block aside %}
+        <aside>
+            <h3>Total à régler :</h3>
+            <ul>
+                <li><a href="#">{# cart.total #}</a></li>
+                <li><a href="#">+ les intérêts</a></li>
+                <li><a href="#">Code promo</a></li>
+                <li><a href="#">Re-code promo</a></li>
+            </ul>
+            <button class="btn btn-outline-success my-2 my-sm-0 buttonCde" type="submit">Commandez !</button>
+        </aside>
+    {% endblock %}
+
     {% block Command %}
         <div class="container-fluid fondcontainer mTop mBottom">
             <ul class="cartElementList">
@@ -16,7 +29,7 @@
                 {% endif %}
                 {% for k, cartElement in cart.cartElement %}
                 <li>
-                    <div class="row divCommand">
+                    <div class="row divCommand mTop mBottom">
                     <div class="col-lg-9">
                         <div class="row mBottom mTop" style="text-align:left; height:50px; display: table; width: 100%;">
                             <article class="col-lg-2">
@@ -27,7 +40,7 @@
 
                             <article class="col-lg-2">
 
-                                <p>{{ cartElement.article.name }}</p>
+                                <p class="articleName">{{ cartElement.article.name }}</p>
                                 {#<p>{{ cartElement.article.characteristics.author }}</p>#}
                                 <p><label style="font-size: inherit;" for="scales">Cadeau</label><input type="checkbox" name="kdo" value="kdo"></p>
                                 {#<p>{{ cartElement.article.characteristics.synopsis }}</p>#}
@@ -35,7 +48,7 @@
                             </article>
 
                             <article class="col-lg-2">
-                                <p>Prix à l\'unité :</p>
+                                <p>Prix à l'unité :</p>
                                 <p>{{ cartElement.article.price }}</p>
 
                             </article>
@@ -62,18 +75,5 @@
             {% endfor %}
         </ul>
         </div>
-    {% endblock %}
-
-    {% block aside %}
-        <aside>
-            <h3>Total à régler :</h3>
-            <ul>
-                <li><a href="#">{# cart.total #}</a></li>
-                <li><a href="#">+ les intérêts</a></li>
-                <li><a href="#">Code promo</a></li>
-                <li><a href="#">Re-code promo</a></li>
-            </ul>
-            <button class="btn btn-outline-success my-2 my-sm-0 buttonCde" type="submit">Commandez !</button>
-        </aside>
     {% endblock %}
 {% endblock %}
