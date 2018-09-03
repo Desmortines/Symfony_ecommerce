@@ -120,6 +120,13 @@ class Article
     protected $supplierOrder;
 
     /**
+     * @var CartElement
+     *
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\CartElement")
+     */
+    protected $cartElement;
+
+    /**
      * Constructor
      */
     public function __construct()

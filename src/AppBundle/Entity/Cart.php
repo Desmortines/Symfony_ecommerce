@@ -62,7 +62,14 @@ class Cart
      * @ORM\OneToOne(targetEntity="UserOrder", mappedBy="cart")
      */
     private $userOrder;
-
+    
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->cartElement = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id.
@@ -72,30 +79,6 @@ class Cart
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set user.
-     *
-     * @param int $user
-     *
-     * @return Cart
-     */
-    public function setUser($user)
-    {
-        $this->user = $user;
-
-        return $this;
-    }
-
-    /**
-     * Get user.
-     *
-     * @return int
-     */
-    public function getUser()
-    {
-        return $this->user;
     }
 
     /**
@@ -169,38 +152,29 @@ class Cart
     {
         return $this->articleAmount;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->article = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
     /**
-     * Add article.
+     * Set user.
      *
-     * @param \AppBundle\Entity\Article $article
+     * @param \AppBundle\Entity\User|null $user
      *
      * @return Cart
      */
-    public function addArticle(\AppBundle\Entity\Article $article)
+    public function setUser(\AppBundle\Entity\User $user = null)
     {
-        $this->article[] = $article;
+        $this->user = $user;
 
         return $this;
     }
 
     /**
-     * Remove article.
+     * Get user.
      *
-     * @param \AppBundle\Entity\Article $article
-     *
-     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     * @return \AppBundle\Entity\User|null
      */
-    public function removeArticle(\AppBundle\Entity\Article $article)
+    public function getUser()
     {
-        return $this->article->removeElement($article);
+        return $this->user;
     }
 
     /**

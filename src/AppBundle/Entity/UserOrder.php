@@ -110,10 +110,10 @@ class UserOrder
     /**
      * @var Cart
      *
-     * @ORM\OneToOne(targetEntity="Cart", inversedBy="userOrder")
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Cart", inversedBy="userOrder")
      */
     private $cart;
-
+    
     /**
      * Constructor
      */
