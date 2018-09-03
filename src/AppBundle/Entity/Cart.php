@@ -56,6 +56,13 @@ class Cart
      */
     private $cartElement;
 
+    /**
+     * @var UserOrder
+     *
+     * @ORM\OneToOne(targetEntity="UserOrder", mappedBy="cart")
+     */
+    private $userOrder;
+
 
     /**
      * Get id.
@@ -230,5 +237,29 @@ class Cart
     public function getCartElement()
     {
         return $this->cartElement;
+    }
+
+    /**
+     * Set userOrder.
+     *
+     * @param \AppBundle\Entity\UserOrder|null $userOrder
+     *
+     * @return Cart
+     */
+    public function setUserOrder(\AppBundle\Entity\UserOrder $userOrder = null)
+    {
+        $this->userOrder = $userOrder;
+
+        return $this;
+    }
+
+    /**
+     * Get userOrder.
+     *
+     * @return \AppBundle\Entity\UserOrder|null
+     */
+    public function getUserOrder()
+    {
+        return $this->userOrder;
     }
 }

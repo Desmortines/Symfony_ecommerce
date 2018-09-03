@@ -115,6 +115,12 @@ class UserOrder
      */
     private $userOrderComplete;
 
+    /**
+     * @var Cart
+     *
+     * @ORM\OneToOne(targetEntity="Cart", inversedBy="userOrder")
+     */
+    private $cart;
 
 
     /**
@@ -470,5 +476,29 @@ class UserOrder
     public function getUserOrderComplete()
     {
         return $this->userOrderComplete;
+    }
+
+    /**
+     * Set cart.
+     *
+     * @param \AppBundle\Entity\Cart|null $cart
+     *
+     * @return UserOrder
+     */
+    public function setCart(\AppBundle\Entity\Cart $cart = null)
+    {
+        $this->cart = $cart;
+
+        return $this;
+    }
+
+    /**
+     * Get cart.
+     *
+     * @return \AppBundle\Entity\Cart|null
+     */
+    public function getCart()
+    {
+        return $this->cart;
     }
 }
