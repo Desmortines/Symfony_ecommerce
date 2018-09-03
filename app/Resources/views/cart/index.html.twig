@@ -27,6 +27,7 @@
         <div class="container-fluid fondcontainer mTop mBottom">
             <ul class="cartElementList">
                 {% if (cart is empty) %}
+                    {% set cart = [] %}
                     {% set cart = cart|merge({'cartElement': [] }) %}
                 {% endif %}
                 {% for k, cartElement in cart.cartElement %}
@@ -43,9 +44,9 @@
                             <article class="col-lg-4 col-xs-1">
 
                                 <p class="articleName">{{ cartElement.article.name }}</p>
-                                {#<p>{{ cartElement.article.characteristics.author }}</p>#}
+                                <p>{{ cartElement.article.characteristics.author }}</p>
                                 <p><label style="font-size: inherit;" for="scales">Cadeau</label><input type="checkbox" name="kdo" value="kdo"></p>
-                                {#<p>{{ cartElement.article.characteristics.synopsis }}</p>#}
+                                <p>{{ cartElement.article.characteristics.synopsis }}</p>
 
                             </article>
 
