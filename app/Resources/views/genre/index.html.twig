@@ -1,0 +1,26 @@
+{% block genreCards %}
+    <div class="container-fluid fondcontainer">
+        <h1 class="mt-5 mb-1 pt-3 text-center h1Categorie">Nos genres</h1>
+        {% if (genres is not defined) %}
+            {% set genres = [] %}
+        {% endif %}
+        {% for k,genre in genres %}
+            {% if (k%4 == 0) %}
+                <div class="row space pb-3">
+            {% endif %}
+
+            <div class="col-lg-3">
+                <div class="card">
+                    <div class="card-body">
+                        <a href="{{ path('genre_show', {'id': genre.id}) }}"
+                           class="btn btn-primary centerButton">{{ genre.name }}</a>
+                    </div>
+                </div>
+            </div>
+
+            {% if (k%4 == 3) %}
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+{% endblock %}

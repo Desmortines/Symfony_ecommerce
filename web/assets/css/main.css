@@ -1,0 +1,762 @@
+body {
+    font-family: 'Raleway', sans-serif;
+    height: 100%;
+    color: #604310;
+   /* background-repeat: no-repeat;*/
+    background-attachment: fixed;
+}
+
+h1 {
+    font-family: 'Raleway', sans-serif;
+    color: #604310;
+}
+
+h2 {
+    font-family: 'Raleway', sans-serif;
+    color: #604310;
+    padding-top: 0.5em;
+}
+
+label{
+    margin-right: 10px;
+    font-size: 130%;
+}
+
+aside {
+    position: fixed;
+    float: right;
+    z-index: 99;
+    background-color: rgba(179,255, 92, 0.8);
+    border: 2px solid #B3FF5C;
+    border-radius: 5px;
+    margin-left: 83%;
+    padding: 2em;
+}
+
+article {
+    margin: 0.5em;
+    vertical-align:middle;
+    display: table-cell;
+}
+
+.profil {
+    padding: 1rem;
+    border: 5px solid #B3FF5C;
+    border-radius: 5px;
+    margin: 2rem 10rem 2rem 10rem;
+    text-align: center;
+}
+
+.fondcontainer {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.mTop {
+    margin-top: 1.5em;
+}
+.mBottom {
+    margin-bottom: 1.5em;
+}
+/******************************* HEADER *******************************/
+
+/**************************** PRINCIPAL NAV ****************************/
+
+.headerNav {
+     background-color: #43CBFF;
+     position: relative;
+     z-index: 2;
+     box-shadow: 0 4px 2px -2px gray;
+}
+
+/****** Search Zone ******/
+#AdvanceSearch {
+    color: #B3FF5C;
+}
+
+.AdvanceSearchNav {
+    color: #B3FF5C;
+    padding-left: 5px;
+}
+
+.AdvanceSearchContent {
+
+}
+/****** End of Search Zone ******/
+
+/****** Buttons ******/
+
+.buttonHeader {
+    border-color: #B3FF5C;
+    color: #B3FF5C;
+    margin-left: 5px;
+}
+
+.buttonHeader:hover {
+    background-color: #B3FF5C;
+    color: #43CBFF;
+}
+
+.buttonHeaderCat {
+    background-color: #B3FF5C;
+    color: #43CBFF;
+    margin-left: 10px;
+}
+
+.buttonHeaderCat:hover {
+    background-color: #ab44ff;
+    color: #B3FF5C;
+}
+
+.buttonHeaderOk {
+    background-color: #B3FF5C;
+    border-color: #B3FF5C;
+    color: #8C7448;
+    margin-left: 5px;
+}
+
+.buttonHeaderOk:hover {
+    background-color: #B3FF5C;
+    color: #43CBFF;
+}
+
+.pipeHeader {
+    color: #8C7448;
+    margin: 0px 0px 0px 5px;
+    font-size: 3em;
+    font-weight: 100;
+}
+
+.buttonPower {
+    background-color: #B3FF5C;
+    margin-left: 5px;
+}
+
+.buttonPower:hover {
+    background-color: red;
+}
+/****** End of Buttons ******/
+/**************************** END OF PRINCIPAL NAV ****************************/
+
+/**************************** MINI NAV ****************************/
+.headerNavMin {
+    display: none;
+    box-shadow: 0 4px 2px -2px gray;
+    padding: inherit;
+    padding: 0px 10px 0px 10px;
+}
+
+/****** Buttons ******/
+
+.buttonHeaderNavMin {
+    border-color: #B3FF5C;
+    color: #B3FF5C;
+    margin-left: 10px;
+}
+
+.buttonHeaderNavMin:hover {
+    background-color: #B3FF5C;
+    color: #43CBFF;
+}
+
+.buttonHeaderOkNavMin {
+    background-color: #B3FF5C;
+    border-color: #B3FF5C;
+    color: #8C7448;
+    margin-left: 5px;
+}
+
+.buttonHeaderOkNavMin:hover {
+    background-color: #B3FF5C;
+    color: #43CBFF;
+}
+
+.pipeHeaderNavMin {
+    color: #8C7448;
+    margin: 0 -3px 0 7px;
+    font-size: 3em;
+    font-weight: 100;
+}
+/****** End of Buttons ******/
+/**************************** END OF MINI NAV ****************************/
+/******************************* END OF HEADER *******************************/
+
+/**** button Top page ****/
+.topPage {
+    cursor: pointer;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/******************************* BODY *******************************/
+.centerButton {
+    display: block;
+    margin : auto;
+}
+
+/****************** START LOGIN PAGE ******************/
+.connexion {
+    padding: 3em;
+}
+
+.formContenu {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 300px;
+}
+
+.formLogin {
+    text-align: center;
+}
+
+.form-group {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.form-control-placeholder {
+    position: absolute;
+    top: 0;
+    padding: 7px 0 0 13px;
+    transition: all 200ms;
+    opacity: 0.5;
+    font-size: inherit;
+}
+
+.form-control:focus + .form-control-placeholder,
+.form-control:valid + .form-control-placeholder {
+    font-size: 75%;
+    transform: translate3d(0, -100%, 0);
+    opacity: 1;
+}
+
+.validButton {
+    border: inherit;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 8px;
+    background-color: #B3FF5C;
+    border-radius: 5px;
+    color: #8C7448;
+}
+
+.validButton:hover {
+    background-color: #B3FF5C;
+    color: #43CBFF;
+    box-shadow: 1px 1px 12px #43CBFF;
+}
+/****************** END LOGIN PAGE ******************/
+
+/****************** START HOME PAGE ******************/
+.space {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+/****************** END OF HOME PAGE ******************/
+
+/****************** START CATALOGUE PAGE ******************/
+.MonthProd {
+    margin-top: 2rem;
+}
+
+.MonthParag {
+    margin-top: 15px;
+}
+
+.MonthBook {
+    margin-left: 5rem;
+}
+
+.MonthHr {
+    background-color: #B3FF5C;
+}
+
+.MonthButton {
+    display: block;
+    margin-left: -2rem;
+    margin-bottom: 10px !important;
+}
+
+.h1Categorie {
+    padding-top: 2rem!important;
+    padding-bottom: 1rem!important;
+}
+
+.carouCata {
+    margin: 3rem 0 3rem 0;
+}
+.card-img-top {
+    height: 350px;
+}
+/****************** END OF CATALOGUE PAGE ******************/
+
+/****************** START PROFIL PAGE ******************/
+.h1Hello {
+    text-align: center;
+    padding: 1rem 0 1rem 0;
+}
+
+.editProfilButton {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.profilInfo {
+    border: 5px solid #B3FF5C;
+    border-radius: 5px;
+}
+
+.profilH2 {
+    padding: 1rem!important;
+    text-align: center;
+}
+
+#owl-demo .item{
+    display: block;
+    cursor: pointer;
+    background: #ffd800;
+    padding: 30px 0px;
+    margin: 5px;
+    color: #FFF;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    text-align: center;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+}
+#owl-demo .item:hover{
+    background: #F2CD00;
+}
+/****************** END PROFIL PAGE ******************/
+
+/****************** START EDITPROFIL PAGE ******************/
+.h1edit {
+    text-align: center;
+    padding: 1rem 0 1rem 0;
+}
+
+.buttonSupp {
+    background-color: #B3FF5C;
+    border-color: #B3FF5C;
+    color: #8C7448;
+    margin-left: 5px;
+}
+
+.buttonSupp:hover {
+    background-color: red;
+}
+/****************** END EDITPROFIL PAGE ******************/
+
+/****************** ARTICLE PAGE ******************/
+.carouR {
+    border-right: 1px solid #B3FF5C;
+}
+
+.carouL {
+    border-left: 1px solid #B3FF5C;
+}
+
+.backgPrice {
+    background-color: rgba(67, 203, 255, 0.4);
+}
+
+#carousel-example-generic {
+    margin: 20px auto;
+    width: 400px;
+}
+
+#carousel-custom {
+    margin: 20px auto;
+    width: 400px;
+    border: 2px solid #B3FF5C;
+    padding: 15px;
+    border-radius: 5px;
+}
+#carousel-custom .carousel-indicators {
+    margin: 10px 0 0;
+    overflow: auto;
+    position: static;
+    text-align: left;
+    white-space: nowrap;
+    width: 100%;
+}
+#carousel-custom .carousel-indicators li {
+    background-color: transparent;
+    -webkit-border-radius: 0;
+    border-radius: 0;
+    display: inline-block;
+    height: auto;
+    margin: 0 !important;
+    width: auto;
+    position: inherit;
+}
+#carousel-custom .carousel-indicators li img {
+    display: block;
+    opacity: 0.5;
+}
+#carousel-custom .carousel-indicators li.active img {
+    opacity: 1;
+}
+#carousel-custom .carousel-indicators li:hover img {
+    opacity: 0.75;
+}
+
+.imgCar {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.articleName {
+    color: #604310;
+    font-size: 160%;
+    font-weight: 700;
+}
+
+.articleStatut {
+    color: #604310;
+    font-size: 110%;
+    font-weight: 500;
+}
+
+.dispo {
+    color: #B3FF5C;
+}
+
+.articlePrice {
+    color: #604310;
+    font-size: 150%;
+    font-weight: 500;
+}
+
+.articlePriceOccaz {
+    color: #604310;
+    font-size: 150%;
+    font-weight: 500;
+    margin-top: -1em;
+}
+
+#sprice {
+    font-size: 80%;
+}
+
+.articleIsbn {
+    color: #604310;
+    font-size: 100%;
+}
+
+.buttonBasket {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #B3FF5C;
+    border-color: #B3FF5C;
+    color: #8C7448;
+}
+
+.buttonBasket:hover {
+    background-color: #B3FF5C;
+    color: #43CBFF;
+}
+
+.paraArticle {
+    border: 2px solid #B3FF5C;
+    padding: 1em;
+}
+/****************** END ARTICLE PAGE ******************/
+
+/****************** START CART PAGE ******************/
+.cartElementList {
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
+}
+
+#howMuch {
+    width: 4rem;
+    background-color: #B3FF5C;
+    border: 2px solid #43CBFF;
+    border-radius: 5px;
+    padding: 4px;
+    font-size: 110%;
+}
+
+.articleDeco {
+    border: 5px solid #B3FF5C;
+    border-radius: 5px;
+    padding: 1em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.articleName {
+    font-weight: 600;
+    text-transform: uppercase;
+    padding-top: 6px;
+}
+
+.buttonSupp {
+    background-color: #B3FF5C;
+    margin-left: 5px;
+}
+
+.buttonSupp:hover {
+    background-color: red;
+}
+/****************** END CART PAGE ******************/
+
+/****************** START COMMAND PAGE ******************/
+#divDel {
+    margin-bottom: 2em;
+    margin-top: 2em;
+    padding-bottom: 2em;
+}
+
+.commandBorder {
+    padding: 1rem;
+    border: 5px solid #B3FF5C;
+    border-radius: 5px;
+}
+
+.buttonCde {
+    background-color: #B3FF5C;
+    border-color: #43CBFF;
+    color: #8C7448;
+    margin-left: 5px;
+}
+
+.buttonCde:hover {
+    background-color: #B3FF5C;
+    color: #43CBFF;
+}
+
+.divAdress {
+    background-color: rgba(179,255, 92, 0.5);
+    border: 2px solid #B3FF5C;
+    border-radius: 5px;
+    margin-left: 12px;
+}
+
+#titleAdd {
+    margin-top: 0.5em;
+}
+
+.divCommand {
+    margin-top: 7px;
+}
+
+.buttonAdress {
+    background-color: #B3FF5C;
+    border-color: #B3FF5C;
+    color: #8C7448;
+    margin-left: 5px;
+}
+
+.buttonAdress:hover {
+    background-color: #B3FF5C;
+    color: #43CBFF;
+}
+
+.formfield-select {
+    position: relative;
+}
+
+.formfield-select--container {
+    position: relative;
+    width: 500px;
+    background-color: #B3FF5C;
+    border: #B3FF5C 2px solid;
+    border-radius: 5px;
+    margin: 0 0 1.5em 0;
+    font-size: 110%;
+
+    overflow: hidden;
+    /*
+        Le select natif pourra
+        dépasser sans être vu
+    */
+}
+
+.formfield-select--container select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    width: 100%;
+    /*
+        On est sûr de ne plus voir
+        la flèche native
+    */
+    height: auto;
+    border: 0;
+    margin: 0;
+    padding: .75em;
+    border-radius: 0;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /*
+        On empêche le texte d'aller
+        jusqu'au bout s'il est trop long
+    */
+}
+
+.formfield-select--container::after {
+    /* Le pointeur du select */
+    content: '';
+    position: absolute;
+    top: 50%;
+    margin-top: -3px;
+    right: .75em;
+    display: block;
+    width: 0; height: 0;
+    border-color: transparent;
+    border-top-color: #444;
+    border-width: 6px;
+    border-style: solid;
+    pointer-events: none;
+}
+
+.imgPaiement {
+    width: 50px;
+    height: 100%;
+    margin: 1em 1em 1em 1em;
+}
+/****************** END COMMAND PAGE ******************/
+
+/***************** LEGALITY *******************/
+
+.legalmention {
+    background-color: white;
+    margin-top: 1em;
+    margin-left: 5%;
+    width: 90%;
+    padding: 2em;
+}
+
+.cgv  {
+    background-color: white;
+    margin-top: 1em;
+    margin-left: 5%;
+    width: 90%;
+    padding: 2em;
+}
+
+.rgpd  {
+    background-color: white;
+    margin-top: 1em;
+    margin-left: 5%;
+    width: 90%;
+    padding: 2em;
+}
+
+#mailform input, textarea {
+    width: 20em;
+}
+
+#mailform textarea {
+    height: 10em;
+}
+/*------- FOOTER ---------*/
+.footer{
+    position: relative;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1rem 0rem 0rem 0rem;
+    background-color: #E8E493;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.command {
+    display: flex;
+    justify-content: space-around;
+    width: 90%;
+}
+.command img {
+    float: left;
+    width:80px;
+    height:80px;
+}
+.descriptif {
+    display: flex;
+    justify-content: space-around;
+    width: 90%;
+}
+.descriptif img {
+    width:80%;
+    height:80%;
+}
+.legal{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: -8em;
+}
+.legal a {
+    margin-top: 0.5em;
+}
+.dead img {
+    width: 120px;
+    height: 110px;
+}
+.newsletter{
+    display: flex;
+    padding: 1em;
+}
+.newsletter input{
+    margin: 0px 10px;
+}
+.bottomfooter {
+    align-items: center;
+    width: 100%;
+    padding: 0.5rem;
+    background-color: #8C7448;
+}
+
+.bottomfooter img{
+    float: left;
+    width: 35px;
+    height: 35px;
+    padding-right: 0.2rem;
+    border-radius: 10px;
+}
+
+.bottomfooter img:hover {
+    margin-top: -0.5em;
+    transform: scale(1.5);
+}
+/*-------END FOOTER ------*/
+
+/******************************* BODY *******************************/
+
+
+@media (max-width: 900px) {
+    .MonthBook {
+        margin-left: 5rem;
+        margin-top: 0;
+    }
+
+    .MonthButton {
+        margin-left: 0;
+        margin-bottom: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    #buttonNav {
+        visibility: hidden;
+    }
+}

@@ -1,0 +1,117 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    {{ parent() }}
+
+    {% block pageTitle %}
+        <div class="fondcontainer">
+            <h1 class="h1edit">Votre commande !</h1>
+        </div>
+    {% endblock %}
+
+    {% block aside %}
+        <aside>
+            <h3>Total à régler :</h3>
+            <ul>
+                <li><a href="#">40 $</a></li>
+                <li><a href="#">+ les intérêts</a></li>
+                <li><a href="#">Code promo</a></li>
+                <li><a href="#">Re-code promo</a></li>
+            </ul>
+            <button class="btn btn-outline-success my-2 my-sm-0 buttonCde" type="submit">Commandez !</button>
+        </aside>
+    {% endblock %}
+
+    {% for userOrder in userOrders %}
+        {% block Command %}
+            <div class="container-fluid fondcontainer mTop">
+                <div class="row divCommand">
+                    <div class="col-lg-9">
+                        <div class="row mBottom mTop"
+                             style="text-align:left; height:50px; display: table; width: 100%;">
+                            <article class="col-lg-2">
+
+                                <img src="{{ asset('assets/img/selection.jpg') }}" style="width: 150px; height: auto;">
+
+                            </article>
+
+                            <article class="col-lg-2">
+
+                                <p>Harry Potter</p>
+                                <p>JK Rowling</p>
+                                <p>Bla blabla</p>
+                                <p>Bla blibla</p>
+
+                            </article>
+
+                            <article class="col-lg-2">
+                                <p>Prix à l'unité :</p>
+                                <p>20 $</p>
+
+                            </article>
+
+                            <article class="col-lg-2">
+                                <p>Quantité :</p>
+                                <p>2</p>
+
+                            </article>
+
+                            <article class="col-lg-2">
+
+                                <p>Total :</p>
+                                <p>40 $</p>
+
+                            </article>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+
+                    </div>
+                </div>
+            </div>
+        {% endblock %}
+
+        {% block Delivery %}
+            <div id="divDel" class="container-fluid fondcontainer">
+                <h2>Livraison</h2>
+                <div class="row">
+                    <div class="col-lg-3 divAdress">
+                        <h4 id="titleAdd">Votre adresse :</h4>
+                        <p>{{ userOrder.deliveryAdress }}</p>
+                    </div>
+                    <div class="col-lg-4 divCommand">
+                        <p>Envoyer cette commande à une autre adresse ?</p>
+                        <button class="btn btn-outline-success my-2 my-sm-0 buttonAdress" type="submit">Cliquez ici !
+                        </button>
+                    </div>
+                </div>
+            </div>
+        {% endblock %}
+    {% endfor %}
+
+    {% block paymentMethod %}
+        <div class="container-fluid fondcontainer mBottom">
+            <h2>Modes de Paiement</h2>
+            <div class="formfield-select">
+                <label for="mon_select">Souhaitez-vous un paiement en plusieurs fois ?</label>
+                <div class="formfield-select--container">
+                    <select id="mon_select">
+                        <option>Non</option>
+                        <option>En 2 fois !</option>
+                        <option>En 3 fois !</option>
+                        <option>En 4 fois !</option>
+                        <option>En 5 fois !</option>
+                        <option>En 6 fois ! Mais après, faut pas abuser ...</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <img class="imgPaiement" src="{{ asset('assets/img/cb_logo.jpg') }}">
+                <img class="imgPaiement" src="{{ asset('assets/img/Visa-logo.png') }}">
+                <img class="imgPaiement" src="{{ asset('assets/img/mastercard-4-logo.png') }}">
+                <img class="imgPaiement" src="{{ asset('assets/img/Paypal(logo).png') }}">
+                <img class="imgPaiement" src="{{ asset('assets/img/ico-paiement-livraison-big.gif') }}">
+            </div>
+        </div>
+    {% endblock %}
+
+{% endblock %}

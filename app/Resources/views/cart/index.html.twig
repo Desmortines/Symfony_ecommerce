@@ -1,0 +1,87 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    {{ parent() }}
+
+    {% block pageTitle %}
+        <div class="fondcontainer" style="margin-bottom: 2rem;">
+            <h1 class="h1edit">Votre panier !</h1>
+        </div>
+    {% endblock %}
+
+    {% block aside %}
+        <aside>
+            <h3>Total à régler :</h3>
+            <ul>
+                <li><a href="#">{# cart.total #}</a></li>
+                <li><a href="#">+ les intérêts</a></li>
+                <li><a href="#">Code promo</a></li>
+                <li><a href="#">Re-code promo</a></li>
+            </ul>
+            <a href="{{ path('command_index') }}">
+                <button class="btn btn-outline-success my-2 my-sm-0 buttonCde" type="submit">Commandez !</button>
+            </a>
+        </aside>
+    {% endblock %}
+
+    {% block Command %}
+        <div class="container-fluid fondcontainer mTop mBottom">
+            <ul class="cartElementList">
+                {% if (cart is empty) %}
+                    {% set cart = [] %}
+                    {% set cart = cart|merge({'cartElement': [] }) %}
+                {% endif %}
+                {% for k, cartElement in cart.cartElement %}
+                <li class="articleDeco">
+                    <div class="row divCommand">
+                    <div class="col-lg-11 col-xs-12">
+                        <div class="row" style="text-align:left; height:50px; display: table; width: 100%;">
+                            <article class="col-lg-2 col-xs-1">
+
+                                <img src="{{ asset('assets/img/selection.jpg') }}" style="width: 150px; height: auto;">
+
+                            </article>
+
+                            <article class="col-lg-4 col-xs-1">
+
+                                <a href="{{ path('article_show', {'id' : cartElement.article.id }) }}" class="articleName">{{ cartElement.article.name }}</a>
+                                {#<p>{{ cartElement.article.characteristics.author }}</p>#}
+                                <p><label style="font-size: inherit;" for="scales">Cadeau</label><input type="checkbox" name="kdo" value="kdo"></p>
+                                {#<p>{{ cartElement.article.characteristics.synopsis }}</p>#}
+
+                            </article>
+
+                            <article class="col-lg-2 col-xs-1">
+                                <p>Prix à l'unité :</p>
+                                <p>{{ cartElement.article.price }}</p>
+
+                                    </article>
+
+                                    <article class="col-lg-2">
+                                        <p>Quantité :</p>
+                                        <input id="howMuch" type="number" value="{{ cartElement.quantity }}" min="1"
+                                               max="64">
+
+                                    </article>
+
+                            <article class="col-lg-1">
+
+                                <p>Total :</p>
+                                <p>{{ cart.preTotal }}</p>
+
+                            </article>
+                            <article class="col-lg-1">
+
+                                <a href="">
+                                    <button class="btn btn-outline-success my-2 my-sm-0 buttonPower" title="Supprimer">Supprimer</button>
+                                </a>
+
+                            </article>
+                        </div>
+                    </div>
+                </div>
+                </li>
+            {% endfor %}
+        </ul>
+        </div>
+    {% endblock %}
+{% endblock %}

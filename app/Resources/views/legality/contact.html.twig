@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {%  block contact %}
+    <div class="container-fluid fondcontainer mTop mBottom connexion">
+        <h3 class="text-center mb-5">Contact US</h3>
+        <div class="formContenu">
+            <form class="form-group" id="mailform" action="https://formspree.io/trolly.trolleuse@gmail.com" method="POST">
+                <div class="form-group">
+                    <input type="text" name="name" placeholder="Nom:" autocomplete="off" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" name="mail" placeholder="Email:" autocomplete="off" required>
+                </div>
+                <div class="form-group">
+                    <textarea name="message" form="mailform" placeholder="Message:" forward autocomplete="on"></textarea>
+                </div>
+                <div class="form-group">
+                    <input class="btn btn-outline-success" type="submit" value="Send">
+                </div>
+            </form>
+        </div>
+    </div>
+    {% endblock %}
+{% endblock %}

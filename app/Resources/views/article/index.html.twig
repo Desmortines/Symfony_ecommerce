@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% block pageTitle %}
+        <div class="fondcontainer">
+            <h1 class="h1edit">Articles</h1>
+        </div>
+    {% endblock %}
+
+
+    <div class="container-fluid fondcontainer mTop mBottom">
+        <div class="divCommand mBottom">
+            {% for article in articles %}
+                <div class="row justify-content-md-center">
+                    <div class="card mTop mBottom" style="width: 18rem;">
+                        <img class="card-img-top" src="{{ asset('assets/img/imgArticle.jpg') }}"
+                             style="width: 286px; height: 180px;" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ article.name }}, JK Rowling</h5>
+                            <p class="card-text">{{ article.price }} euros (neuf)</p>
+                            <p class="card-text">4 euros (occasion)</p>
+                            <a href="" class="btn btn-primary">Voir détail</a>
+                        </div>
+                    </div>
+                    <div class="card mr-4 ml-4 mTop mBottom" style="width: 18rem;">
+                        <img class="card-img-top" src="{{ asset('assets/img/imgArticle.jpg') }}"
+                             style="width: 286px; height: 180px;" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ article.name }}, JK Rowling</h5>
+                            <p class="card-text">{{ article.price }} euros (neuf)</p>
+                            <p class="card-text">4 euros (occasion)</p>
+                            <a href="" class="btn btn-primary">Voir détail</a>
+                        </div>
+                    </div>
+                    <div class="card mTop mBottom" style="width: 18rem;">
+                        <img class="card-img-top" src="{{ asset('assets/img/imgArticle.jpg') }}"
+                             style="width: 286px; height: 180px;" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ article.name }}, JK Rowling</h5>
+                            <p class="card-text">{{ article.price }} euros (neuf)</p>
+                            <p class="card-text">4 euros (occasion)</p>
+                            <a href="" class="btn btn-primary">Voir détail</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
